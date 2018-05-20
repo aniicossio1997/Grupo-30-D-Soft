@@ -1,0 +1,19 @@
+footer{
+	padding:1%;
+	background-color: #fff;
+    box-sizing:border-box;
+    width: 100%;
+    bottom: -50px;
+    position: absolute;
+    height: 50px;
+  
+    border-top: 1px solid #ccc;
+}
+
+.textFoo{
+
+	text-align: center;
+	color: #000;
+    margin-top: 2%;
+    font-size: 1em;
+}

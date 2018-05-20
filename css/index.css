@@ -1,0 +1,40 @@
+.conteiner-form{
+margin: 0 auto;
+width: 60%;
+margin-top: 5%;
+}
+.conteiner-f1{
+	margin: 0 auto;
+	width: 90%;
+	padding: 7%;
+	box-sizing: border-box;
+	background-color: #fff;	
+}
+.conteiner{
+	margin: 0 auto;
+	width: 90%;
+}
+.h1-form{
+	text-align: center;
+	line-height: 70px;
+	background-color: #19A7C7;
+	color: #fff;
+	border-radius: 5px;
+
+}
+
+.input-f1{
+	
+	box-sizing: border-box;
+	padding: 2.5%;
+	width: 100%;
+	margin-top: 2%;
+
+
+}
+.label-f1{
+	display: block;
+	margin-top: 5%;
+}
+
+
