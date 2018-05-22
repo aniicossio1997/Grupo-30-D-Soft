@@ -7,14 +7,12 @@ section{
 	margin-top: 5%;
 	border-radius: 5px;
 	border:1px solid #ccc;
-	padding: 10px;
-}
-.edit{
-	float: right;
+	padding: 3%;
 }
 
+
 .p-perfil{
-	line-height: 25px;
+	line-height: 2.5em;
 }
 .h1-perfil{
 	font-size: 2.5em;
@@ -22,4 +20,49 @@ section{
 .d-perfil{
 	display: inline-block;
 	width: 35%;
+}
+.btn-link{
+	padding: 1.5%;
+	width: 30%;
+	color: #fff;
+	border-radius: 7px;
+
+}
+.menu{
+	margin-top: 2%;
+	margin-bottom: -3%;
+	width: 55%;
+}
+.caja_img{
+	display: block;
+	width: 50%;
+
+	
+}
+.img_previo{
+	width: 70%;
+	height: 170px;
+	border-radius: 5px;
+	display: block;
+	cursor: pointer;
+}
+.separador{
+	width: 97%;
+	height: 200px;
+	border: 1px dotted #ccc;
+	padding: 1%;
+	border-radius: 5px;
+	margin-top: 2%;
+}
+.btn-img{
+	margin-top: 1.5%;
+}
+.btn-a{
+	padding: 15px;
+	color: #fff;
+	border-radius: 5px;
+}
+.edit{
+	float: right;
+
 }

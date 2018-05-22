@@ -7,11 +7,11 @@ if ($verificar->esta_logueado())
 $id=$verificar->id();
 ?>
 
-<?php if (isset($_SESSION['mensaje']) ){ ?>
+<?php if (isset($_SESSION['add_vehiculo']) ){ ?>
 		
-		<p class="p_msj_error"><?php echo $_SESSION['mensaje'];?></p>
+		<p class="p_msj_error"><?php echo $_SESSION['add_vehiculo'];?></p>
 
-<?php unset($_SESSION['mensaje']); }?>
+<?php unset($_SESSION['add_vehiculo']); }?>
 
 <div class="conteiner-form " >
 	<h1 class="h1-form">Agregar vehículo</h1>

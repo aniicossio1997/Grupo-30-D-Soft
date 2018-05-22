@@ -9,7 +9,7 @@
 <?php unset($_SESSION['mensaje']); }?>
 
 <div class="conteiner-form " >
-	<h1 class="h1-form">Iniciar Sessión</h1>
+	<h1 class="h1-form">Iniciar Sesión</h1>
 
 <div class="conteiner-f1">
 	<form class="conteiner" action="validar_sesion.php" method="POST">
@@ -23,8 +23,9 @@
 			<label for="password" class="label-f1">Contraseña:</label>
 			<input type="password" id="password" class="input-f1" name="password" required="">
 		</div>
-		<p>Usted no posee una cuenta click <a href="registrarse.php">AQUÍ</a></p>
-		<button type="submit">Enviar</button>
+		
+		<button  class="input-f1 text-white fondo-blue btn-form" type="submit">Enviar</button>
+		<p>¿Usted no posee una cuenta? click <a href="registrarse.php">AQUÍ</a></p>
 	</form>
 </div>
 </div>

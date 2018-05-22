@@ -5,39 +5,87 @@ include('header.php');
 $id= $verificar->id();
 
 include ('mi_puntuacion.php');
+include('img.php');
 
 $sql="SELECT id, tipoimagen, contenidoimagen, email, password, nombre, apellido, fecha_nac FROM usuarios where id =$id ";
 $resul= mysqli_query($link,$sql);
-
+$fila = mysqli_fetch_array($resul);
 
 //echo $id;
 
+
 ?>
+
+
+<div class="">	
+<div class="center menu">
+	<a class="btn-link color-a fondo-blue" href="mis_vehiculos.php">Ver mis vehiculos</a>	
+	<a class="btn-link  fondo-blue" href="">ver mis viajes</a>
+	<a class="btn-link fondo-blue" href="">ver mis calificaciones</a>
+	<a class="btn-link fondo-blue" href="agregar_viaje.php">Crear viaje</a>
+	
+	</div>
+</div>
 
 <section>
 	<article class="mi-perfil center f-blanco">
-		<span><a class="edit" href="modificar_usuario.php">Editar</a></span>
+		<?php
+	
+			if (isset($_SESSION['mensaje'])) {
+				echo $_SESSION['mensaje'];
+				unset($_SESSION['mensaje']);//mensaje flash
+			}
+	?>
 		<h1 class="margen-abajo h1-perfil">Mi perfil</h1>
-		<?php $fila = mysqli_fetch_array($resul); ?>
+	
 
-		<div  class="d-perfil">
-			<p class="p-perfil">Nombre:      <?php echo($fila['nombre']);?></p>
-			<p class="p-perfil">Apellido: 	<?php echo($fila['apellido']);?></p>
-			<p class="p-perfil">E-mail:      <?php echo($fila['email']);?></p>
-			<p class="p-perfil">Fecha de nacimiento: <?php echo($fila['fecha_nac']);?></p>
-			<p class="p-perfil">Puntuación total: <?php echo(ver_puntuacion($fila['id'],$link))?></p>
+	<form id="form_img" action="validar_imagen.php" enctype="multipart/form-data" method="POST">
+		<div class="caja_img">
+		
+			<label id="img" for="imagen">
+				
+
+			<img class="img_previo" id="img_previa" src="<?php if (hay_imagen($fila['id'],$link)){?>mostrar_imagen.php?id=<?php echo $fila['id'];?><?php }else{
+					echo "fondos/user2.png";
+				}
+				?>" >
+
+			<!--<div  id="aux_file" class="caja_file">
+				<p  class="p_img"><span class="icon-images"></span>Subir</p>
+				<span id="text_auxiliar">Ninguna imagen seleccionada</span>accept="image/*"
+				accept="image/*"
+			</div>-->
+			<input type="file" accept="image/*" name="foto" id="imagen"  >
+
+		
+			</label>
+			<div>
+			<button class="btn-img fondo-blue btn-a " type="submit">Guardar cambios</button>
+		</div>
 		</div>
 		
-			<a href="">ver mis viajes</a>
-			<a href="">ver mis calificaciones</a>
-			<a href="mis_vehiculos.php">Ver mis vehiculos</a>
+	</form>
+
+		<div class="separador">
+			<span><a class="edit fondo-blue btn-a " href="modificar_usuario.php">Editar <span class="icon-pencil2"></span></a></span>
 		
-
-		
-
-
+			<div  class="d-perfil">
+				<p class="p-perfil">Nombre: <?php echo($fila['nombre']);?></p>
+				<p class="p-perfil">Apellido:<?php echo($fila['apellido']);?></p>
+				<p class="p-perfil">E-mail:  <?php echo($fila['email']);?></p>
+				<p class="p-perfil">Fecha de nacimiento: <?php echo($fila['fecha_nac']);?></p>
+				<p class="p-perfil">Puntuación total: <?php echo(ver_puntuacion($fila['id'],$link))?></p>
+			</div>
+		</div>
 
 	</article>
 </section>
 
-<?php include('footer.php'); ?>
+<?php include('footer.php');
+//
+ ?>
+ <script type="text/javascript" src="js/validar_perfil.js"></script>
+
+</body>
+
+</html>

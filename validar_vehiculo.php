@@ -20,18 +20,18 @@ try {
 		if($resultado) {
 			header("Location:mis_vehiculos.php");
 		}else{
-			$_SESSION['mensaje']="Error al guardar los datos, recuerde que las comillas simples provocan error en el sistema";
+			$_SESSION['add_vehiculo']="Error al guardar los datos, recuerde que las comillas simples provocan error en el sistema";
 				header("Location:agregar_vehiculo.php");
 			}
 		
 	}else{
-		$_SESSION['mensaje']="Usted debe completar todos los campos";
+		$_SESSION['add_vehiculo']="Usted debe completar todos los campos";
 		header("Location:agregar_vehiculo.php");
 		}
 
 
 } catch (Exception $e) {
-			$_SESSION['mensaje']="Usted debe Iniciar sesion";
+			$_SESSION['add_vehiculo']="Usted debe Iniciar sesion";
 			header("Location:index.php");
 
 	

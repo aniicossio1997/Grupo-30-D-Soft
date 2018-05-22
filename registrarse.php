@@ -42,13 +42,13 @@
 			<input type="password" id="password2" class="input-f1" name="pass2">
 		</div>
 
-		<p>Usted ya posee una cuenta click <a href="index.php"> AQUÍ</a></p>
-		<button type="submit">Enviar</button>
+		<button  class="input-f1 text-white fondo-blue btn-form" type="submit">Enviar</button>
+		<p>¿Usted ya posee una cuenta? click <a href="index.php">AQUÍ</a></p>
 	</form>
 </div>
 </div>
 
-<?php //include('footer.php'); ?>
+<?php include('footer.php'); ?>
 
 </body>
 </html>

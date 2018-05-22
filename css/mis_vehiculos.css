@@ -1,0 +1,33 @@
+.mis_vehiculos{
+	margin: 0 auto;
+	width: 84%;
+	border: 1px solid #ccc;
+	padding: 1%;
+	margin-top: 2%;
+	border-radius: 5px;
+	background-color: #fff;
+}
+.tabla{
+margin:0 auto;
+width: 97%;
+border-collapse: collapse;
+}
+.a-link2{
+	
+	padding: 7px;
+	color: #fff;
+	border-radius: 5px;
+	box-sizing: border-box;
+	
+}
+td{
+	padding: 6px;
+	width: 35px;
+}
+
+
+.a-rig{
+	float: right;
+}
+
+
