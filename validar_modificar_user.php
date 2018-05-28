@@ -35,7 +35,7 @@ try {
 			
 		}
 		if (strlen($pass1) < "6") {
-			$_SESSION['mensaje']="La contraseña debe superar la longitud 6 de caracteres ";
+			$_SESSION['mensaje']="La contraseña deber superar la longitud 6 de caracteres ";
 			header("Location:modificar_usuario.php");
 			die("salir");
 		}
@@ -53,22 +53,24 @@ try {
 		$consulta="UPDATE usuarios SET password = '$_POST[pass1]', nombre= '$_POST[nombre]', apellido = '$_POST[apellido]', fecha_nac= '$_POST[fecha_nac]' WHERE id = $id";
 
 		$resultado=mysqli_query($link,$consulta);
-		if($resultado) 
+		if($resultado) {
 				header("Location:mi_perfil.php");//si se realizo la consulta me dirigo al index
-			else{ 	
+			}else{ 	
 				$_SESSION['mensaje']="Error, recuerde que las comillas simples ('  ') interfieren con la consulta.";
 				header("Location:modificar_usuario.php");
 				die("fin"); 
 			}
 
 	}
+	$_SESSION['mensaje']="Error, campos  incompletos";
+				header("Location:modificar_usuario.php");
+				die("fin"); 
 
 
 
 } catch (Exception $e) {
-	$_SESSION["mensaje"]="Campos incompletos..!!";
-		header("Location:modificar_usuario.php");
+	$_SESSION["mensaje"]="Debe de iniciar sesion..!!";
+		header("Location:index.php");
 	}
 	mysqli_close($link);
-
-?>
+ ?>

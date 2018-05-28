@@ -14,7 +14,7 @@ class validar{
 	function esta_logueado(){
 		if (isset($_SESSION['id'])) {
 			return true;
-		}else return false;
+		}else{return false;} 
 		
 	}
 

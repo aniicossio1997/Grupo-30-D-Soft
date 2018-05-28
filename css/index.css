@@ -1,6 +1,6 @@
 .conteiner-form{
 margin: 0 auto;
-width: 70%;
+width: 75%;
 margin-top: 5%;
 
 }
@@ -34,7 +34,7 @@ margin-top: 5%;
 	box-sizing: border-box;
 	padding: 2.5%;
 	width: 100%;
-	line-height: 20px;
+	margin-top:2%;
 
 
 }
@@ -56,10 +56,6 @@ button{
 .btn-form:hover{
 	background-color: #0A8EDB;
 }
-.p{
-	padding: auto;
-}
-
 
 
 

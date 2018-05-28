@@ -6,14 +6,14 @@ function validar_img() {
     alert("Campo incompleto, seleccione una imagen");
     return false;
   }else if (file_imagen.length > 1) {
-    alert("Solo esta permitido subir una imagen para la foto de perfil");
+    alert("Solo esta permitodo subir una imagen para la foto de perfil");
     return false;
   }else if (file_imagen[0].type != "image/png" && file_imagen[0].type!= "image/jpg" && file_imagen[0].type!= "image/jpeg" && file_imagen[0].type!= "image/gif" && file_imagen[0].type!="image/bmp" && file_imagen[0].type!="image/tif" ) { 
       alert(" El archivo no es una imagen, formatos solo se admiten imagenes");
       return false;
     } else if (file_imagen[0].size > 1024*1024*1) {
      
-      alert("El tamaño de la imagen se excedio del limite, como maximo debe ser de 1MB");
+      alert("El tamaño de la imagen se exedio del limite, como maximo debe ser de 1MB");
      
       return false;
   }

@@ -21,9 +21,10 @@ $id_user = $verificar->id();
 		$r2 =mysqli_query($link,$consulta);
 		$fila = mysqli_fetch_array($r1);
 		$fila2 =  mysqli_fetch_array($r2);
-		$eliminar = "UPDATE vehiculo SET activo = '0' WHERE id = $vehiculo and usuario_id = $id_user";
+		
 		if ($fila['numero'] == 0 ) {
 			//si el vehiculo no tiene asociado ningun viaje
+			$eliminar="DELETE FROM vehiculo WHERE id=$vehiculo";
 			$r3 = mysqli_query($link, $eliminar);
 			if ($r3 ) {
 				
@@ -40,7 +41,8 @@ $id_user = $verificar->id();
 			//echo "Eliminar";echo "<br>";die("salir");
 		}
 		if ($r2) {
-			if ($fila2['activo']==0) { //si el viaje esta Cerrado 
+			if ($fila2['activo']==0) { //si el viaje esta Cerrado
+				$eliminar = "UPDATE vehiculo SET activo = '0' WHERE id = $vehiculo and usuario_id = $id_user"; 
 				$r3 = mysqli_query($link, $eliminar);
 				if ($r3 ) {
 					

@@ -72,6 +72,7 @@ function validar(){
 }
 
 window.onload = function(){
+	alert("window");
   document.getElementById('registro').onsubmit = validar;
 }
 

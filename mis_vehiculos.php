@@ -5,6 +5,7 @@ $id= $verificar->id();
 $sql="SELECT * FROM vehiculo WHERE usuario_id=$id and activo=1";
 
 $resul= mysqli_query($link,$sql);
+$elementos=mysqli_num_rows($resul);
 
 ?> 
 <?php if (isset($_SESSION['msj']) && $_SESSION['msj']==true) { ?>
@@ -23,6 +24,13 @@ $resul= mysqli_query($link,$sql);
 	<?php unset($_SESSION['msj_baja_v']); } ?>
 </div>
 <section>
+
+<?php if ($elementos==0) { ?>
+
+	<article class="mis_vehiculos"><p class="text_center">Usted no posee vehiculos...<a class="color-a" href="agregar_vehiculo.php"> Agregar vehículo</a>
+	</p></article>
+<?php } ?>	
+
 <?php
 
 	while ($fila = mysqli_fetch_array($resul)) { ?>

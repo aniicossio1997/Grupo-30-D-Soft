@@ -20,9 +20,8 @@ $fila = mysqli_fetch_array($resul);
 <div class="">	
 <div class="center menu">
 	<a class="btn-link color-a fondo-blue" href="mis_vehiculos.php">Ver mis vehiculos</a>	
-	<a class="btn-link  fondo-blue" href="">ver mis viajes</a>
-	<a class="btn-link fondo-blue" href="">ver mis calificaciones</a>
-	<a class="btn-link fondo-blue" href="agregar_viaje.php">Crear viaje</a>
+	<a class="btn-link  fondo-blue" href="mis_viajes.php">ver mis viajes</a>
+	<a class="btn-link fondo-blue" href="agregar_vehiculo.php"> Agregar vehículo</a>
 	
 	</div>
 </div>
@@ -60,7 +59,7 @@ $fila = mysqli_fetch_array($resul);
 		
 			</label>
 			<div>
-			<button class="btn-img fondo-blue btn-a btn-form" type="submit">Guardar cambios</button><span class="centrar"></span>
+			<button class="btn-img fondo-blue btn-a " type="submit">Guardar cambios</button>
 		</div>
 		</div>
 		
@@ -74,14 +73,17 @@ $fila = mysqli_fetch_array($resul);
 				<p class="p-perfil">Apellido:<?php echo($fila['apellido']);?></p>
 				<p class="p-perfil">E-mail:  <?php echo($fila['email']);?></p>
 				<p class="p-perfil">Fecha de nacimiento: <?php echo($fila['fecha_nac']);?></p>
-				<p class="p-perfil">Puntuación total: <?php echo(ver_puntuacion($fila['id'],$link))?></p>
+				<p class="p-perfil">Puntuación total como copiloto: Sin desarrollo</p>
+				<p class="p-perfil">Puntuacion total como piloto: Sin desarrollo</p>
 			</div>
 		</div>
 
 	</article>
 </section>
 
-<?php include('footer.php');
+<?php
+include('footer.php');
+mysqli_close($link);
 //
  ?>
  <script type="text/javascript" src="js/validar_perfil.js"></script>

@@ -1,6 +1,14 @@
+function limpiar_errores() {
+	document.getElementById('error_marca').innerHTML="";
+	document.getElementById('error_patente').innerHTML="";
+	document.getElementById('error_modelo').innerHTML="";
+	document.getElementById('error_asientos').innerHTML="";
+	
+	
+}
 function validar_marca(){
 	var marca = document.getElementById('marca');
-	document.getElementById('error_marca').innerHTML="";
+
 	if (!marca.value){
 		document.getElementById('error_marca').innerHTML="campo incompleto";
 		marca.focus();
@@ -11,7 +19,7 @@ function validar_marca(){
 }
 function validar_patente(){
 	var patente = document.getElementById('patente');
-	document.getElementById('error_patente').innerHTML="";
+	
 	if (!patente.value){
 		document.getElementById('error_patente').innerHTML="campo incompleto";
 		patente.focus();
@@ -22,7 +30,7 @@ function validar_patente(){
 }
 function validar_modelo(){
 	var modelo = document.getElementById('modelo');
-	document.getElementById('error_modelo').innerHTML="";
+	
  	if (!modelo.value){
  				document.getElementById('error_modelo').innerHTML="campo incompleto";
 		modelo.focus();
@@ -33,11 +41,17 @@ function validar_modelo(){
 }
 function validar_cantAsientos(){
 	var cantAsientos = document.getElementById('asientos');
-	document.getElementById('error_asientos').innerHTML="";
+	
  	if (!cantAsientos.value){
 		document.getElementById('error_asientos').innerHTML="campo incompleto";
 		cantAsientos.focus();
 		alert("Error: campo Asientos incompleto, por favor complete el campo.");
+		return false;
+ 	}
+ 	if (!/^([2-9])*$/.test(cantAsientos.value)){
+ 		document.getElementById('error_asientos').innerHTML="el numero de asiento debe ser mayor o igual 2";
+		cantAsientos.focus();
+		alert("Error: campo Asientos, recuerde que con la cantidad de asientos se va a calcular el costo de los viajes.");
 		return false;
  	}
  	return true;

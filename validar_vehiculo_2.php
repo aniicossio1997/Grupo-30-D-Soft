@@ -18,18 +18,15 @@ try {
 
 		$resultado=mysqli_query($link,$sql);
 		if($resultado) {
-			header("Location:mis_vehiculos.php");
-			die("salir");
+			header("Location:agregar_viaje.php");
 		}else{
 			$_SESSION['add_vehiculo']="Error al guardar los datos, recuerde que las comillas simples provocan error en el sistema";
-				header("Location:agregar_vehiculo.php");
-				die("salir");
+				header("Location:agregar_vehiculo_2.php");
 			}
 		
 	}else{
 		$_SESSION['add_vehiculo']="Usted debe completar todos los campos";
-		header("Location:agregar_vehiculo.php");
-		die("salir");
+		header("Location:agregar_vehiculo_2.php");
 		}
 
 

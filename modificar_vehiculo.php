@@ -24,31 +24,32 @@ $mostrar=mysqli_fetch_array($resul);
 		<form class="conteiner" id="form1"  method="POST" action="validar_modificar_vehi.php"
 >
 			<div>
-        		<label> Marca: </label><span class="error_vehiculo" id="error_marca"></span>
-        		<input type="text" name="marca" id="marca" class="input-f1" value="<?php  echo $mostrar['marca']; ?>">
+        		<label> Marca: </label><span class="error" id="error_marca"></span>
+        		<input type="text" name="marca" id="marca" class="input-f1 focus_azul" value="<?php  echo $mostrar['marca']; ?>">
         	</div>
 
         	<div>
         		<br>
-        		<label> Patente:</label><span class="error_vehiculo" id="error_patente"></span>
-				<input type="text" name="patente" id="patente" class="input-f1" value="<?php  echo $mostrar['patente']; ?>">
+        		<label> Patente:</label><span class="error" id="error_patente"></span>
+				<input type="text" name="patente" id="patente" class="input-f1 focus_azul" value="<?php  echo $mostrar['patente']; ?>">
 			</div>
 
 			<div>
 				<br>
-        		<label> Modelo: </label><span class="error_vehiculo" id="error_modelo"></span>
-				<input type="text" name="modelo" id="modelo" class="input-f1" value="<?php  echo $mostrar['modelo']; ?>">
+        		<label> Modelo: </label><span class="error" id="error_modelo"></span>
+				<input type="text" name="modelo" id="modelo" class="input-f1 focus_azul" value="<?php  echo $mostrar['modelo']; ?>">
 			</div>
 
 			<div>
 				<br>
-        		<label> Cantidad de asientos: </label><span class="error_vehiculo" id="error_asientos"></span>
-				<input type="number" id="asientos" name="asientos" class="input-f1" value="<?php echo $mostrar['asientos']; ?>">
+        		<label> Cantidad de asientos: </label><span class="error" id="error_asientos"></span>
+				<input type="number" id="asientos" name="asientos" class="input-f1 focus_azul " value="<?php echo $mostrar['asientos']; ?>">
 				<input type="hidden" name="id_vehiculo" value="<?php  echo $mostrar['id']; ?>">
 			</div>
 
 			<div>
-				<button  class="btn-img fondo-blue btn-a btn-form" type="submit" >Guardar cambios</button>
+				<button class="btn-mod fondo-blue"  type="submit" >Guardar cambios</button>
+				<a class=" btn-mod fondo-blue btn-volver" href="mis_vehiculos.php"> <span class="icon-arrow-left"></span> Volver</a>
 			</div>
 		</form>
 </div>

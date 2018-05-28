@@ -17,7 +17,7 @@ $id=$verificar->id();
 	<h1 class="h1-form">Agregar vehículo</h1>
 
 <div class="conteiner-f1">
-	<form action="validar_vehiculo.php" method="GET" class="container" id="form1">
+	<form action="validar_vehiculo_2.php" method="GET" class="container" id="form1">
 	 
 
 	  <div>
@@ -39,11 +39,10 @@ $id=$verificar->id();
 
 	  <div>
 	  	<br>
-	  	<label> Asientos:</label><span class="error" id="error_asientos"></span>
-	  	<input type="number" name="asientos" class="input-f1  focus_azul" id="asientos" >
+	  	<label> Asientos:</label><span class="error " id="error_asientos"></span>
+	  	<input type="number" name="asientos" class="input-f1 focus_azul" id="asientos" >
 	  </div>
-	  <br>
-	
+
 	  <button class="input-f1 text-white fondo-blue btn-form" type="submit"> Guardar </button>
 
 	</form>

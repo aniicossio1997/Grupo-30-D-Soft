@@ -3,7 +3,7 @@ section{
 
 }
 .mi-perfil{
-	width: 80%;
+	width: 82%;
 	margin-top: 5%;
 	border-radius: 5px;
 	border:1px solid #ccc;
@@ -19,7 +19,7 @@ section{
 }
 .d-perfil{
 	display: inline-block;
-	width: 35%;
+	width: 50%;
 }
 .btn-link{
 	padding: 1.5%;
@@ -29,9 +29,10 @@ section{
 
 }
 .menu{
-	margin-top: 2%;
+	margin-top: 2.3%;
 	margin-bottom: -3%;
-	width: 55%;
+	width: 87%;
+	
 }
 .caja_img{
 	display: block;
@@ -48,7 +49,7 @@ section{
 }
 .separador{
 	width: 97%;
-	height: 200px;
+	height: 250px;
 	border: 1px dotted #ccc;
 	padding: 1%;
 	border-radius: 5px;
