@@ -60,7 +60,7 @@ $fila = mysqli_fetch_array($resul);
 		
 			</label>
 			<div>
-			<button class="btn-img fondo-blue btn-a " type="submit">Guardar cambios</button>
+			<button class="btn-img fondo-blue btn-a btn-form" type="submit">Guardar cambios</button><span class="centrar"></span>
 		</div>
 		</div>
 		

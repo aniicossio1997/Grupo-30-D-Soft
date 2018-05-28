@@ -16,7 +16,7 @@ if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['password'
 		    header("Location:ver_viajes.php");
 	} catch(Exception $e) {
 		    	//echo "error";
-		    $_SESSION['mensaje']="Datos incorectos";
+		    $_SESSION['mensaje']="Datos incorrectos";
 			header("Location:index.php");
 	}
 

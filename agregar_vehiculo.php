@@ -17,36 +17,38 @@ $id=$verificar->id();
 	<h1 class="h1-form">Agregar vehículo</h1>
 
 <div class="conteiner-f1">
-	<form action="validar_vehiculo.php" method="GET" class="container">
+	<form action="validar_vehiculo.php" method="GET" class="container" id="form1">
 	 
 
 	  <div>
-	  	<label class="label-f1"> Marca:</label> 
-	  	<input type="text" name="marca" class="input-f1" id="" >
+	  	<label> Marca:</label> <span class="error" id="error_marca"></span>
+	  	<input type="text" name="marca" class="input-f1" id="marca" >
 	  </div>
 
 	  <div>
-	  	<label class="label-f1"> Patente:</label>  
-	  	<input type="text" name="patente" class="input-f1" id="" >
+	  	<br>
+	  	<label> Patente:</label><span class="error" id="error_patente"></span>
+	  	<input type="text" name="patente" class="input-f1" id="patente" >
 	  </div>
 
 	  <div>
-	  	<label class="label-f1"> Modelo:</label> 
-	  	<input type="text" name="modelo" class="input-f1" id="" >
+	  	<br>
+	  	<label> Modelo:</label><span class="error" id="error_modelo"></span> 
+	  	<input type="text" name="modelo" class="input-f1" id="modelo" >
 	  </div>
 
 	  <div>
-	  	<label class="label-f1"> Asientos:</label> 
-	  	<input type="number" name="asientos" class="input-f1" id="" >
+	  	<br>
+	  	<label> Asientos:</label><span class="error" id="error_asientos"></span>
+	  	<input type="number" name="asientos" class="input-f1" id="asientos" >
 	  </div>
 
-	  <button type="submit"> Guardar </button>
+	  <button  class="btn-img fondo-blue btn-a btn-form" type="submit"> Guardar </button>
 
 	</form>
 </div>
 </div>
-
-
+<script type="text/javascript" src="js/validar_alta_vehiculo.js"></script>
 <?php }
 else{
 header("Location:Login.php");}

@@ -21,37 +21,40 @@ $mostrar=mysqli_fetch_array($resul);
 	<?php unset($_SESSION['msj']); } ?>
 
 </div>
-		<form class="conteiner" action="validar_modificar_vehi.php" method="POST">
+		<form class="conteiner" id="form1"  method="POST" action="validar_modificar_vehi.php"
+>
 			<div>
-        		<label class="label-f1"> Marca: </label>
-        		<input type="text" name="marca" class="input-f1"  value="<?php  echo $mostrar['marca']; ?>">
+        		<label> Marca: </label><span class="error_vehiculo" id="error_marca"></span>
+        		<input type="text" name="marca" id="marca" class="input-f1" value="<?php  echo $mostrar['marca']; ?>">
         	</div>
 
         	<div>
-        		<label class="label-f1"> Patente:</label>
-				<input type="text" name="patente" class="input-f1" value="<?php  echo $mostrar['patente']; ?>">
+        		<br>
+        		<label> Patente:</label><span class="error_vehiculo" id="error_patente"></span>
+				<input type="text" name="patente" id="patente" class="input-f1" value="<?php  echo $mostrar['patente']; ?>">
 			</div>
 
 			<div>
-        		<label class="label-f1"> Modelo: </label>
-				<input type="text" name="modelo" class="input-f1" value="<?php  echo $mostrar['modelo']; ?>">
+				<br>
+        		<label> Modelo: </label><span class="error_vehiculo" id="error_modelo"></span>
+				<input type="text" name="modelo" id="modelo" class="input-f1" value="<?php  echo $mostrar['modelo']; ?>">
 			</div>
 
 			<div>
-        		<label class="label-f1"> Cantidad de asientos: </label>
-				<input type="number" name="asientos" class="input-f1" value="<?php echo $mostrar['asientos']; ?>">
+				<br>
+        		<label> Cantidad de asientos: </label><span class="error_vehiculo" id="error_asientos"></span>
+				<input type="number" id="asientos" name="asientos" class="input-f1" value="<?php echo $mostrar['asientos']; ?>">
 				<input type="hidden" name="id_vehiculo" value="<?php  echo $mostrar['id']; ?>">
 			</div>
 
 			<div>
-				<button  class="input-f1 text-white fondo-blue btn-form" type="submit">Guardar cambios</button>
+				<button  class="btn-img fondo-blue btn-a btn-form" type="submit" >Guardar cambios</button>
 			</div>
 		</form>
 </div>
 </div>
 
-
-
-
-
 <?php include('footer.php'); ?>
+<script type="text/javascript" src="js/validar_modificacion_vehiculo.js"></script>
+</body>
+</html>

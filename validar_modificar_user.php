@@ -35,7 +35,7 @@ try {
 			
 		}
 		if (strlen($pass1) < "6") {
-			$_SESSION['mensaje']="La contraseña deber superar la longitud 6 de caracteres ";
+			$_SESSION['mensaje']="La contraseña debe superar la longitud 6 de caracteres ";
 			header("Location:modificar_usuario.php");
 			die("salir");
 		}

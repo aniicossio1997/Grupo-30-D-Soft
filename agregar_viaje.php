@@ -48,7 +48,7 @@ include('header.php');
 				<div><label>Pasajeros</label>
 					<input class="input-f1" id="duracion" type="number" name="pasajeros"  min="0">
 				</div>
-				<button type="submit" class="input-f1 text-white fondo-blue btn-form"  name= "crear_viaje">Enviar</button>
+				<button type="submit" class="btn-img fondo-blue btn-a btn-form "  name= "crear_viaje">Publicar</button>
 			</div>
 		</form>
 	

@@ -10,35 +10,40 @@
 	<h1 class="h1-form">Registrarse</h1>
 
 <div class="conteiner-f1" >
-	<form class="conteiner" action="validar_registro.php" method="POST">
+	<form class="conteiner" id="registro" action="validar_registro.php" method="POST">
 	
 		<div>
-			<label for="nombre" class="label-f1">Nombre:</label>
+			<br>
+			<label for="nombre" class="label-f1">Nombre:</label><span class="error" id="error_nombre"></span>
 			<input type="text" id="nombre" class="input-f1" name="nombre">
 		</div>
 	
 		<div>
-			<label for="apellido" class="label-f1">Apellio:</label>
+			<br>
+			<label for="apellido" >Apellido:</label><span class="error" id="error_apellido"></span>
 			<input type="text" id="apellido" class="input-f1" name="apellido">
 		</div>
 		<div>
-			<label for="email" class="label-f1">Email:</label>
-			<input type="email" id="email" class="input-f1" name="email">
+			<br>
+			<label for="email" >Email:</label><span class="error" id="error_email"></span>
+			<input type="text" id="email" class="input-f1" name="email">
 		</div>
 	
 		<div>
-			<label for="fecha_nac" class="label-f1">Fecha nacimiento:</label>
+			<br>
+			<label for="fecha_nac">Fecha nacimiento:</label><span class="error" id="error_fecha_nac"></span>
 			<input type="date" id="fecha_nac" class="input-f1" name="fecha_nac">
 		</div>
 	
 		<div>
-
-			<label for="password" class="label-f1">Contraseña:</label>
+			<br>
+			<label for="password" >Contraseña:</label><span class="error" id="error_password"></span>
 			<input type="password" id="password" class="input-f1" name="pass1">
 		</div>
 
 		<div>
-			<label for="password2" class="label-f1">Repetir contraseña:</label>
+			<br>
+			<label for="password2">Repetir contraseña:</label><span class="error" id="error_password2"></span>
 			<input type="password" id="password2" class="input-f1" name="pass2">
 		</div>
 
@@ -49,6 +54,6 @@
 </div>
 
 <?php include('footer.php'); ?>
-
+<script type="text/javascript" src="js/validar_registro.js"></script>
 </body>
 </html>

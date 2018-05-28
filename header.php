@@ -19,6 +19,8 @@ include('clases.php');
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/crear_viaje.css">
 	<link rel="stylesheet" href="css/mis_vehiculos.css">
+	<link rel="stylesheet" type="text/css" href="css/campos_incompletos.css">
+	<link rel="stylesheet" type="text/css" href="css/agregar_vehiculo.css">
 	
 	<title>Un Aventon</title>
 </head>

@@ -34,7 +34,7 @@ margin-top: 5%;
 	box-sizing: border-box;
 	padding: 2.5%;
 	width: 100%;
-	margin-top: 2%;
+	line-height: 20px;
 
 
 }
@@ -56,6 +56,10 @@ button{
 .btn-form:hover{
 	background-color: #0A8EDB;
 }
+.p{
+	padding: auto;
+}
+
 
 
 
