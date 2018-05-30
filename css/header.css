@@ -1,0 +1,127 @@
+*{
+	margin: 0 ;
+	padding: 0;
+}
+html
+{
+    position: relative; 
+    min-height: 100%;
+    font-family: lucina;
+}
+body{
+	margin: 0 0 65px;
+	background-image: url(../fondos/f1.png);
+	background-size: 40px 40px;
+	opacity: 50;
+}
+header{
+	width: 100%;
+	height:100px; /* height especifica la altura*/
+	overflow:hidden;
+	width: auto;/*especifica el ancho de un elemento*/
+		/*comienza el color degradado*/
+	background-color: #fff;
+}
+#logo{
+	
+	width: 30%;
+	height: 100px;
+	background-image: url(../fondos/Logo.jpg);
+	background-size: 100px 100px;
+	background-repeat: no-repeat;
+	display: inline-block;
+
+}
+header nav{/*ACCEDO AL HEADER LUEGO AL NAV, ASI DARLE ATRIBUTOS AL NAV*/
+
+	
+	 /*float especifica si una caja (un elemento) debe flotar,
+				dejando de pertenecer al flujo normal de la página.
+				Valores permitidos: none, left, right, initial*/
+	margin: auto;
+	box-sizing: border-box;
+	height: 100px;
+	width: 60%;
+
+	display:inline-block;
+
+		
+}
+header  nav ul{
+	/*list-style: none;
+	/*propiedad para modificar los marcadores de los elementos de la lista,
+					en este caso con NONE se borran los marcadores(puntos)*/
+	display: inline-block;/* con Display se establece el tipo de la caja que genera cada elemento*/
+	list-style: none;
+	line-height: 50px;
+	box-sizing: border-box;
+	float: right;
+	margin-top: 2%;
+	
+}
+header nav ul li{
+   box-sizing: border-box;
+	display: inline-block;
+	padding: 5px;
+
+   
+}
+
+a{
+	text-decoration: none;
+}
+input,textarea,select{
+	outline: none;
+	border-radius: 5px;
+	border: 1px solid #ccc; 
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+	
+}
+
+.focus_azul:focus{
+		-webkit-box-shadow: 0px 0px 8px 2px rgba(167,207,217,0.80);
+-moz-box-shadow: 0px 0px 8px 2px rgba(167,207,217,0.80);
+box-shadow: 0px 0px 8px 2px rgba(167,207,217,0.80);
+border:1px solid #14C7DB;
+}
+
+.margen-abajo{
+	margin-bottom: 3%;
+}
+button{
+	cursor: pointer;
+	 border: none;
+
+}
+.center{
+	margin:0 auto;
+}
+.f-blanco{
+background-color: #fff;
+}
+
+.color-a{
+	color: #EC4A67;
+}
+.a-link{
+padding: 10px;
+border-radius: 5px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    font-size: 1.2em;
+}
+.a-link:hover,button:hover,.btn-link:hover{
+-webkit-box-shadow: 0px 0px 8px 2px rgba(167,207,217,0.80);
+-moz-box-shadow: 0px 0px 8px 2px rgba(167,207,217,0.80);
+box-shadow: 0px 0px 8px 2px rgba(167,207,217,0.80);
+	
+
+}
+.fondo-blue{
+	background-color: #19A7C7;
+
+}
+.text-white{
+	color: #fff;
+}
