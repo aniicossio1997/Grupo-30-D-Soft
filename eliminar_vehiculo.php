@@ -40,29 +40,20 @@ $id_user = $verificar->id();
 			}
 			//echo "Eliminar";echo "<br>";die("salir");
 		}
-		if ($r2) {
-			if ($fila2['activo']==0) { //si el viaje esta Cerrado
-				$eliminar = "UPDATE vehiculo SET activo = '0' WHERE id = $vehiculo and usuario_id = $id_user"; 
-				$r3 = mysqli_query($link, $eliminar);
-				if ($r3 ) {
-					
-					$_SESSION['msj_baja_v'] ="Se ha eliminado exitosamente el vehiculo ";
-					header("Location:mis_vehiculos.php");
-					die("salir");
-				}else{
-					
-					$_SESSION['msj_baja_v'] ="Ha ocurrido un error en la eliminacion del vehiculo";
-					header("Location:mis_vehiculos.php");
-					die("salir");
-				}
-			}else{
-				echo "funciona5 <br>";
-				$_SESSION['msj_baja_v']="ERROR:usted no puede eliminar un vehiculo que tenga un viaje que no este cerrado";
+		else{
+			$eliminar = "UPDATE vehiculo SET activo = '0' WHERE id = $vehiculo and usuario_id = $id_user"; 
+			$r3 = mysqli_query($link, $eliminar);
+			if ($r3 ) {	
+			$_SESSION['msj_baja_v'] ="Se ha eliminado el vehiculo exitosamente";
 				header("Location:mis_vehiculos.php");
 				die("salir");
-			}
-			
+			}else{
+				
+				$_SESSION['msj_baja_v'] ="Ha ocurrido un error en la eliminacion del vehiculo";
+				header("Location:mis_vehiculos.php");
+				die("salir");
 
+			}
 		}
 	
 

@@ -125,9 +125,38 @@ function validar(){
    }
    return false;
 }
+//-----------------------------------------
+function ver_password1() {
+
+	var cambiar=document.getElementById('cambiar_1');
+
+	if (cambiar.checked==true) {
+		document.getElementById('password').type="text";
+	}else{
+		document.getElementById('password').type="password";
+	}
+
+}
+function ver_password2() {
+
+	var cambiar=document.getElementById('cambiar_2');
+
+	if (cambiar.checked==true) {
+		document.getElementById('password2').type="text";
+	}else{
+		document.getElementById('password2').type="password";
+	}
+
+}
+
+//------------------------------
 
 window.onload = function(){
   document.getElementById('f1_registro').onsubmit = validar;
+  document.getElementById('cambiar_1').onclick=ver_password1;
+  document.getElementById('cambiar_2').onclick=ver_password2;
+
+
 }
 
 

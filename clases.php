@@ -17,6 +17,13 @@ class validar{
 		}else{return false;} 
 		
 	}
+	function nombre(){
+		if (isset($_SESSION['nombre'])) {
+			return ($_SESSION['nombre']);
+		}else{
+			return "";} 
+		
+	}
 
 	
 	function id(){
@@ -35,7 +42,7 @@ class validar{
 
 			$row=mysqli_fetch_assoc($result);
 			$_SESSION['id']=$row['id'];//GUARDO EL ID DEL USUARIO
-			$_SESSION['nombreusuario']=$row['nombreusuario'];
+			$_SESSION['nombre']=$row['nombre'];
 		}
 		else{
 			throw new Exception("error");

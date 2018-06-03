@@ -43,7 +43,7 @@ include('clases.php');
 
 				<li><a class="a-link color-a " href="Agregar_viaje.php">Crear viaje <span class="icon-upload3"></span></a></li>
 
-				<li><a class="a-link color-a" href="mi_perfil.php">Perfil <span class="icon-user"></span></a></li>
+				<li><a class="a-link color-a" href="mi_perfil.php"><?php echo ($verificar->nombre()); ?> <span class="icon-user"></span></a></li>
 				<li><a class="a-link color-a" href="inicio.php">Inicio <span class="icon-home"></span></a></li>
 				<li><a class="a-link color-a" href="salir.php">Salir <span class="icon-switch"></span> </a></li>
 

@@ -22,7 +22,7 @@ $hay_autos=mysqli_num_rows($resul);
 		
 	<div class="caja-viaje">
 		<?php if ($hay_autos >0 ) { ?>
-		<label for="vehiculo" class="">Seleccione un vehiculo su lista: </label><span class="msj-viaje" id="msj_vehi" ></span>
+		<label for="vehiculo" class="">Seleccione un vehiculo de su lista: </label><span class="msj-viaje" id="msj_vehi" ></span>
 		<br>
 		<select name="vehiculo"class="s1 top focus_azul " id="vehiculo">
 		<option value="0">---</option>
@@ -104,7 +104,8 @@ $hay_autos=mysqli_num_rows($resul);
 				</div>
 
 				<div class="caja-viaje">
-					<label>Descripción:</label>
+					<label >Descripción:</label>
+					<p class="msj_f1_email">*opcional</p>
 					<textarea class="top focus_azul" name="descripcion"></textarea>
 				</div>
 				<button type="submit" class="input-f1 text-white fondo-blue btn-form"  name= "crear_viaje">Guardar Viaje</button>

@@ -54,7 +54,12 @@ if (!$verificar->esta_logueado()){
 	
 		<div>
 			<br>
+
 			<label for="password" class=" focus_azul">Contraseña:</label><span id="error_password" class="error"></span>
+			<br>
+			<input type="checkbox" id="cambiar_1" value="cambiar">
+			<label for="cambiar" class="ver">Ver</label>
+			
 			<br>
 			<input type="password" id="password" class="input-f1 focus_azul" name="pass1">
 			<br>
@@ -63,7 +68,11 @@ if (!$verificar->esta_logueado()){
 		<div>
 			<br>
 			<label for="password2" class="">Repetir contraseña:</label><span id="error_password2" class="error"></span>
-			<br>
+			<div>
+			<input type="checkbox" id="cambiar_2" value="cambiar">
+			<label for="cambiar" class="ver">Ver</label>
+			
+		</div>
 	<input type="password" id="password2" class="input-f1  focus_azul " name="pass2">
 			<br>
 		</div>
