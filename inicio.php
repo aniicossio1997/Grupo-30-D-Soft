@@ -4,7 +4,7 @@
  $consulta= ("SELECT * FROM viajes");
  $resultado = mysqli_query($link, $consulta);
 ?>
-
+ 	<h1 class="h1-form"> Publicaciones </h1> 
  <?php
  while ($fila = mysqli_fetch_array($resultado)) {?>
  	<article class="mis_vehiculos"><p class="text_center">
