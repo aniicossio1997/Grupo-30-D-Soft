@@ -1,12 +1,9 @@
 <?php 
 include('header.php');
-
 $id= $verificar->id();
 $sql="SELECT * FROM vehiculo WHERE usuario_id=$id and activo=1";
-
 $resul= mysqli_query($link,$sql);
 $elementos=mysqli_num_rows($resul);
-
 ?> 
 <?php if (isset($_SESSION['msj']) && $_SESSION['msj']==true) { ?>
 
@@ -32,7 +29,6 @@ $elementos=mysqli_num_rows($resul);
 <?php } ?>	
 
 <?php
-
 	while ($fila = mysqli_fetch_array($resul)) { ?>
 	<article class="mis_vehiculos">	
 		<table class="tabla" >
@@ -46,7 +42,8 @@ $elementos=mysqli_num_rows($resul);
 		    	</p>
 		    </td> 
 		    <td class="td-a"> 
-		    	<a class="a-link2 a-rig fondo-blue" href="modificar_vehiculo.php?id_vehiculo=<?php echo $fila['id']; ?>">Modificar <span class="icon-pencil2"></span></a>
+		    	<a class="a-link2 a-rig fondo-blue" href="modificar_vehiculo.php?id_vehiculo=<?php echo $fila['id']; ?>">Modificar<span class="icon-pencil2"></span>
+		    	</a>
 		    </td> 
 		  </tr>
 		  <tr>
@@ -59,7 +56,8 @@ $elementos=mysqli_num_rows($resul);
 		    	</p>
 		    </td>
 		    <td class="td-a">
-		    	<a class="a-link2 a-rig fondo-blue " onclick="return confirm('¿Usted esta seguro de proceder con la eliminación?')"  id ="" href="eliminar_vehiculo.php?vehiculo= <?php echo $fila['id']; ?>">Eliminar <span class="icon-bin"></span></a>
+		    	<a class="a-link2 a-rig fondo-blue " onclick="return confirm('¿Usted esta seguro de proceder con la eliminación?')"  id ="" href="eliminar_vehiculo.php?vehiculo= <?php echo $fila['id']; ?>">Eliminar<span class="icon-bin"></span>
+		    	</a>
 		    </td>
 		  </tr>
 		</table>
@@ -71,4 +69,5 @@ $elementos=mysqli_num_rows($resul);
 
 
 	<?php include('footer.php'); ?>
+
 

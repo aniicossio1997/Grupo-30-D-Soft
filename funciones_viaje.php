@@ -37,6 +37,7 @@ function tipo_ocasional($link,$sql,$horario,$id,$fecha)
 	$sql.=" ,'$fecha')";
 
 	$resul=mysqli_query($link,$sql);
+	
 	if($resul){
 		$_SESSION['mensaje']="El viaje tipo ocacional se ha guardado exitosamente";
 		header("Location:agregar_viaje.php"); 

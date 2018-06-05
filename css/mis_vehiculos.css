@@ -20,7 +20,7 @@ border-collapse: collapse;
 	box-sizing: border-box;
 	
 }
-td{
+.td-a{
 	padding: 6px;
 	width: 35px;
 }
