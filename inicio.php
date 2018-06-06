@@ -41,31 +41,39 @@
 		    		<a class="a-link2 a-rig fondo-blue"  href="">Detalles 
 		    		</a>
 		    	</td>
-		    	<td > 
-		    		<a  class="a-link2 a-rig fondo-blue" href="">Postularse 
-		    		</a>
-		    	</td>	
+
 					<?php 
+						 $pertenece = false;
 						 //ejecuto la consulta (1)
 					     $resul = mysqli_query($link, $consul);
 					     //(while) verifico sin el id del vehiculo de la publicacion actual coincide con un vehiculo del usuario en sesion.
 						while ( $user = mysqli_fetch_array($resul) ){
 						  //(if) si conciden agrego la opcion modificar a la publicacion				
  			              if ($fila['vehiculo_id'] == $user['id']) {
+ 			              	$pertenece = true;
 					?>
-							<td style="width: 1%">
-						     <a class="a-link2 a-rig fondo-blue " href="">Modificar
-						     </a>
+							<td>
+						       <a class="a-link2 a-rig fondo-blue " href="">Modificar
+						       </a>
 						    </td>
-		      </tr>
-				    <?php }} ?>
+						    <td>
+						    	<a class="a-link2 a-rig fondo-blue " href="">Postulantes
+						    	</a>
+						    </td>
+		      </tr>	      				
+				    <?php }} if ($pertenece == false) {
+				     ?>
+  				    	<td > 
+		    				<a name="postularse" class="a-link2 a-rig fondo-blue" href="">Postularse 
+		    				</a>
+		    			</td>	
+				 <?php }?>
 
 		</table>
 	</article>
 	</p>
 
 	</article>
-<?php
-}
+<?php }
 include('footer.php');
  ?>
