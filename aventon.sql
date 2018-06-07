@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-06-2018 a las 17:52:47
+-- Tiempo de generación: 08-06-2018 a las 01:51:39
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -34,6 +34,29 @@ CREATE TABLE `calificacion` (
   `comentario` varchar(255) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `postulantes`
+--
+
+CREATE TABLE `postulantes` (
+  `id` int(11) NOT NULL,
+  `viaje_id` int(11) NOT NULL,
+  `postulante_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `postulantes`
+--
+
+INSERT INTO `postulantes` (`id`, `viaje_id`, `postulante_id`) VALUES
+(1, 12, 1),
+(4, 10, 2),
+(5, 11, 2),
+(6, 13, 2),
+(7, 14, 2);
 
 -- --------------------------------------------------------
 
@@ -122,7 +145,10 @@ CREATE TABLE `viajes` (
 
 INSERT INTO `viajes` (`id`, `vehiculo_id`, `costo`, `copilotos`, `fecha`, `horario`, `descripcion`, `activo`, `tipo`, `origen`, `destino`) VALUES
 (10, 2, 34, 5, '2018-09-23', '01:01:00', NULL, 1, 'ocasional', 'la plata', 'chascomus'),
-(11, 9, 23, 4, '2018-08-24', '01:01:00', NULL, 1, 'ocasional', 'Bolivar', 'chascomus');
+(11, 9, 23, 4, '2018-08-24', '01:01:00', NULL, 1, 'ocasional', 'Bolivar', 'chascomus'),
+(12, 3, 234, 6, '2018-09-23', '01:10:00', 'xxx', 1, 'ocasional', 'pehuajo', 'chascomus'),
+(13, 2, 3000, 5, '2018-12-12', '03:22:00', NULL, 1, 'ocasional', 'lujan', 'cordoba'),
+(14, 9, 4000, 4, '2019-01-09', '01:01:00', NULL, 1, 'ocasional', 'salta', 'Capital Federal');
 
 --
 -- Índices para tablas volcadas
@@ -135,6 +161,12 @@ ALTER TABLE `calificacion`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `usuario_id` (`usuario_id`,`calificador_id`),
   ADD KEY `calificador_fk` (`calificador_id`);
+
+--
+-- Indices de la tabla `postulantes`
+--
+ALTER TABLE `postulantes`
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -166,6 +198,11 @@ ALTER TABLE `viajes`
 ALTER TABLE `calificacion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `postulantes`
+--
+ALTER TABLE `postulantes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -179,7 +216,7 @@ ALTER TABLE `vehiculo`
 -- AUTO_INCREMENT de la tabla `viajes`
 --
 ALTER TABLE `viajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- Restricciones para tablas volcadas
 --
