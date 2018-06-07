@@ -24,6 +24,7 @@ include('clases.php');
 	<link rel="stylesheet" href="css/mis_vehiculos.css">
 	<link rel="stylesheet" type="text/css" href="css/modificar_vehiculo.css">
 	<link rel="icon"  href="fondos/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/Postulantes.css">
 
 	
 	<title>Un Aventon</title>
