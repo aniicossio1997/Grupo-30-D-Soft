@@ -29,6 +29,7 @@ include('clases.php');
 	<link rel="stylesheet" type="text/css" href="css/paginacion.css">
 	<link rel="stylesheet" type="text/css" href="css/centrado.css">
 	<link rel="stylesheet" type="text/css" href="css/inicio.css">
+	<link rel="stylesheet" type="text/css" href="css/detalle.css">
 
 	
 	<title>Un Aventon</title>

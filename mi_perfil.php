@@ -22,6 +22,7 @@ $fila = mysqli_fetch_array($resul);
 	<a class="btn-link color-a fondo-blue" href="mis_vehiculos.php">Ver mis vehiculos</a>	
 	<a class="btn-link  fondo-blue" href="mis_viajes.php">ver mis viajes</a>
 	<a class="btn-link fondo-blue" href="agregar_vehiculo.php"> Agregar vehículo</a>
+	<a class="btn-link fondo-blue" href="mostrar_viaje_piloto.php"> Mis viajes como piloto</a>
 	
 	</div>
 </div>

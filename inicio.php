@@ -6,7 +6,9 @@
  $consulta1 = ("SELECT * FROM vehiculo WHERE usuario_id = $id"); 
 
 //hago una consulta (2) para obteber todos los viajes
- $consulta2= ("SELECT * FROM viajes order by id desc");
+ $fecha_act=date('Y-m-d');
+ $hora_act=date('H:i:s');
+ $consulta2= ("SELECT * FROM viajes WHERE (fecha >='2018-06-17' AND activo = 1 ) or (fecha = '2018-06-17' AND horario >= '16:09:00' AND activo = 1 ) order by id desc");
  //ejecuto la consulta (2) y lo guardo en la variable resultado
  
 //Paginado---------------------------
@@ -92,7 +94,7 @@ if (isset($_SESSION['expiro'])) { ?>
 //si no hay viajes, muestro un mensaje, caso contrario muestro los viajes disponibles.
 if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 	  	<div  class="centrar" style="width: 40%;">
-  			<article class="article_interior" style="background-color: #D98880">
+  			<article class="article_interior" >
   				<h4 class="origen_destino centrar" style="width: 80%">Sin publicaciones por el momento</h4>
   		</article>
   	</div>
@@ -101,15 +103,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
  <?php 
 
  //(while) voy obteniendo los datos de cada fila correspondiente a los viajes
- while ($fila = mysqli_fetch_array($resultado2)) {
- 	//si el viaje NO esta dado de baja procedo a mostrarlo.
- 	$fecha_viaje = $fila['fecha'];
- 	$hora_viaje = $fila['horario'] ;
- 	$fecha_act = date("Y-m-d");
- 	$hora_act = date("H:i:s");
- 	if (($fila['baja'] == 0) && ($fecha_viaje >= $fecha_act)) {
- 		if ((($fecha_viaje == $fecha_act) && ($hora_viaje > $hora_act )) || ($fecha_viaje > $fecha_act)) {
- 		?>
+ while ($fila = mysqli_fetch_array($resultado2)) { 		?>
  	 	
  	<article class="article_exterior">
  		<p class="text_center">
@@ -165,7 +159,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 			<tr>
 
 		   		 <td class="Td-a" >
-		    		<a class="a-link2 a-rig fondo-blue"  href="">Detalles 
+		    		<a class="a-link2 a-rig fondo-blue"  href="detalle_viaje.php?id_viaje=<?php echo $fila['id'] ?>">Detalles 
 		    		</a>
 		    	</td>
 
@@ -214,7 +208,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 				 	<td class="Td-a" >
 				 			<a class="a-link2 a-rig fondo-blue" href="baja_postulacion.php?id_viaje=<?php echo $fila['id'] ?>"> Eliminar Postulacion</a>
 				 	</td>
-				 <?php } } } ?>
+				 <?php } ?>
 		      </tr>	
 		   </table>
       </p>
@@ -225,7 +219,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 	<?php 
 	//------------------------------------------------
 
-	$sql_pag= "SELECT COUNT(id) AS numero FROM viajes p ".$otra ;
+	$sql_pag= "SELECT COUNT(id) AS numero FROM viajes WHERE (fecha >='2018-06-17' AND activo = 1 ) or (fecha = '2018-06-17' AND horario >= '16:09:00' AND activo = 1 )" ;
 			$resul= mysqli_query($link,$sql_pag);
 			$pagina=mysqli_fetch_array($resul);
 			$total_pag= ceil( $pagina["numero"] / 4);
@@ -243,7 +237,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 			 if($pag_actual > 1) {?>
 			 
 					  <li>
-						<a href="inicio.php?<?php echo $parametro."pag=".$prevpage;?>">«Anterior </a>
+						<a  href="inicio.php?<?php echo $parametro."pag=".$prevpage;?>">«Anterior </a>
 					</li>
 					<?php } ?>
 			<li><a class="active" href="#"><?php echo $pag_actual;?></a></li>

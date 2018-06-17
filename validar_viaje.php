@@ -22,7 +22,7 @@ include('funciones_viaje.php');
 
 	//-----------------------
 	$copilotos=$mostrar['asientos'];
-	$sql="INSERT INTO viajes (id, vehiculo_id, tipo, costo, copilotos, horario, activo,  descripcion,  origen, destino, duracion, baja, fecha)VALUES (NULL, $_POST[vehiculo],'$_POST[tipo]',$_POST[costo],$copilotos,'$horario',1 ";
+	$sql="INSERT INTO viajes (id, vehiculo_id, tipo, costo, copilotos, horario, activo,  descripcion,  origen, destino, duracion,fecha)VALUES (NULL, $_POST[vehiculo],'$_POST[tipo]',$_POST[costo],$copilotos,'$horario',1 ";
 
 	if (!empty($_POST['descripcion'])) {
 				$sql.=",'$_POST[descripcion]'";
@@ -32,7 +32,6 @@ include('funciones_viaje.php');
 	$sql.=", '$_POST[origen]'";
 	$sql.=", '$_POST[destino]'";
 	$sql.=", '$_POST[duracion]'";
-	$sql.=", '0'";
 
 
 	if ($_POST['tipo']=='ocasional') {
