@@ -1,0 +1,89 @@
+
+<?php
+include("header.php");
+$link=conectar();
+
+if (isset($_GET['id_viaje'])) {
+	$id_viaje = $_GET['id_viaje'];
+	$origen = $_GET['origen'];
+	$destino = $_GET['destino'];	
+}elseif (isset($_SESSION['id_viaje'])) {
+		$id_viaje = $_SESSION['id_viaje'];
+		unset($_SESSION['id_viaje']);
+}
+$consulta = "SELECT * FROM viajes WHERE id = $id_viaje";
+$resultado = mysqli_query($link,$consulta);
+$fila = mysqli_fetch_array($resultado);
+$consulta1 = "SELECT postulante_id,rechazado FROM postulantes WHERE (viaje_id = $id_viaje) AND (estado = 1) AND (rechazado = 0)";
+$resultado1 = mysqli_query($link,$consulta1);
+?>
+
+<h1 class="h1-form"> Copilotos pendientes </h1> 
+  <br>
+<div class=" div_incio">
+	<h3 class="origen_destino">Origen: <?php echo $fila['origen']?>
+	</h3>
+	<h3 class="origen_destino">Destino: <?php echo $fila['destino'] ?> 
+    </h3>
+    <h3 class="origen_destino">Fecha de viaje: <?php echo $fila['fecha'] ?> 
+    </h3>
+  <?php  if ( $cantidad = mysqli_num_rows($resultado1) == 0){ ?>
+
+  	<div  class="centrar" style="width: 40%;">
+  		<article class="article_interior">
+  		<h4 class="origen_destino centrar" style="width: 70%">Sin postulantes por el momento</h4>
+  		</article>
+  	</div>
+
+  <?php }else { ?>
+
+  <?php while ($fila1 = mysqli_fetch_array($resultado1)) { 
+
+  	if ($fila1['rechazado'] == 0) {
+  ?>  
+   <article class="article_exterior">
+	<article class="article_interior">
+		<table class="tabla">
+			<tr>
+				<td>
+					<?php
+					  $consulta2 = "SELECT nombre FROM usuarios WHERE id = $fila1[postulante_id]";
+					  $resultado2 = mysqli_query($link,$consulta2);
+					  $fila2 = mysqli_fetch_array($resultado2);
+					?>
+					<p>Postulante: <?php echo $fila2['nombre'] ?> </p>
+				</td>
+				<td>
+					<p>Calificcion: 0</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+			</tr>
+		</table>
+	</article>
+		<table>
+			<tr class="Td-a" >
+				<td></td>
+				<td></td>
+				<td class="Td-a">
+					<a class="a-link2 a-rig fondo-blue" onmouseover="this.style.color='green'" onmouseout ="this.style.color='white'" href="">Aceptar</a>
+				</td>				
+				<td class="Td-a">
+					<a class="a-link2 a-rig fondo-blue" onmouseover="this.style.color='red'" onmouseout ="this.style.color='white'" href="rechazar_postulante.php?id=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $id_viaje ?>">Rechazar</a>
+				</td>
+			</tr>
+		</table>
+	</article>	
+	</table>
+	</article>
+	<?php }  } } ?>
+  </div>
+  <div class="div_volver">
+  		<a class="btton_volver a-link2  fondo-blue" href="inicio.php"> Volver </a>
+  </div>
+ <?php
+   include("footer.php")
+  ?>
