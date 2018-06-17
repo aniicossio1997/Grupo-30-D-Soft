@@ -39,5 +39,16 @@ textarea{
 .td-a{
 	float: right;
 }
+.input-f3{
+	padding: 10px;
+	width: 20%;
+}
 
+.min{
+	padding: 10px;
+}
 
+.d_min{
+	display: inline-block;
+	width: 50%;
+}
