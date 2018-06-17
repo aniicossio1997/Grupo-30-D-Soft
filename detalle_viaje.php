@@ -16,41 +16,46 @@
 
   $precio = round($mostrar['costo'] / ($fila2['asientos'] + 1))
 ?>
-
+    <h1 class="h1-form"> Detalles del viaje </h1> 
     <b style= "style: italic; color:black"> Detalle del viaje:</b>
   	<article class="article_exterior">
       <article class="article_interior">
-        <div>
+        <div style="width: 100%; display: inline-block;">
         <div style="width: 50%;">
 
-          <div style="width: 30%; margin: 10%;">
-  		        <p class="lado">Origen: <?php echo $mostrar['origen']; ?></p>
-              <p class="lado">Destino: <?php echo $mostrar['destino']; ?></p>
-              <p class="lado">Precio: $<?php echo $precio; ?></p>
+          <div style="width: 30%;  float: left;">
+  		        <p style="color: #000">Origen: <?php echo $mostrar['origen']; ?></p>
+              <p style="color: #000">Destino: <?php echo $mostrar['destino']; ?></p>
+              <p style="color: #000">Precio: $<?php echo $precio; ?></p>              
+              <p style="color: #000">Duración: <?php echo $mostrar['duracion']; ?></p>
            </div>
 
         </div>
-        <div style="width: 50%;">
-  		      <p class="lado">Duración: <?php echo $mostrar['duracion']; ?></p>
-  		      <p>Fecha: <?php echo $mostrar['fecha']; ?></p> 
-            <p> Hora: <?php echo$mostrar['horario'];?></p>
-  		      <p>Descripcion: <?php echo $mostrar['descripcion']; ?></p>
+        <div style="width: 30%; margin-left:  30%">
+  		      <p style="color: #000">Fecha: <?php echo $mostrar['fecha']; ?></p> 
+            <p style="color: #000"> Hora: <?php echo $mostrar['horario'];?>Hs</p>
+  		      <p style="color: #000">Descripcion: <?php echo $mostrar['descripcion']; ?></p>
         </div>
       </div>
       </article>
-      <b  style= "style: italic; color:black;">Vehículo:</b>
-      <article class="article_interior">
+      <b class="parrafo" > Datos del vehículo:</b>
+      <article class="article_interior" style="margin-top: 0%;">
         <p>Marca: <?php echo $fila2['marca']; ?></p>
         <p>Modelo: <?php echo $fila2['modelo']; ?></p>
         <p>Patente: <?php echo $fila2['patente']; ?></p>
       </article>
-    </article>
-
-  	<article>
-  		<h4 style="background-color:#ff4d4d"> Comentarios:</h4>
-  		<p></p>
-  	</article> 
-	  
+      <b class="parrafo" > Comentarios:</b>
+      <div style="margin-top: 0%">
+          <article class="article_interior" style="width: 50%; margin-left:  1%;background-color: #FADBD8; margin-top: 0% ">
+            <b >Claudio comento: </b>
+            <p style="margin-left: 10%"> ¿Permite llevar mascotas? </p>
+         </article>
+         <article class="article_interior" style="width: 50%; margin-left:    10%;">
+            <b > tú comentaste: </b>
+            <p style="margin-left: 10%"> claro!! </p>
+      </div>
+      </article>
+    </article>  
  <?php 
 include('footer.php');
  ?>
