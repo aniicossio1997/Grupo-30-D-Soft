@@ -61,7 +61,7 @@ $resul=mysqli_query($link,$viajes.$sql2);
 	<div class="container_form">
 		<p class="title_fv color-a ">Mis viajes como copiloto</p class="title_fv">
 		
-ver viajes:
+ver solo los:
 <select name="tipos" class="fv_tipos">
 	<option value="0" selected="selected">--</option>
 	<?php
@@ -83,9 +83,9 @@ ver viajes:
 		}
 	}
 	?>
-	<option <?php echo $aceptado; ?> value="1">Aceptado</option>
+	<option <?php echo $aceptado; ?> value="1">Aceptados</option>
 	<option <?php echo $espera; ?> value="2">En espera</option>
-	<option <?php echo $rechazado; ?> value="3">Rechazado</option>
+	<option <?php echo $rechazado; ?> value="3">Rechazados</option>
 </select>
 
 <button name="filtro" class="btn_filtro" type="submit" >Aplicar</button>
