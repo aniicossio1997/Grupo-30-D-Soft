@@ -156,6 +156,7 @@ ver solo los:
 
 			 $nextpage= $pag_actual +1;
 			 $prevpage= $pag_actual -1;	?>
+			 <div class="container_pag">
 			 <ul class="pagination">
 			 <?php 
 
@@ -169,11 +170,14 @@ ver solo los:
 		 	<?php
 		 	 if ($pag_actual != $total_pag && $pag_actual < $total_pag) { ?>
 			 	<li>
-			 		<a href="mis_viajes.php?<?php echo $parametro."pag=".$nextpage;?>">Siguiente»</a></li>
-			 </ul>
+			 		<a href="mis_viajes.php?<?php echo $parametro."pag=".$nextpage;?>">Siguiente»</a>
+			 	</li>
+			 
+			 
 			<?php }
 			 ?>
-			 
+			 </ul>
+			 </div>
 			 <?php  }?>
 
 

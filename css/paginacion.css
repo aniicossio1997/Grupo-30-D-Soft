@@ -1,13 +1,18 @@
 ul.pagination {
     display: inline-block;
     padding: 0;
-    margin: 0;
-    background-color: #19A7C7;
-    border-radius: 5px;
+    
+    margin: 0 auto;
+    width: 85%;
 
 }
+.container_pag{
+    width: 85%;
+    margin:0 auto;
+    margin-top: 2%;
+}
 
-ul.pagination li {display: inline; }
+ul.pagination li {display: inline-block;  }
 
 ul.pagination li a {
     color: black;
@@ -16,6 +21,8 @@ ul.pagination li a {
     text-decoration: none;
     transition: background-color .3s;
     border-radius: 5px;
+    background-color:  #fff;
+    border: 1px solid #ccc;
 }
 
 ul.pagination li a.active {
@@ -24,6 +31,6 @@ ul.pagination li a.active {
     cursor: auto;
 }
 
-ul.pagination li a:hover:not(.active) {background-color: #ddd; }
+ul.pagination li a:hover:not(.active) {background-color: #EDEFEC; }
 
 div.center {text-align: center; }
