@@ -208,6 +208,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 			 $prevpage= $pag_actual -1;	 }?>
 			 <ul class="pagination">
 			 <?php 
+			 
 
 			 if($pag_actual > 1) {?>
 			 

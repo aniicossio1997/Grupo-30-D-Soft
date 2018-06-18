@@ -12,6 +12,23 @@ include('funciones_viaje.php');
 
  if (isset($_POST['tipo']) && !empty($_POST['tipo']) && $_POST['tipo']==0  && isset($_POST['origen']) && !empty($_POST['origen']) && isset($_POST['destino']) && !empty($_POST['destino']) && isset($_POST['costo']) && !empty($_POST['costo']) && isset($_POST['vehiculo']) && !empty($_POST['vehiculo']) && isset($_POST['horario']) && !empty($_POST['horario']) )
  {
+ 	
+	$fecha_actual = date('Y-m-d');
+	
+	//resto 30 días de la fecha actual
+	$fecha_actual=date("Y-m-d",strtotime($fecha_actual."- 30 days"));
+	//preparo la consulta
+	$chequeo_viajes="SELECT p.postulante_id,p.viaje_id,vi.id,vi.fecha,p.estado,p.rechazado FROM postulantes p INNER JOIN viajes vi ON (p.viaje_id=vi.id) WHERE p.postulante_id=7 AND vi.fecha < '$fecha_actual' AND p.estado=1 AND p.rechazado=2";
+	//realizo la consulta
+	$resul=mysqli_query($link,$chequeo_viajes);
+	//echo mysqli_num_rows($resul);
+	if (mysqli_num_rows($resul)>0) {
+		$_SESSION['mensaje_error']="Usted adeuda calificaciones desde hace más de 30 dias";
+		header("Location:agregar_viaje.php");
+		die();
+	}
+	
+
 
  	if (empty($_POST['duracion'])  && (empty($_POST['minutos']) || $_POST['minutos']==90)) {
  		//si estan vacios

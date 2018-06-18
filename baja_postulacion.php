@@ -14,6 +14,7 @@
   if($vector['estado'] == 0){
     $_SESSION['mensaje']= "Ya se encuentra dado de baja como postulante.";
     header("Location:inicio.php");
+  
   }else{
     $consulta1 = " UPDATE postulantes SET estado = 0 where viaje_id = $_GET[id_viaje]";
     $resultado1 = mysqli_query($link,$consulta1);

@@ -48,9 +48,15 @@
       <div style="margin-top: 1%">
       	<a style="margin-left: 0.5%" class="a-link2 fondo-blue" href="detalle_viaje.php?id_viaje=<?php echo $vector['id'] ?>">Detalle</a>
       </div>
+      <div style="margin-top: 1%">
+        <a style="margin-left: 0.5%" class="a-link2 fondo-blue" href="modificar_viaje.php?id_viaje=<?php echo $vector['id'] ?>">Modificar</a>
+      </div>
       </article>
  <?php }
 
-include('footer.php');
  ?>
  </div>
+
+ <?php include('footer.php');?>
+</body>
+</html>

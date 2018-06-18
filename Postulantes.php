@@ -69,7 +69,7 @@ $resultado1 = mysqli_query($link,$consulta1);
 				<td></td>
 				<td></td>
 				<td class="Td-a">
-					<a class="a-link2 a-rig fondo-blue" onmouseover="this.style.color='green'" onmouseout ="this.style.color='white'" href="">Aceptar</a>
+					<a class="a-link2 a-rig fondo-blue" onmouseover="this.style.color='green'" onmouseout ="this.style.color='white'" href="aceptar_postulante.php?id_pos=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $id_viaje;  ?>">Aceptar</a>
 				</td>				
 				<td class="Td-a">
 					<a class="a-link2 a-rig fondo-blue" onmouseover="this.style.color='red'" onmouseout ="this.style.color='white'" href="rechazar_postulante.php?id=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $id_viaje ?>">Rechazar</a>
@@ -83,6 +83,7 @@ $resultado1 = mysqli_query($link,$consulta1);
   </div>
   <div class="div_volver">
   		<a class="btton_volver a-link2  fondo-blue" href="inicio.php"> Volver </a>
+  		
   </div>
  <?php
    include("footer.php")

@@ -32,6 +32,7 @@ include('clases.php');
 	<link rel="stylesheet" type="text/css" href="css/detalle.css">
 
 	<link rel="stylesheet" href="css/cartel_2.css">
+	<link rel="stylesheet" type="text/css" href="css/mis_viajes_cop.css">
 
 	
 	<title>Un Aventon</title>

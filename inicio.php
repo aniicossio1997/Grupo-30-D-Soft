@@ -239,9 +239,16 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 					  <li>
 						<a  href="inicio.php?<?php echo $parametro."pag=".$prevpage;?>">«Anterior </a>
 					</li>
-					<?php } ?>
+					<?php }
+					if ($total_pag > 1) {
+					 	
+					 ?>
+
 			<li><a class="active" href="#"><?php echo $pag_actual;?></a></li>
+
+
 		 	<?php
+		 	 }
 		 	 if ($pag_actual != $total_pag) { ?>
 			 	<li>
 			 		<a href="inicio.php?<?php echo $parametro."pag=".$nextpage;?>">Siguiente»</a></li>
