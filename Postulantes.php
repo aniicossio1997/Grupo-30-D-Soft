@@ -14,8 +14,21 @@ if (isset($_GET['id_viaje'])) {
 $consulta = "SELECT * FROM viajes WHERE id = $id_viaje";
 $resultado = mysqli_query($link,$consulta);
 $fila = mysqli_fetch_array($resultado);
-$consulta1 = "SELECT postulante_id,rechazado FROM postulantes WHERE (viaje_id = $id_viaje) AND (estado = 1) AND (rechazado = 0)";
+$consulta1 = "SELECT postulante_id,rechazado FROM postulantes WHERE (viaje_id = $id_viaje) AND (estado = 1) AND (rechazado = 0 OR rechazado = 2)";
 $resultado1 = mysqli_query($link,$consulta1);
+
+//la siguiente consulta se realiza para saber la cantidad de postulantes aceptados por el publidor
+$consulta3 ="SELECT * FROM postulantes WHERE (viaje_id = $id_viaje) AND (estado = 1) AND (rechazado = 2)";
+$resultado3 = mysqli_query($link,$consulta3);
+$fila3 = mysqli_num_rows($resultado3);
+
+//la siguiente conulta se usa para obtener los id de postulante y poner el campo visto en 1
+$consulta4 ="SELECT postulante_id FROM postulantes WHERE (viaje_id = $id_viaje) AND (estado = 1)";
+$resultado4 = mysqli_query($link,$consulta4);
+while ($fila4 =  mysqli_fetch_array($resultado4)) {
+	$consulta5 = "UPDATE postulantes SET visto = 1 WHERE (viaje_id = $id_viaje) AND (postulante_id = $fila4[postulante_id])";
+	$resultado5 = mysqli_query($link,$consulta5);
+}
 ?>
 
 <h1 class="h1-form"> Copilotos pendientes </h1> 
@@ -27,6 +40,7 @@ $resultado1 = mysqli_query($link,$consulta1);
     </h3>
     <h3 class="origen_destino">Fecha de viaje: <?php echo $fila['fecha'] ?> 
     </h3>
+    <h3 class="origen_destino"> Postulanetes aceptados: <?php echo (0 + $fila3) ?> de <?php echo $fila['copilotos'] ?></h3>
   <?php  if ( $cantidad = mysqli_num_rows($resultado1) == 0){ ?>
 
   	<div  class="centrar" style="width: 40%;">
@@ -39,7 +53,7 @@ $resultado1 = mysqli_query($link,$consulta1);
 
   <?php while ($fila1 = mysqli_fetch_array($resultado1)) { 
 
-  	if ($fila1['rechazado'] == 0) {
+  	if ($fila1['rechazado'] == 0 OR $fila1['rechazado'] == 2  ) {
   ?>  
    <article class="article_exterior">
 	<article class="article_interior">
@@ -69,7 +83,11 @@ $resultado1 = mysqli_query($link,$consulta1);
 				<td></td>
 				<td></td>
 				<td class="Td-a">
+					<?php if ($fila1['rechazado'] == 0) { ?>
 					<a class="a-link2 a-rig fondo-blue" onmouseover="this.style.color='green'" onmouseout ="this.style.color='white'" href="aceptar_postulante.php?id_pos=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $id_viaje;  ?>">Aceptar</a>
+				<?php }else { ?>
+					<a class="a-link2 a-rig fondo-blue" href="mi_perfil2.php?id_pos=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $_GET['id_viaje']?>&origen=<?php echo $_GET['origen']?>&destino=<?php echo $_GET['destino']?>">Informacion del copiloto</a>
+				<?php  }?>
 				</td>				
 				<td class="Td-a">
 					<a class="a-link2 a-rig fondo-blue" onmouseover="this.style.color='red'" onmouseout ="this.style.color='white'" href="rechazar_postulante.php?id=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $id_viaje ?>">Rechazar</a>

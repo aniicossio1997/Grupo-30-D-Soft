@@ -19,7 +19,8 @@
     <h1 class="h1-form"> Detalles del viaje </h1> 
     <b style= "style: italic; color:black"> Detalle del viaje:</b>
   	<article class="article_exterior">
-      <article class="article_interior">
+      <b class="parrafo" > Datos del viaje:</b>
+      <article class="article_interior" style="margin-top: 0%;">
         <div style="width: 100%; display: inline-block;">
         <div style="width: 50%;">
 
@@ -38,7 +39,11 @@
       echo $fecha;
               ?></p> 
             <p style="color: #000"> Hora: <?php echo $mostrar['horario'];?>Hs</p>
-  		      <p style="color: #000">Descripcion: <?php echo $mostrar['descripcion']; ?></p>
+            <?php if ($mostrar['descripcion'] == "") {?>
+  		          <p style="color: #000">Descripcion: Sin descripción.</p>
+            <?php }else{ ?>
+                         <p style="color: #000">Descripcion: <?php echo $mostrar['descripcion']; ?></p>
+            <?php } ?>
         </div>
       </div>
       </article>

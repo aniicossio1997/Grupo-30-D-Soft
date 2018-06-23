@@ -27,23 +27,10 @@ if (isset($_GET['filtro'])) {
 			$fecha_act=date('Y-m-d');
 			$sql2.=" AND p.rechazado = 1 AND v.fecha < '$fecha_act' ";
 			$parametro.= "tipos=".$_GET['tipos']."&";
-		}
-		
-			
+		}			
 	}
-
-
-
 	$parametro.="&buscar=&";
-
-
-
-
 }
-
-
-
-
 if(isset($_GET["pag"])){
 			$pag=$_GET["pag"];
 			$pag_actual=$_GET["pag"];;
@@ -101,6 +88,18 @@ ver:
 		
 			<article class="mis_vehiculos mod_art_viajes">
 				<a class="a-link2 a-rig fondo-blue a-rig" href="baja_postulacion.php?id_viaje=<?php echo $mostrar['id'] ?>"> Eliminar Postulacion</a>
+				<?PHP  
+					$consulta1 = "SELECT  rechazado FROM postulantes WHERE (viaje_id = $mostrar[id]) AND (postulante_id = $id)";
+					$resultado1 = mysqli_query($link,$consulta1);
+					$fila1 = mysqli_fetch_array($resultado1);
+
+					$consulta2 = "SELECT DISTINCT (ve.usuario_id) FROM vehiculo ve INNER JOIN viajes vi on(ve.id = vi.vehiculo_id) INNER JOIN postulantes p on(p.viaje_id = vi.id) WHERE p.postulante_id = $id";
+					$resultado2 = mysqli_query($link,$consulta2);
+					$fila2 = mysqli_fetch_array($resultado2);
+
+					if ($fila1['rechazado'] == 2) { ?>
+						<a class="a-link2 a-rig fondo-blue a-rig" href="mi_perfil2.php?id_pos=<?php echo $fila2['usuario_id'] ?>">Informacion del piloto</a>
+					<?php } ?>
 		<p>
 			Origen:<?php echo $mostrar['origen'];?>
 		</p>
@@ -127,7 +126,6 @@ ver:
 			 ?>
 		</p>
 		<a class="a-link2  fondo-blue a-rig corec"  href="detalle_viaje.php?id_viaje=<?php echo $mostrar['id'] ?>">Detalles...</a>
-
 		<p>
 			Duración:<?php echo $mostrar['duracion']."hs - ".$mostrar['minutos']." minutos"; ?>
 		</p>

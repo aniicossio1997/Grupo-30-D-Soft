@@ -50,12 +50,6 @@ $fila = mysqli_fetch_array($resul);
 				}
 				?>" >
 
-			<!--<div  id="aux_file" class="caja_file">
-				<p  class="p_img"><span class="icon-images"></span>Subir</p>
-				<span id="text_auxiliar">Ninguna imagen seleccionada</span>accept="image/*"
-				accept="image/*"
-			</div>-->
-
 			<input class="ocultar" type="file" accept="image/*" name="foto" id="imagen"  >
 			<div class="falso_input fondo-blue">Elegir una imagen</div>
 			</label>

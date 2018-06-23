@@ -49,7 +49,14 @@
       	<a style="margin-left: 0.5%" class="a-link2 fondo-blue" href="detalle_viaje.php?id_viaje=<?php echo $vector['id'] ?>">Detalle</a>
       </div>
       <div style="margin-top: 1%">
-        <a style="margin-left: 0.5%" class="a-link2 fondo-blue"  href="modificar_viaje.php?id_vehiculo=<?php  echo $vector['vehiculo_id'];?>&id_viaje=<?php echo $vector['id']; ?> ">Modificar</a>
+      <?php 
+            //la siguiente consulta es unsada para saber si la publicacion tiene postulantes.
+           $consulta1 = "SELECT * FROM postulantes WHERE (viaje_id = $vector[id]) AND (estado = 1) AND    (rechazado = 0 OR rechazado = 2)";
+           $resultado1 = mysqli_query($link,$consulta1);
+           $fila = mysqli_num_rows($resultado1);
+           if ($fila == 0) { ?>
+               <a style="margin-left: 0.5%" class="a-link2 fondo-blue"  href="      modificar_viaje.php?id_vehiculo=<?php  echo $vector['vehiculo_id'];?>&id_viaje=<?php   echo $vector['id']; ?> ">Modificar</a>
+      <?php } ?>
       </div>
       </article>
  <?php }

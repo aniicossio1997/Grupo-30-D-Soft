@@ -28,7 +28,7 @@ if(isset($_GET["pag"])){
 			}
 			
 			$resultado2 = mysqli_query($link, $consulta2.$sql2);
-//Paginda-----------------------------------------------------------------------------------------
+//Paginado-----------------------------------------------------------------------------------------
 ?>
 
 
@@ -56,16 +56,16 @@ if (isset($_SESSION['mensaje'])) { ?>
 <?php
 //cartel (2)-----------------------------------------------------------------
 //si se quiere borrar una publicacion que tiene postulantes.
-if (isset($_SESSION['confirmacion'])) { $a = 1?>
+if (isset($_SESSION['confirmacion'])) {$a = 1?>
 
-	<div class="cartel div_externo" id="cartel">
+	<div class="cartel div-externo"  id="cartel">
 		<span class="icon-checkmark2"></span>
-		<div class="div_interno ">
-	  		<p> <?php echo $_SESSION['confirmacion']; unset($_SESSION['confirmacion']); ?></p>
+		<div class="div-interno " style="margin-top: 10%;">
+	  		<p><center> <?php echo $_SESSION['confirmacion']; unset($_SESSION['confirmacion']); ?></center></p>
 	    </div>
-	    <div class="boton">
-	    	<a  " href="baja_publicacion.php?id_viaje=<?php echo $_GET['viaje_id'] ?>&respuesta=<?php echo $a ?>"> Ok</a>
-	    	<a id="cerrar" href="">Cancelar</a>
+	    <div class="div-bttn-ok" style=" margin-top: 10%;">
+	    	<a class=" a-link2  fondo-blue" style="margin-top: 100%;" href="baja_publicacion.php?id_viaje=<?php echo $_GET['viaje_id'] ?>&respuesta=<?php echo $a ?>"> Ok</a>
+	    	<a class=" a-link2  fondo-blue" id="cerrar" href="">Cancelar</a>
 	    </div>
 	</div>
 
@@ -130,8 +130,8 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 		<?php }else{ 
 		?>
 		<p style="font-style: italic; color: #FDFEFE">Publicador: <?php echo $nombre['nombre']; ?></p>
-		<?php } 
-		?>
+		<?php } ?>
+
 	  	<article class="mis_vehiculos" style="width: 97%;">	
 		<table class="tabla" >
 			<tr>
@@ -178,7 +178,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 					<?php 
 						 $pertenece = false;	
 						 //la siguiente consulta es para saber si hay postulantes para la publicacion
-						 $consulta6 = "SELECT * FROM postulantes WHERE (viaje_id = $fila[id]) AND (estado = 1) AND (rechazado = 0)";
+						 $consulta6 = "SELECT * FROM postulantes WHERE (viaje_id = $fila[id]) AND (estado = 1) AND (rechazado = 0 OR rechazado = 2)";
 						 $resultado6 = mysqli_query($link, $consulta6 );
 						 $cantidad = mysqli_num_rows($resultado6);
 						 //ejecuto la consulta (1)
@@ -197,12 +197,22 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 				    <?php  }}} 
 					 if ($pertenece == true) { ?>
 						<td class="Td-a">
-						   	<a class="a-link2 a-rig fondo-blue " href="Postulantes.php?id_viaje=<?php echo $fila['id'] ?>&origen=<?php echo $fila['origen'] ?>&destino=<?php echo $fila['destino'] ?> ">Postulantes
+						   	<a class="a-link2 a-rig fondo-blue " href="Postulantes.php?id_viaje=<?php echo $fila['id'] ?>&origen=<?php echo $fila['origen'] ?>&destino=<?php echo $fila['destino']?> ">Postulantes
 						   	</a>
 						</td>
 						<td class="Td-a">
 						   	<a class="a-link2 a-rig fondo-blue " href="baja_publicacion.php?id_viaje=<?php echo $fila['id'] ?>"> Eliminar </a>
 						</td>
+						<?php
+						  $consulta7 = "SELECT * FROM postulantes WHERE (viaje_id = $fila[id] ) AND (estado = 1) AND (visto = 0)";
+							$resultado7 = mysqli_query($link,$consulta7);
+							$fila7 = mysqli_num_rows($resultado7);
+							if ($fila7 > 0) { ?>
+								<div style="float: right; margin-top: -16.5%;">
+								<p class="parrafo" style="font-style: italic;"> (Nuevo postulante) </p>
+								</div>
+		
+							<?php }?>
 					<?php }?>
 					<!--la sigueinte consulta es para saber si esta postulado y en tal caso no mostrar el boton postularse --> 
 					<?php

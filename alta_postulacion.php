@@ -19,7 +19,7 @@ $existe = false;
 		}
 	}
 	if ($existe == false){
-		$consulta ="INSERT INTO postulantes(id, viaje_id, postulante_id, estado,rechazado) VALUES (null, $_GET[id_viaje], $_GET[id], 1, 0) ";
+		$consulta ="INSERT INTO postulantes(id, viaje_id, postulante_id, estado,rechazado,visto) VALUES (null, $_GET[id_viaje], $_GET[id], 1, 0,0) ";
 		$resultado = mysqli_query($link,$consulta);
 		$_SESSION['mensaje']=" Postulacion exitosa";
 		header("Location:index.php");
