@@ -16,7 +16,6 @@
 	$pos=mysqli_fetch_array($resul);
 	$viaje=mysqli_fetch_array($resul_2);
 
-
 	if ($pos['numero'] >= $viaje['copilotos']) {
 //si no se puede elgir copilotos
 		$_SESSION['mensaje']="No stiene asientos disponibles, ya ha exedido el limite";

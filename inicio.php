@@ -86,7 +86,15 @@ if (isset($_SESSION['expiro'])) { ?>
 	    	<a id="cerrar" href=""> Ok</a>
 	    </div>
 	</div>
-<?php } ?>
+<?php } 
+//------------------cartel de aceptar un postulante
+
+
+?>
+	 <div></div>
+<?php
+
+?>
 
 
 
@@ -183,7 +191,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
  			              	if ($cantidad == 0) {			              	
 					?>
 							<td class="Td-a">
-						       <a class="a-link2 a-rig fondo-blue " href="">Modificar
+						       <a class="a-link2 a-rig fondo-blue " href="modificar_viaje.php?id_vehiculo=<?php  echo $fila['vehiculo_id'];?>&id_viaje=<?php echo $fila['id']; ?> ">Modificar
 						       </a>
 						    </td>  
 				    <?php  }}} 

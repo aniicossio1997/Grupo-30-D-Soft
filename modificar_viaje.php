@@ -2,17 +2,17 @@
 include('header.php');
 $id= $verificar->id();
 
-echo $_GET['id_viaje'];
-
 $sql="SELECT v.id,v.origen,v.destino, v.duracion,v.tipo, v.descripcion,v.minutos,v.costo, v.fecha,v.horario,ve.marca, ve.asientos,ve.modelo FROM viajes v INNER JOIN vehiculo ve ON(v.vehiculo_id=ve.id) WHERE v.id=$_GET[id_viaje]";
 $datos_vie=mysqli_query($link,$sql);
 
 $mostrar=mysqli_fetch_array($datos_vie);
 
 
-$consulta="SELECT id,marca,modelo,asientos FROM vehiculo WHERE usuario_id=$id AND activo=1 ORDER by marca ASC";
+$consulta="SELECT id,marca,modelo,asientos,activo FROM vehiculo WHERE usuario_id=$id AND activo=1 ORDER by marca ASC";
 $resul=mysqli_query($link,$consulta);
 $hay_autos=mysqli_num_rows($resul);
+
+
 
 
 
@@ -59,12 +59,25 @@ $hay_autos=mysqli_num_rows($resul);
 		<select name="vehiculo"class="s1 top focus_azul " id="vehiculo">
 		<option value="0">---</option>
 			<?php 
-			while( $fila=mysqli_fetch_array($resul) ){?> 
-			<option  value="<?php echo $fila['id']; ?>">
+			$elegido=" ";
+
+
+			while( $fila=mysqli_fetch_array($resul) ){
+				if ($_GET['id_vehiculo']) {
+				$elegido="selected";
+			}
+
+
+				?> 
+			<option <?php echo $elegido; ?> value="<?php echo $fila['id']; ?>">
 				<?php echo $fila['marca'];?> -- Modelo:<?php echo $fila['modelo'];?>-- Capacidad:<?php echo $fila['asientos'];?>
 			</option>
 		 	<?php } ?>
 		</select>
+		
+		<p class=" msj_f1_email " id="diario">
+			Recuerde que si el vehiculo fue eliminado no se mostrara en la lista
+		</p>
 		<?php  }else{ ?> 
 			<br>
 			<div>
@@ -85,20 +98,26 @@ $hay_autos=mysqli_num_rows($resul);
 			<option <?php if ($mostrar['tipo']=="semanal"){ echo "selected";} ?> id="3" value="semanal">semanal</option>
 			</select><span  class="msj-viaje" id="msj_tipo"></span>
 			<br>
-			<p class=" msj_f1_email ocultar " id="diario"> se crearan viajes para dias Lunes, Martes, Miercoles, Jueves y viernes</p></div>				
+			<p class=" msj_f1_email <?php if ($mostrar['tipo']!= "diario"){ echo "ocultar"; } ?> " id="diario"> se crearan viajes para dias Lunes, Martes, Miercoles, Jueves y viernes</p></div>	
+
 					
-					<div id="msj_semanal" class="ocultar  caja-viaje">
-					<label  class="habilitar"for="semanal">Dias</label>
-					<select class="s1 top focus_azul" id="semanal" name="semanal">
-						<option value="0">Elija un dia</option>
-						<option value="1">Lunes</option>
-						<option value="2">Martes</option>
-						<option value="3">Miercoles</option>
-						<option value="4">Jueves</option>
-						<option value="5">Viernes</option>
-						<option value="6">Sabados</option>
-						<option value="7">Domingos</option>
-					</select><span class="msj-viaje" id="msj_error_sem"></span>
+			<div  id="msj_semanal" class=" <?php if ($mostrar['tipo'] != "semanal"){ echo "ocultar"; }  ?>  caja-viaje">
+				<label  class="habilitar"for="semanal">Dias</label>
+				
+				<select class="s1 top focus_azul" id="semanal" name="semanal">
+					<?php
+					
+					$dia = date('N', strtotime("$mostrar[fecha]"));
+					  ?>
+				<option value="0">Elija un dia</option>
+				<option <?php if ( $dia ==1 ) { echo "selected";} ?> value="1">Lunes</option>
+				<option <?php if ( $dia ==2 ) { echo "selected";} ?> value="2">Martes</option>
+				<option <?php if ( $dia ==3 ) { echo "selected";} ?> value="3">Miercoles</option>
+				<option <?php if ( $dia ==4 ) { echo "selected";} ?> value="4">Jueves</option>
+				<option <?php if ( $dia ==5 ) { echo "selected";} ?> value="5">Viernes</option>
+				<option <?php if ( $dia ==6 ) { echo "selected";} ?> value="6">Sabados</option>
+				<option <?php if ( $dia ==7 ) { echo "selected";} ?> value="7">Domingos</option>
+				</select><span class="msj-viaje" id="msj_error_sem"></span>
 					
 					<p class="msj_f1_email">Los viajes se crearan apartir de la semana se viene para 4 semanas</p>
 						
