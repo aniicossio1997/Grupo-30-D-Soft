@@ -150,7 +150,11 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 		    		<p class="p-perfil p-left " style="font-style: italic;">Precio: $<?php echo round($fila['costo'] / ($asientos['asientos'] + 1));  ?>
 		    		</p>
 		    	</td>	
-		    	<td class="p-perfil p-left " style="font-style: italic;">Fecha de viaje: <?php echo ($fila['fecha']); ?>
+		    	<td class="p-perfil p-left " style="font-style: italic;">Fecha de viaje: <?php
+		    	setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
+			$fecha = strftime("%d de %B de %Y", strtotime("$fila[fecha]"));
+			echo $fecha;
+		    	 ?>
 		    	</td>	    	
 		    </tr>
 		</table>

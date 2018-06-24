@@ -32,7 +32,11 @@
 
         </div>
         <div style="width: 30%; margin-left:  30%">
-  		      <p style="color: #000">Fecha: <?php echo $mostrar['fecha']; ?></p> 
+  		      <p style="color: #000">Fecha: <?php
+            setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
+      $fecha = strftime("%d de %B de %Y", strtotime("$mostrar[fecha]"));
+      echo $fecha;
+              ?></p> 
             <p style="color: #000"> Hora: <?php echo $mostrar['horario'];?>Hs</p>
   		      <p style="color: #000">Descripcion: <?php echo $mostrar['descripcion']; ?></p>
         </div>

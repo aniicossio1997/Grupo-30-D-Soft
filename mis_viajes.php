@@ -1,7 +1,7 @@
 <?php include('header.php');
 $id=$verificar->id();
 
-$viajes="SELECT p.postulante_id, p.estado, p.rechazado, p.viaje_id, v.id, v.origen,v.destino,v.fecha,v.horario,v.duracion,v.minutos,v.costo From postulantes p INNER JOIN viajes v ON (p.viaje_id=v.id) WHERE p.postulante_id=$id AND p.estado=1  ";
+$viajes="SELECT p.postulante_id, p.estado, p.rechazado, p.viaje_id, v.id, v.origen,v.destino,v.fecha,v.horario,v.duracion,v.minutos,v.costo,v.copilotos From postulantes p INNER JOIN viajes v ON (p.viaje_id=v.id) WHERE p.postulante_id=$id AND p.estado=1  ";
 
 
 
@@ -24,7 +24,8 @@ if (isset($_GET['filtro'])) {
 		}
 		if ($_GET['tipos']==3) {
 			//rechazado
-			$sql2.=" AND p.rechazado = 1 ";
+			$fecha_act=date('Y-m-d');
+			$sql2.=" AND p.rechazado = 1 AND v.fecha < '$fecha_act' ";
 			$parametro.= "tipos=".$_GET['tipos']."&";
 		}
 		
@@ -59,11 +60,11 @@ $resul=mysqli_query($link,$viajes.$sql2);
 ?>
 <form action="mis_viajes.php" class="form_copi" method="GET">
 	<div class="container_form">
-		<p class="title_fv color-a ">Mis viajes como copiloto</p class="title_fv">
+		<p class="title_fv color-a ">Mis Postulaciones</p class="title_fv">
 		
-ver solo los:
+ver:
 <select name="tipos" class="fv_tipos">
-	<option value="0" selected="selected">--</option>
+	<option value="0" selected="selected">Todos</option>
 	<?php
 	$aceptado="";
 	$rechazado="";
@@ -107,7 +108,14 @@ ver solo los:
 			Destino:<?php echo $mostrar['destino'];?>
 		</p>
 		<p>
-			Fecha:<?php echo $mostrar['fecha'];?>
+
+			Fecha: <?php 
+			setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
+			$fecha = strftime("%d de %B de %Y", strtotime("$mostrar[fecha]"));
+			echo $fecha;
+
+			/*echo strftime("%A %d de %B del %Y",$mostrar['fecha']);
+			echo $mostrar['fecha'];*/?>
 		</p>
 
 		<p>
@@ -122,7 +130,9 @@ ver solo los:
 
 		<p>
 			Duración:<?php echo $mostrar['duracion']."hs - ".$mostrar['minutos']." minutos"; ?>
-		</p>	
+		</p>
+		<p>Precio: <?php $precio=($mostrar['costo']/($mostrar['copilotos']+1));
+		echo round($precio); ?></p>	
 			
 		</div>
 

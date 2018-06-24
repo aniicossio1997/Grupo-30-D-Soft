@@ -20,7 +20,7 @@ $fila = mysqli_fetch_array($resul);
 <div class="">	
 <div class="center menu">
 	<a class="btn-link color-a fondo-blue" href="mis_vehiculos.php">Ver mis vehiculos</a>	
-	<a class="btn-link  fondo-blue" href="mis_viajes.php">ver mis viajes de copiloto</a>
+	<a class="btn-link  fondo-blue" href="mis_viajes.php">Mis Postulaciones</a>
 	<a class="btn-link fondo-blue" href="agregar_vehiculo.php"> Agregar vehículo</a>
 	<a class="btn-link fondo-blue" href="mostrar_viaje_piloto.php"> Mis como viajes Piloto</a>
 	
@@ -73,7 +73,12 @@ $fila = mysqli_fetch_array($resul);
 				<p class="p-perfil">Nombre: <?php echo($fila['nombre']);?></p>
 				<p class="p-perfil">Apellido:<?php echo($fila['apellido']);?></p>
 				<p class="p-perfil">E-mail:  <?php echo($fila['email']);?></p>
-				<p class="p-perfil">Fecha de nacimiento: <?php echo($fila['fecha_nac']);?></p>
+				<p class="p-perfil">Fecha de nacimiento: 
+					<?php
+				setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
+				$fecha = strftime("%d de %B de %Y", strtotime("$fila[fecha_nac]"));
+				echo $fecha;
+				?></p>
 				<p class="p-perfil">Puntuación total como copiloto: Sin desarrollo</p>
 				<p class="p-perfil">Puntuacion total como piloto: Sin desarrollo</p>
 			</div>
