@@ -47,6 +47,7 @@
         <p>Marca: <?php echo $fila2['marca']; ?></p>
         <p>Modelo: <?php echo $fila2['modelo']; ?></p>
         <p>Patente: <?php echo $fila2['patente']; ?></p>
+        
       </article>
       <b class="parrafo" > Comentarios:</b>
       <div style="margin-top: 0%">

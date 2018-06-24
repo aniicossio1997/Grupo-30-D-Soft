@@ -5,7 +5,7 @@
   $id = $verificar->id(); 
 
 
-  $viajes = "SELECT vj.id,vi.usuario_id,vj.horario,vj.tipo,vj.activo,vj.copilotos,vj.costo,vj.duracion,vj.descripcion,vj.destino,vj.fecha,vj.tipo,vj.origen FROM vehiculo vi  INNER JOIN usuarios u ON (vi.usuario_id=u.id)  INNER JOIN viajes vj ON (vj.vehiculo_id=vi.id) WHERE vi.usuario_id=$id order by vj.id desc " ;
+  $viajes = "SELECT vj.id,vi.usuario_id,vj.horario,vj.tipo,vj.activo,vj.copilotos,vj.costo,vj.duracion,vj.descripcion,vj.destino,vj.fecha,vj.tipo,vj.origen, vj.vehiculo_id FROM vehiculo vi  INNER JOIN usuarios u ON (vi.usuario_id=u.id)  INNER JOIN viajes vj ON (vj.vehiculo_id=vi.id) WHERE vi.usuario_id=$id order by vj.id desc " ;
   $datos=mysqli_query($link,$viajes);
 
 
@@ -49,7 +49,7 @@
       	<a style="margin-left: 0.5%" class="a-link2 fondo-blue" href="detalle_viaje.php?id_viaje=<?php echo $vector['id'] ?>">Detalle</a>
       </div>
       <div style="margin-top: 1%">
-        <a style="margin-left: 0.5%" class="a-link2 fondo-blue" href="modificar_viaje.php?id_viaje=<?php echo $vector['id'] ?>">Modificar</a>
+        <a style="margin-left: 0.5%" class="a-link2 fondo-blue"  href="modificar_viaje.php?id_vehiculo=<?php  echo $vector['vehiculo_id'];?>&id_viaje=<?php echo $vector['id']; ?> ">Modificar</a>
       </div>
       </article>
  <?php }
