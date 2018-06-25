@@ -1,7 +1,7 @@
 <?php
 include('header.php');
 $id= $verificar->id();
-
+if ((isset($_GET['cantidad'])) && ($_GET['cantidad'] == 0 )) { 
 $sql="SELECT v.id,v.origen,v.destino, v.duracion,v.tipo, v.descripcion,v.minutos,v.costo, v.fecha,v.horario,ve.marca, ve.asientos,ve.modelo FROM viajes v INNER JOIN vehiculo ve ON(v.vehiculo_id=ve.id) WHERE v.id=$_GET[id_viaje]";
 $datos_vie=mysqli_query($link,$sql);
 
@@ -78,7 +78,7 @@ $hay_autos=mysqli_num_rows($resul);
 		<p class=" msj_f1_email " id="diario">
 			Recuerde que si el vehiculo fue eliminado no se mostrara en la lista
 		</p>
-		<?php  }else{ ?> 
+		<?php  } else{ ?> 
 			<br>
 			<div>
 			Usted no posee vehiculos, cargue un  vehiculo:
@@ -195,6 +195,14 @@ $hay_autos=mysqli_num_rows($resul);
 		</form>
 	
 </div>
+<?php }else{
+			$_SESSION['mensaje'] = "No es posible hacer modificaciones cuando la publicación tiene al menos un postulante.";
+			header("Location: inicio.php");
+} 
+
+
+
+ ?>
 <?php include('footer.php'); 
 //
 

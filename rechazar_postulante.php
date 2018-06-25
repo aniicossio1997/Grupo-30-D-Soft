@@ -8,7 +8,7 @@ $fila1= mysqli_fetch_array($resultado1);
 
 
 if (($fila1['rechazado'] == 2) && (!isset($_GET['respuesta']))) {
-		$_SESSION['confirmacion3'] = "Usted va a ser sancionado con una calificacion negativa ¿Esta seguro de proceder?";
+		$_SESSION['confirmacion3'] = "Usted va a ser sancionado con una calificación negativa ¿Esta seguro de proceder?";
         header("Location: Postulantes.php?id_viaje=$_GET[id_viaje]&origen=$_GET[origen]&destino=$_GET[destino]&id= $_GET[id]");
       die();
 }elseif ( $fila1['rechazado'] == 2) 

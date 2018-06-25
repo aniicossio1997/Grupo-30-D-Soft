@@ -38,9 +38,14 @@ while ($fila4 =  mysqli_fetch_array($resultado4)) {
 	</h3>
 	<h3 class="origen_destino">Destino: <?php echo $fila['destino'] ?> 
     </h3>
-    <h3 class="origen_destino">Fecha de viaje: <?php echo $fila['fecha'] ?> 
+    <h3 class="origen_destino">Fecha de viaje: 
+    	<?php 
+    		setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
+            $fecha = strftime("%d de %B de %Y", strtotime("$fila[fecha]"));
+            echo $fecha; 
+         ?> 
     </h3>
-    <h3 class="origen_destino"> Postulanetes aceptados: <?php echo (0 + $fila3) ?> de <?php echo $fila['copilotos'] ?></h3>
+    <h3 class="origen_destino"> Postulantes aceptados: <?php echo (0 + $fila3) ?> de <?php echo $fila['copilotos'] ?></h3>
    <?php
 //carteles ---------------------------------------------------------------------------- 
 if (isset($_SESSION['mensaje'])) { ?>
@@ -53,7 +58,6 @@ if (isset($_SESSION['mensaje'])) { ?>
 	    </div>
 	</div>
 <?php } ?>
-
 <?php
 //cartel (5)-----------------------------------------------------------------
 //Rechazar un postulante

@@ -108,13 +108,12 @@ ver:
 		</p>
 		<p>
 
-			Fecha: <?php 
-			setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
-			$fecha = strftime("%d de %B de %Y", strtotime("$mostrar[fecha]"));
-			echo $fecha;
-
-			/*echo strftime("%A %d de %B del %Y",$mostrar['fecha']);
-			echo $mostrar['fecha'];*/?>
+			Fecha: 
+			<?php 
+				setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
+				$fecha = strftime("%d de %B de %Y", strtotime("$mostrar[fecha]"));
+				echo $fecha;
+			?>
 		</p>
 
 		<p>
@@ -135,7 +134,9 @@ ver:
 		</div>
 
 
+
 	</article>
+
 
 	<?php }  }else{ ?>
 	<article class="mis_vehiculos"><p class="text_center">
@@ -179,21 +180,14 @@ ver:
 		 	 if ($pag_actual != $total_pag && $pag_actual < $total_pag) { ?>
 			 	<li>
 			 		<a href="mis_viajes.php?<?php echo $parametro."pag=".$nextpage;?>">Siguiente»</a>
-			 	</li>
-			 
-			 
+			 	</li>			 
 			<?php }
 			 ?>
 			 </ul>
+
 			 </div>
+
 			 <?php  }?>
-
-
-
-
-
-
-
 <?php include('footer.php'); ?>
 </body>
 </html>

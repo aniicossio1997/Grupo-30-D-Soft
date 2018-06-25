@@ -17,7 +17,7 @@ if (($fila0['fecha'] > date("Y,m,d")) || ((($fila0['fecha'] == date("Y,m,d")) &&
 			$cantidad5 = mysqli_num_rows($resultado5);
 			if (($fila['activo'] == 1) && ($cantidad5 > 0)) {
 				if (!isset($_GET['respuesta'])) {
-					$_SESSION['confirmacion'] = "Usted sera sancionado ¿Esta seguro de porceder con la eliminacion?";
+					$_SESSION['confirmacion'] = "Usted sera sancionado ¿Esta seguro de proceder con la eliminacion?";
 					header("Location: inicio.php?viaje_id=$_GET[id_viaje]");
 					die();
 				}else{

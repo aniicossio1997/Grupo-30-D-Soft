@@ -148,7 +148,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 		    	 	</p>
 		    	</td>
 		   	 	<td >
-		    	 	<p  class="p-perfil p-left " style="font-style: italic;">Duracion: <?php echo ($fila['duracion']); ?>:<?php echo ($fila['minutos']) ?> Hs	
+		    	 	<p  class="p-perfil p-left " style="font-style: italic;">Duracion: <?php echo $fila['duracion']."Hs - ".$fila['minutos']." minutos"; ?>	
 		    	 	</p>
 		    	</td>		    	
 		    </tr>
@@ -195,10 +195,17 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
  			              	if ($cantidad == 0) {			              	
 					?>
 							<td class="Td-a">
-						       <a class="a-link2 a-rig fondo-blue " href="modificar_viaje.php?id_vehiculo=<?php  echo $fila['vehiculo_id'];?>&id_viaje=<?php echo $fila['id']; ?> ">Modificar
+						       <a class="a-link2 a-rig fondo-blue " href="modificar_viaje.php?id_vehiculo=<?php  echo $fila['vehiculo_id'];?>&id_viaje=<?php echo $fila['id']; ?>&cantidad=<?php echo $cantidad ?> ">Modificar
 						       </a>
 						    </td>  
-				    <?php  }}} 
+				    <?php  }else{ ?>
+							<td class="Td-a">
+						       <a class="a-link2 a-rig fondo-blue " href="modificar_viaje.php?id_vehiculo=<?php  echo $fila['vehiculo_id'];?>&id_viaje=<?php echo $fila['id']; ?>&cantidad=<?php echo $cantidad ?> ">Modificar
+						       </a>
+						    </td>
+				    		<?php	}
+						  }
+						} 
 					 if ($pertenece == true) { ?>
 						<td class="Td-a">
 						   	<a class="a-link2 a-rig fondo-blue " href="Postulantes.php?id_viaje=<?php echo $fila['id'] ?>&origen=<?php echo $fila['origen'] ?>&destino=<?php echo $fila['destino']?> ">Postulantes

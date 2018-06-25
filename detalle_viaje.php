@@ -3,6 +3,9 @@
   include ('header.php');
   $id = $verificar->id();
   
+  $consulta3 = "SELECT * FROM postulantes where (viaje_id = $_GET[id_viaje]) AND (rechazado = 2)";
+  $resultado3 = mysqli_query($link,$consulta3);
+  $fila3 = mysqli_num_rows($resultado3);
 
   $consulta1 = "SELECT * FROM viajes where id = $_GET[id_viaje]";
   $resul=mysqli_query($link,$consulta1);
@@ -44,6 +47,7 @@
             <?php }else{ ?>
                          <p style="color: #000">Descripcion: <?php echo $mostrar['descripcion']; ?></p>
             <?php } ?>
+            <p style="color: #000"> Cantidad de asientos disponibles: <?php echo ($mostrar['copilotos'] - $fila3 );?></p>  
         </div>
       </div>
       </article>
