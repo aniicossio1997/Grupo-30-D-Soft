@@ -17,13 +17,20 @@ include('funciones_viaje.php');
 	
 	//resto 30 días de la fecha actual
 	$fecha_actual=date("Y-m-d",strtotime($fecha_actual."- 30 days"));
+	//echo $fecha_actual."<br>";
 	//preparo la consulta
-	$chequeo_viajes="SELECT p.postulante_id,p.viaje_id,vi.id,vi.fecha,p.estado,p.rechazado FROM postulantes p INNER JOIN viajes vi ON (p.viaje_id=vi.id) WHERE p.postulante_id=7 AND vi.fecha < '$fecha_actual' AND p.estado=1 AND p.rechazado=2";
+	$chequeo_viajes="SELECT p.postulante_id, p.viaje_id, vi.id, vi.fecha, p.estado, p.rechazado FROM postulantes p INNER JOIN viajes vi ON (p.viaje_id=vi.id) INNER JOIN vehiculo ve ON (vi.vehiculo_id=ve.id) WHERE ve.usuario_id=$id_user AND  vi.fecha <= '$fecha_actual' AND p.estado=1 AND p.rechazado=2";
+	
+	$chequeo_viajes_2="SELECT p.postulante_id, p.viaje_id, vi.id, vi.fecha, p.estado, p.rechazado FROM postulantes p INNER JOIN viajes vi ON (p.viaje_id=vi.id) INNER JOIN vehiculo ve ON (vi.vehiculo_id=ve.id) WHERE p.postulante_id=$id_user AND  vi.fecha <= '$fecha_actual' AND p.estado=1 AND p.rechazado=2";
+	
+
+
 	//realizo la consulta
 	$resul=mysqli_query($link,$chequeo_viajes);
+	$resul_2=mysqli_query($link,$chequeo_viajes);
 	//echo mysqli_num_rows($resul);
-	if (mysqli_num_rows($resul)>0) {
-		$_SESSION['mensaje_error']="Usted adeuda calificaciones desde hace más de 30 dias";
+	if (mysqli_num_rows($resul)>0 ||mysqli_num_rows($resul_2)>0 ) {
+		$_SESSION['mensaje_error']="Usted adeuda calificaciones, de hace mas de de 30 dias";
 		header("Location:agregar_viaje.php");
 		die();
 	}

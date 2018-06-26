@@ -12,7 +12,7 @@
 
 	$consulta_2="SELECT copilotos, id,origen,destino FROM viajes WHERE id='$_GET[id_viaje]'";
 	$resul_2=mysqli_query($link,$consulta_2);
-	$resul=mysqli_query($link,$consulta);
+	$resul=mysqli_query($link,$consulta);//cantidad de postulantes
 	$pos=mysqli_num_rows($resul);
 	$viaje=mysqli_fetch_array($resul_2);
 

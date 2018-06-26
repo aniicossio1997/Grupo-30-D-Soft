@@ -17,6 +17,16 @@
    if ($vector['activo'] != 2) {
    
  	?> 
+      <?php if (isset($_SESSION['mensaje']) ){ ?>
+
+      <div  class="cartel_error cambiar_color  "id="cartel">
+      
+      <span id="cerrar" class="icon-cancel-circle "></span>
+        <p class="cartel_p"><span class="icon-checkmark "></span> <?php echo $_SESSION['mensaje']; ?></p>
+      </div>
+
+    <?php unset($_SESSION['mensaje']); }?>
+      
 
 	<article class="article_exterior">
       <article class="article_interior" style="margin-top: 0%">
@@ -63,7 +73,7 @@
            $resultado1 = mysqli_query($link,$consulta1);
            $fila = mysqli_num_rows($resultado1);
            if ($fila == 0) { ?>
-               <a style="margin-left: 0.5%" class="a-link2 fondo-blue"  href="      modificar_viaje.php?id_vehiculo=<?php  echo $vector['vehiculo_id'];?>&id_viaje=<?php   echo $vector['id']; ?> ">Modificar</a>
+               <a style="margin-left: 0.5%" class="a-link2 fondo-blue"  href="      modificar_viaje.php?id_vehiculo=<?php  echo $vector['vehiculo_id'];?>&id_viaje=<?php   echo $vector['id']; ?>&id_pag=<?php echo "mis_viajes" ?> ">Modificar</a>
       <?php } ?>
       </div>
       </article>
@@ -72,10 +82,11 @@
  ?>
  </div>
 
- <div style="margin-left:  45%; margin-top: 0.5%;width: 100%;" >
+ <div style=" margin-top: 2%;width: 100%; box-sizing: border-box;" >
     <a class="a-link2 fondo-blue" href="<?=$_SERVER["HTTP_REFERER"]?>">Volver</a>
  </div>
 
  <?php include('footer.php');?>
+  <script type="text/javascript" src="js/cartel.js"></script>
 </body>
 </html>

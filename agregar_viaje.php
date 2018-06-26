@@ -102,7 +102,7 @@ $hay_autos=mysqli_num_rows($resul);
 				</div>
 			
 				<div class="caja-viaje">
-					<label class="habilitar ">Horario de encuentro</label>
+					<label class="habilitar ">Horario:</label>
 					<input id="hora" class="s1 top focus_azul" type="time" class=" time" name="horario" title="El formato debe ser 12:00 pm o am respectivamente"><span class="msj-viaje" id="msj_hora"></span>
 					
 				</div>
