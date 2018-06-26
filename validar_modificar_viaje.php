@@ -8,7 +8,7 @@ $verificar = new validar($link);//se crea  una clase
 $id=$verificar->id();
 $id_user=$id;
 //----------------------------------------------------------------------
-$consulta="SELECT id, viaje_id, postulante_id, estado, rechazado, visto FROM postulantes WHERE viaje_id=$_POST[id_viaje] AND estado=1 AND (rechazado=0 AND rechazado=2)";
+$consulta="SELECT id, viaje_id, postulante_id, estado, rechazado, visto FROM postulantes WHERE viaje_id=$_POST[id_viaje] AND estado=1 AND (rechazado=0 OR rechazado=2)";
 $resul= mysqli_query($link,$consulta);	
 $filas=mysqli_num_rows($resul);
 if ($filas>0) {
