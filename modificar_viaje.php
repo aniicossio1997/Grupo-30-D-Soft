@@ -161,7 +161,7 @@ $hay_autos=mysqli_num_rows($resul);
 		</form>
 		
  <div style="margin-top: 2%;width: 100%;" >
-    <a class="a-link2 fondo-blue" href="<?=$_SERVER["HTTP_REFERER"]?>">Volver</a>
+    <a class="a-link2 fondo-blue" <?php if (isset($_GET['id_pag']) && $_GET['id_pag']=='mis_viajes') { ?> href="mostrar_viaje_piloto.php" <?php }else{ ?>  href="inicio.php"<?php }?> >Volver</a>
  </div>
 	
 </div>
