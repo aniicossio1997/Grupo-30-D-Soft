@@ -71,7 +71,7 @@
       </article>
     </article>  
   <div class="div_volver">
-      <a class="btton_volver a-link2  fondo-blue" href="inicio.php"> Volver </a>
+      <a class="btton_volver a-link2  fondo-blue" href="<?=$_SERVER["HTTP_REFERER"]?>"> Volver </a>
       
   </div>
  <?php 

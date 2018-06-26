@@ -1,7 +1,7 @@
 <?php include('header.php');
 $id=$verificar->id();
 
-$viajes="SELECT p.postulante_id, p.estado, p.rechazado, p.viaje_id, v.id, v.origen,v.destino,v.fecha,v.horario,v.duracion,v.minutos,v.costo,v.copilotos From postulantes p INNER JOIN viajes v ON (p.viaje_id=v.id) WHERE p.postulante_id=$id AND p.estado=1  ";
+$viajes="SELECT p.postulante_id, p.estado, p.rechazado, p.viaje_id, v.id, v.origen,v.destino,v.fecha,v.horario,v.duracion,v.minutos,v.costo,v.copilotos,v.activo From postulantes p INNER JOIN viajes v ON (p.viaje_id=v.id) WHERE p.postulante_id=$id AND p.estado=1  ";
 
 
 
@@ -19,18 +19,32 @@ if (isset($_GET['filtro'])) {
 		}
 		if ($_GET['tipos']==2) {
 			//en espera
-			$sql2.=" AND p.rechazado = 0 ";
+			$fecha_act=date('Y-m-d');
+			$sql2.=" AND (p.rechazado = 0 AND v.fecha >= '$fecha_act' AND v.activo= 1)";
 			$parametro.= "tipos=".$_GET['tipos']."&";
 		}
 		if ($_GET['tipos']==3) {
 			//rechazado
 			$fecha_act=date('Y-m-d');
-			$sql2.=" AND p.rechazado = 1 AND v.fecha < '$fecha_act' ";
+			$sql2.=" AND (p.rechazado = 1 OR v.fecha < '$fecha_act' OR v.activo= 0 OR v.activo=2 )";
 			$parametro.= "tipos=".$_GET['tipos']."&";
-		}			
+		}
+		
+			
 	}
+
+
+
 	$parametro.="&buscar=&";
+
+
+
+
 }
+
+
+
+
 if(isset($_GET["pag"])){
 			$pag=$_GET["pag"];
 			$pag_actual=$_GET["pag"];;
@@ -43,9 +57,9 @@ if(isset($_GET["pag"])){
 			$otra = $sql2;//limitador de la cantidad de viajes a mostrar
 			$sql2.=" LIMIT 0,4 ";
 			}
-$resul=mysqli_query($link,$viajes.$sql2);
+	$resul=mysqli_query($link,$viajes.$sql2);
 ?>
-<form action="mis_viajes.php" class="form_copi" method="GET">
+<form action="mis_viajes_postulados.php" class="form_copi" method="GET">
 	<div class="container_form">
 		<p class="title_fv color-a ">Mis Postulaciones</p class="title_fv">
 		
@@ -87,8 +101,8 @@ ver:
 	while ($mostrar=mysqli_fetch_array($resul)) { ?>
 		
 			<article class="mis_vehiculos mod_art_viajes">
-				<a class="a-link2 a-rig fondo-blue a-rig" href="baja_postulacion.php?id_viaje=<?php echo $mostrar['id'] ?>"> Eliminar Postulacion</a>
-				<?PHP  
+				
+						<?php  
 					$consulta1 = "SELECT  rechazado FROM postulantes WHERE (viaje_id = $mostrar[id]) AND (postulante_id = $id)";
 					$resultado1 = mysqli_query($link,$consulta1);
 					$fila1 = mysqli_fetch_array($resultado1);
@@ -98,14 +112,18 @@ ver:
 					$fila2 = mysqli_fetch_array($resultado2);
 
 					if ($fila1['rechazado'] == 2) { ?>
-						<a class="a-link2 a-rig fondo-blue a-rig" href="mi_perfil2.php?id_pos=<?php echo $fila2['usuario_id'] ?>">Informacion del piloto</a>
+						<a class="a-link2  fondo-blue a-rig corec" href="mi_perfil2.php?id_pos=<?php echo $fila2['usuario_id'] ?>">Informacion del piloto</a>
 					<?php } ?>
+				
+
 		<p>
 			Origen:<?php echo $mostrar['origen'];?>
 		</p>
+
 		<p>
 			Destino:<?php echo $mostrar['destino'];?>
 		</p>
+		
 		<p>
 
 			Fecha: 
@@ -124,14 +142,17 @@ ver:
 			 echo $elimina_segundos;
 			 ?>
 		</p>
-		<a class="a-link2  fondo-blue a-rig corec"  href="detalle_viaje.php?id_viaje=<?php echo $mostrar['id'] ?>">Detalles...</a>
+
+<a class="a-link2 a-rig fondo-blue a-rig" href="baja_postulacion.php?id_viaje=<?php echo $mostrar['id'] ?>"> Eliminar Postulacion</a>
+		
 		<p>
 			Duración:<?php echo $mostrar['duracion']."hs - ".$mostrar['minutos']." minutos"; ?>
 		</p>
 		<p>Precio: <?php $precio=($mostrar['costo']/($mostrar['copilotos']+1));
 		echo round($precio); ?></p>	
+		<a class="color-a"  href="detalle_viaje.php?id_viaje=<?php echo $mostrar['id'] ?>">Ver más detalles...</a>
 			
-		</div>
+						
 
 
 
@@ -172,14 +193,14 @@ ver:
 			 if($pag_actual > 1) {?>
 			 
 					  <li>
-						<a href="mis_viajes.php?<?php echo $parametro."pag=".$prevpage;?>">«Anterior </a>
+						<a href="mis_viajes_postulados.php?<?php echo $parametro."pag=".$prevpage;?>">«Anterior </a>
 					</li>
 					<?php } ?>
 			<li><a class="active" href="#"><?php echo $pag_actual;?></a></li>
 		 	<?php
 		 	 if ($pag_actual != $total_pag && $pag_actual < $total_pag) { ?>
 			 	<li>
-			 		<a href="mis_viajes.php?<?php echo $parametro."pag=".$nextpage;?>">Siguiente»</a>
+			 		<a href="mis_viajes_postulados.php?<?php echo $parametro."pag=".$nextpage;?>">Siguiente»</a>
 			 	</li>			 
 			<?php }
 			 ?>
