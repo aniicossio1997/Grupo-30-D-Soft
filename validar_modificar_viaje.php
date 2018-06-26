@@ -8,6 +8,14 @@ $verificar = new validar($link);//se crea  una clase
 $id=$verificar->id();
 $id_user=$id;
 //----------------------------------------------------------------------
+$consulta="SELECT id, viaje_id, postulante_id, estado, rechazado, visto FROM postulantes WHERE viaje_id=$_POST[id_viaje]";
+$resul= mysqli_query($link,$consulta);	
+$filas=mysqli_num_rows($resul);
+if ($filas>0) {
+	$_SESSION['mensaje_error']= "ERROR: No es posible hacer modificaciones cuando la publicación tiene al menos un postulante";
+	header("Location:".$_SERVER["HTTP_REFERER"]);
+			die();
+}
 
  if (isset($_POST['origen']) && !empty($_POST['origen']) && isset($_POST['destino']) && !empty($_POST['destino']) && isset($_POST['costo']) && !empty($_POST['costo']) && isset($_POST['vehiculo']) && !empty($_POST['vehiculo']) && isset($_POST['horario']) && !empty($_POST['horario']) )
  {
