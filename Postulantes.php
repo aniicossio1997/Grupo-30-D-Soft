@@ -41,6 +41,34 @@ while ($fila4 =  mysqli_fetch_array($resultado4)) {
     <h3 class="origen_destino">Fecha de viaje: <?php echo $fila['fecha'] ?> 
     </h3>
     <h3 class="origen_destino"> Postulanetes aceptados: <?php echo (0 + $fila3) ?> de <?php echo $fila['copilotos'] ?></h3>
+   <?php
+//carteles ---------------------------------------------------------------------------- 
+if (isset($_SESSION['mensaje'])) { ?>
+	<div class="cartel div-externo"  id="cartel">
+		<div class="div-interno " style="margin-top: 10%;">
+	  		<p style="text-align: center; color: white; font-style: italic;"><?php echo $_SESSION['mensaje']; unset($_SESSION['mensaje']); ?></p>
+	    </div>
+	    <div class="div-bttn-ok"">
+	    	<a class="a-link2  fondo-blue " style="margin-left: 1%; margin-top: 0%;" id="cerrar" href=""> Ok</a>
+	    </div>
+	</div>
+<?php } ?>
+
+<?php
+//cartel (5)-----------------------------------------------------------------
+//Rechazar un postulante
+if (isset($_SESSION['confirmacion3'])) {$a = 1?>
+
+	<div class="cartel div-externo"  id="cartel">
+		<div class="div-interno " style="margin-top: 10%;">
+	  		<p style="text-align: center; color: white; font-style: italic;"> <?php echo $_SESSION['confirmacion3']; unset($_SESSION['confirmacion3']); ?></p>
+	    </div>
+	    <div class="div-bttn-ok" style=" margin-top: 10%;">
+	    	<a class=" a-link2  fondo-blue" style="margin-top: 100%;" href="rechazar_postulante.php?id_viaje=<?php echo $_GET['id_viaje'] ?>&respuesta=<?php echo $a ?>&id=<?php echo $_GET['id'] ?>"> Ok</a>
+	    	<a class=" a-link2  fondo-blue" id="cerrar" href="">Cancelar</a>
+	    </div>
+	</div>
+ <?php } ?>
   <?php  if ( $cantidad = mysqli_num_rows($resultado1) == 0){ ?>
 
   	<div  class="centrar" style="width: 40%;">
@@ -90,7 +118,7 @@ while ($fila4 =  mysqli_fetch_array($resultado4)) {
 				<?php  }?>
 				</td>				
 				<td class="Td-a">
-					<a class="a-link2 a-rig fondo-blue" onmouseover="this.style.color='red'" onmouseout ="this.style.color='white'" href="rechazar_postulante.php?id=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $id_viaje ?>">Rechazar</a>
+					<a class="a-link2 a-rig fondo-blue" onmouseover="this.style.color='red'" onmouseout ="this.style.color='white'" href="rechazar_postulante.php?id=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $id_viaje ?>&origen=<?php echo $_GET['origen'] ?>&destino=<?php echo $_GET['destino']?>">Rechazar</a>
 				</td>
 			</tr>
 		</table>
@@ -98,11 +126,15 @@ while ($fila4 =  mysqli_fetch_array($resultado4)) {
 	</table>
 	</article>
 	<?php }  } } ?>
+
   </div>
   <div class="div_volver">
   		<a class="btton_volver a-link2  fondo-blue" href="inicio.php"> Volver </a>
   		
   </div>
- <?php
+
+<?php
    include("footer.php")
   ?>
+    <script type="text/javascript" src="js/cartel.js"></script>
+ 

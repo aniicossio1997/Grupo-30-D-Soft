@@ -11,20 +11,16 @@
   $consulta ="SELECT estado FROM postulantes WHERE viaje_id = $_GET[id_viaje] ";
   $resultado= mysqli_query($link,$consulta);
   $vector= mysqli_fetch_array($resultado);
-  if($vector['estado'] == 0){
-    $_SESSION['mensaje']= "Ya se encuentra dado de baja como postulante.";
-    header("Location:inicio.php");
-  
-  }else{
-    $consulta1 = " UPDATE postulantes SET estado = 0 where viaje_id = $_GET[id_viaje]";
-    $resultado1 = mysqli_query($link,$consulta1);
-    $_SESSION['mensaje']= " baja exitosa.";
-    header("Location:inicio.php");
-    die();
+  if (!isset($_GET['respuesta'])) 
+    {
+      $_SESSION['confirmacion2'] = "¿Esta usted seguro de darse de baja?";
+      header("Location: inicio.php?viaje_id=$_GET[id_viaje]");
+      die();
+    }else{
+          $consulta1 = " UPDATE postulantes SET estado = 0 where viaje_id = $_GET[id_viaje]";
+          $resultado1 = mysqli_query($link,$consulta1);
+          $_SESSION['mensaje']= " baja exitosa.";
+          header("Location:inicio.php");
+          die();
  }
-  
-   
-
-
-  
 ?>

@@ -18,7 +18,7 @@
 
 	if ($pos['numero'] >= $viaje['copilotos']) {
 //si no se puede elgir copilotos
-		$_SESSION['mensaje']="No stiene asientos disponibles, ya ha exedido el limite";
+		$_SESSION['mensaje']="No tiene asientos disponibles, ya ha exedido el limite";
 
 		header("Location:Postulantes.php?id_viaje=$viaje[id]&origen=$viaje[origen]&destino=$viaje[destino]");
 		die();
@@ -30,7 +30,7 @@
 
 	if ($resul_3) {
 		//si la consulta se realizo con exito
-		$_SESSION['mensaje']= "Aceptacion exitosa";
+		$_SESSION['mensaje']= "El postulante fue aceptado exitosamente.";
 		header("Location:Postulantes.php?id_viaje=$viaje[id]&origen=$viaje[origen]&destino=$viaje[destino]");
 
 

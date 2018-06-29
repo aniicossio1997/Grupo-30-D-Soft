@@ -66,6 +66,10 @@
       </div>
       </article>
     </article>  
+  <div class="div_volver">
+      <a class="btton_volver a-link2  fondo-blue" href="inicio.php"> Volver </a>
+      
+  </div>
  <?php 
 include('footer.php');
  ?>

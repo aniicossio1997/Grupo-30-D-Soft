@@ -8,7 +8,7 @@
 //hago una consulta (2) para obteber todos los viajes
  $fecha_act=date('Y-m-d');
  $hora_act=date('H:i:s');
- $consulta2= ("SELECT * FROM viajes WHERE (fecha >='2018-06-17' AND activo = 1 ) or (fecha = '2018-06-17' AND horario >= '16:09:00' AND activo = 1 ) order by id desc");
+ $consulta2= ("SELECT * FROM viajes WHERE (fecha > CURDATE() AND activo = 1 ) or (fecha = CURDATE() AND horario >= CURTIME() AND activo = 1 ) order by id desc");
  //ejecuto la consulta (2) y lo guardo en la variable resultado
  
 //Paginado---------------------------
@@ -39,17 +39,14 @@ if(isset($_GET["pag"])){
 //carteles ----------------------------------------------------------------------------
  //(1)si ya esta postulado o se postula muestra un mje informando exito o error 
 if (isset($_SESSION['mensaje'])) { ?>
-
 	<div class="cartel div-externo"  id="cartel">
-		<span class="icon-checkmark2"></span>
-		<div class="div-interno ">
-	  		<p class="texto"><?php echo $_SESSION['mensaje']; unset($_SESSION['mensaje']); ?></p>
+		<div class="div-interno " style="margin-top: 10%;">
+	  		<p style="text-align: center; color: white; font-style: italic;"><?php echo $_SESSION['mensaje']; unset($_SESSION['mensaje']); ?></p>
 	    </div>
-	    <div class="div-bttn-ok">
-	    	<a class="a-link2  fondo-blue bttn-ok" id="cerrar" href=""> Ok</a>
+	    <div class="div-bttn-ok"">
+	    	<a class="a-link2  fondo-blue " style="margin-left: 1%; margin-top: 0%;" id="cerrar" href=""> Ok</a>
 	    </div>
 	</div>
-
 <?php } ?>
 <!--fin cartel (1)-->
 
@@ -59,9 +56,8 @@ if (isset($_SESSION['mensaje'])) { ?>
 if (isset($_SESSION['confirmacion'])) {$a = 1?>
 
 	<div class="cartel div-externo"  id="cartel">
-		<span class="icon-checkmark2"></span>
 		<div class="div-interno " style="margin-top: 10%;">
-	  		<p><center> <?php echo $_SESSION['confirmacion']; unset($_SESSION['confirmacion']); ?></center></p>
+	  		<p style="text-align: center; color: white; font-style: italic;"> <?php echo $_SESSION['confirmacion']; unset($_SESSION['confirmacion']); ?></p>
 	    </div>
 	    <div class="div-bttn-ok" style=" margin-top: 10%;">
 	    	<a class=" a-link2  fondo-blue" style="margin-top: 100%;" href="baja_publicacion.php?id_viaje=<?php echo $_GET['viaje_id'] ?>&respuesta=<?php echo $a ?>"> Ok</a>
@@ -78,9 +74,8 @@ if (isset($_SESSION['confirmacion'])) {$a = 1?>
 if (isset($_SESSION['expiro'])) { ?>
 
 	<div class="cartel div_externo" id="cartel">
-		<span class="icon-checkmark2"></span>
 		<div class="div_interno ">
-	  		<p> <?php echo $_SESSION['expiro']; unset($_SESSION['expiro']); ?></p>
+	  		<p style="text-align: center; color: white; font-style: italic;"> <?php echo $_SESSION['expiro']; unset($_SESSION['expiro']); ?></p>
 	    </div>
 	    <div class="boton">
 	    	<a id="cerrar" href=""> Ok</a>
@@ -88,15 +83,24 @@ if (isset($_SESSION['expiro'])) { ?>
 	</div>
 <?php } 
 //------------------cartel de aceptar un postulante
-
-
 ?>
-	 <div></div>
+<?php
+//cartel (4)-----------------------------------------------------------------
+//un postulante se da de baja
+if (isset($_SESSION['confirmacion2'])) {$a = 1?>
+
+	<div class="cartel div-externo"  id="cartel">
+		<div class="div-interno " style="margin-top: 10%;">
+	  		<p style="text-align: center; color: white; font-style: italic;"> <?php echo $_SESSION['confirmacion2']; unset($_SESSION['confirmacion2']); ?></p>
+	    </div>
+	    <div class="div-bttn-ok" style=" margin-top: 10%;">
+	    	<a class=" a-link2  fondo-blue" style="margin-top: 100%;" href="baja_postulacion.php?id_viaje=<?php echo $_GET['viaje_id'] ?>&respuesta=<?php echo $a ?>"> Ok</a>
+	    	<a class=" a-link2  fondo-blue" id="cerrar" href="">Cancelar</a>
+	    </div>
+	</div>
 <?php
 
-?>
-
-
+ }?>
 
 <?php
 //si no hay viajes, muestro un mensaje, caso contrario muestro los viajes disponibles.
@@ -144,7 +148,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 		    	 	</p>
 		    	</td>
 		   	 	<td >
-		    	 	<p  class="p-perfil p-left " style="font-style: italic;">Duracion:<?php echo ($fila['duracion']); ?> Hs	
+		    	 	<p  class="p-perfil p-left " style="font-style: italic;">Duracion: <?php echo ($fila['duracion']); ?>:<?php echo ($fila['minutos']) ?> Hs	
 		    	 	</p>
 		    	</td>		    	
 		    </tr>

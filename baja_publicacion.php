@@ -12,23 +12,38 @@ if (($fila0['fecha'] > date("Y,m,d")) || ((($fila0['fecha'] == date("Y,m,d")) &&
 			$resultado1 = mysqli_query($link,$consulta1);
 			$fila = mysqli_fetch_array($resultado1);
 
-			//la siguiente consulta es para saber si la publicacion tiene postulantes
-			$consulta2 = "SELECT * FROM postulantes WHERE (viaje_id = $_GET[id_viaje]) AND (estado = 1)";
-			$resultado2 = mysqli_query($link, $consulta2 );
-			$cantidad = mysqli_num_rows($resultado2);
-			if (isset($_GET['respuesta'])) {
-				echo "resouesta: " . $_GET['respuesta'];
-			}else
-			{
-				echo "no existe respuesta";
+			$consulta5 = "SELECT * FROM postulantes WHERE (viaje_id = $_GET[id_viaje]) AND (estado = 1) AND (rechazado = 2)";
+			$resultado5 = mysqli_query($link,$consulta5);
+			$cantidad5 = mysqli_num_rows($resultado5);
+			if (($fila['activo'] == 1) && ($cantidad5 > 0)) {
+				if (!isset($_GET['respuesta'])) {
+					$_SESSION['confirmacion'] = "Usted sera sancionado ¿Esta seguro de porceder con la eliminacion?";
+					header("Location: inicio.php?viaje_id=$_GET[id_viaje]");
+					die();
+				}else{
+						$consulta3 = "UPDATE viajes SET activo = 2 WHERE id = $_GET[id_viaje]";
+						$resultado3 = mysqli_query($link,$consulta3);
+						$_SESSION['mensaje'] = "Viaje elimando exitosamente";
+						header("Location:inicio.php");
+					  }
 			}
 
+			//la siguiente consulta es para saber si la publicacion tiene postulantes
+			$consulta2 = "SELECT * FROM postulantes WHERE (viaje_id = $_GET[id_viaje]) AND (estado = 1) AND (rechazado = 0 OR rechazado = 2)";
+			$resultado2 = mysqli_query($link, $consulta2 );
+			$cantidad = mysqli_num_rows($resultado2);
 			if (($fila['activo'] == 1) && ($cantidad == 0))
 			{
-				$consulta3 = "UPDATE viajes SET activo = 2 WHERE id = $_GET[id_viaje]";
-				$resultado3 = mysqli_query($link,$consulta3);
-				$_SESSION['mensaje'] = "Viaje elimando exitosamente";
-				header("Location:inicio.php");
+				if (!isset($_GET['respuesta'])) {
+					$_SESSION['confirmacion'] = "¿Esta seguro que desea elimnar la publicación?";
+					header("Location: inicio.php?viaje_id=$_GET[id_viaje]");
+					die();
+				}else{
+						$consulta3 = "UPDATE viajes SET activo = 2 WHERE id = $_GET[id_viaje]";
+						$resultado3 = mysqli_query($link,$consulta3);
+						$_SESSION['mensaje'] = "Viaje elimando exitosamente";
+						header("Location:inicio.php");
+					  }
 			}elseif (($fila['activo'] == 1) && ((isset($_GET['respuesta'])) && ($_GET['respuesta']== 1)))
 					{ 
 					  $consulta4 = "UPDATE viajes SET activo = 2 WHERE id = $_GET[id_viaje]";
