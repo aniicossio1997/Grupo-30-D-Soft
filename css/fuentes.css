@@ -1,0 +1,25 @@
+@font-face{
+	font-family: cambria;
+	src:url(fuentes/cambria.ttc);
+}
+@font-face{
+	font-family: DejaVuSans;
+	src:url(fuentes/DejaVuSans.ttf);
+}
+@font-face{
+	font-family: calibri;
+	src:url(fuentes/calibri.ttf);
+}
+@font-face{
+	font-family: lucina;
+	src:url(fuentes/lucina.ttf);
+}
+@font-face{
+	font-family: cambriab;
+	src:url(fuentes/cambriab.ttf);
+
+}
+@font-face{
+	font-family: DejaB;
+	src:url(fuentes/DejaVuSansCondensed-Bold.ttf);
+}

@@ -1,0 +1,37 @@
+.article_exterior{
+	margin: 0 auto;
+	width: 95%;
+	border: 1px solid #ccc;
+	padding: 1%;
+	margin-top: 2%;
+	border-radius: 10px;
+	background-color: #fff;
+	background:  #C0392B; 
+	border-color: #17202A;
+}
+.article_interior{
+	margin: 0 auto;
+	width: 97%;
+	border: 1px solid #ccc;
+	padding: 1%;
+	margin-top: 2%;
+	border-radius: 10px;
+	background-color: #fff;
+	border-color: #17202A;
+}
+.div_incio{
+	margin: 0 auto;
+	width: 70%;
+	
+	border: 1px solid #ccc;
+	padding: 1%;
+	margin-top: 2%;
+	border-radius: 5px;
+	background-color: #fff;
+	background: #fff; 
+	border-color: #17202A;
+}
+.Td-a{
+	margin-right: 50%;
+
+}

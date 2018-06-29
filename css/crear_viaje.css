@@ -1,0 +1,54 @@
+.ocultar{
+	display: none;
+}
+.habilitar{
+	display:block;
+}
+
+.msj-viaje{
+	color: #F90105;
+}
+.top{
+		margin-top: 2%;
+}
+.caja-viaje{
+	margin-bottom: 5%;
+	margin-top: 5%;
+}
+.s1{
+	padding:1.7%;
+	font-size: 1em;
+}
+textarea{
+	width: 100%;
+	height: 90px;
+	resize: none;
+	font-size: 1em;
+	font-style: inherit;
+}
+.aviso{
+	position: absolute;
+	margin-left: -3%;
+	border-radius: 5px;
+	padding: 2px;
+	font-size: 0.7em;
+	background-color: #DF3459;
+	color: #fff;
+	
+}
+.td-a{
+	float: right;
+}
+.input-f3{
+	padding: 10px;
+	width: 20%;
+}
+
+.min{
+	padding: 10px;
+}
+
+.d_min{
+	display: inline-block;
+	width: 50%;
+}
