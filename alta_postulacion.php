@@ -8,6 +8,16 @@ $verificar = new validar($link);//se crea  una clase
 
 $id= $verificar->id();
 
+//consulta para obtener la fecha y horario del viaje al que se quiere postular
+$consulta_f= "SELECT fecha, horario FROM viajes where id = $_GET[id_viaje]";
+$resultado_f = mysqli_query($link,$consulta_f);
+$fila_f = mysqli_fetch_array($resultado_f);
+//si el viaje expiro
+if(($fila_f['fecha'] < date("Y-m-d")) || (($fila_f['fecha'] = date("Y-m-d")) && ($fila_f['horario'] <= date("H:i:s")))) {
+	$_SESSION['mensaje'] = "Lo siento, el viaje ya expiro";
+    header("Location: inicio.php");
+      die();
+}
 
 // se verifica si el usuario adeuda calificacines. 
 $consulta_fecha = "SELECT viaje_id FROM postulantes where (postulante_id = $id) AND (rechazado = 2)";

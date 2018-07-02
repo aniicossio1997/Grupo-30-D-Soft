@@ -70,11 +70,15 @@
       </div>
       </article>
     </article>  
+  <?php if (isset($_GET['detalle'])) {
+    header("Location: mostrar_viaje_piloto.php");
+  }else{?>
   <div class="div_volver">
       <a class="btton_volver a-link2  fondo-blue" href="<?=$_SERVER["HTTP_REFERER"]?>"> Volver </a>
       
   </div>
- <?php 
+
+ <?php } 
 include('footer.php');
  ?>
   	

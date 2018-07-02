@@ -2,6 +2,7 @@
  include('header.php'); 
  //obtengo la id del usuario que inicio la sesion
  $id = $verificar->id();  
+
  //hago consulta (1) para obtener los vehiculos pertenecientes al usuario en secion
  $consulta1 = ("SELECT * FROM vehiculo WHERE usuario_id = $id"); 
 
@@ -291,7 +292,8 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 			 </div> 
 	<?php   }?> 
 </div>
-<?php 
+
+<?php
 include('footer.php');
  ?>
  <script type="text/javascript" src="js/cartel.js"></script>

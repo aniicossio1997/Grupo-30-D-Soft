@@ -3,10 +3,16 @@ include ('header.php');
 $link=conectar();
 $verificar = new validar($link);
 $id = $verificar-> id();
+
+//consulta para obtener la fecha del viaje al que se quiere postular
 $consulta0 = "SELECT fecha,horario FROM viajes WHERE id = $_GET[id_viaje]";
 $resultado0 = mysqli_query($link,$consulta0);
 $fila0 = mysqli_fetch_array($resultado0);
-if (($fila0['fecha'] > date("Y,m,d")) || ((($fila0['fecha'] == date("Y,m,d")) && ($fila0['horario'] > date("H:i:s"))))) {
+if(($fila0['fecha'] < date("Y-m-d")) || (($fila0['fecha'] = date("Y-m-d")) && ($fila0['horario'] <= date("H:i:s")))) {
+	$_SESSION['mensaje'] = "Lo siento, el viaje ya expiro";
+    header("Location: inicio.php");
+    die();
+}
 			//la siguiente consulta es para saber si el viaje ya fue dado de baja
 			$consulta1 = "SELECT activo FROM viajes WHERE id = $_GET[id_viaje]";
 			$resultado1 = mysqli_query($link,$consulta1);
@@ -59,10 +65,4 @@ if (($fila0['fecha'] > date("Y,m,d")) || ((($fila0['fecha'] == date("Y,m,d")) &&
 						die(); 
 
 					}
-		}else{
-				$_SESSION['expiro'] = "el viaje ya expiro";
-				echo "expiro";
-				//header("Location:inicio.php");
-				//die();
-			 }
 ?>

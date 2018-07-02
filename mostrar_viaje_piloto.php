@@ -17,15 +17,18 @@
    if ($vector['activo'] != 2) {
    
  	?> 
-      <?php if (isset($_SESSION['mensaje']) ){ ?>
+       <?php
 
-      <div  class="cartel_error cambiar_color  "id="cartel">
-      
-      <span id="cerrar" class="icon-cancel-circle "></span>
-        <p class="cartel_p"><span class="icon-checkmark "></span> <?php echo $_SESSION['mensaje']; ?></p>
+if (isset($_SESSION['mensaje'])) { ?>
+  <div class="cartel div-externo"  id="cartel">
+    <div class="div-interno " style="margin-top: 10%;">
+        <p style="text-align: center; color: white; font-style: italic;"><?php echo $_SESSION['mensaje']; unset($_SESSION['mensaje']); ?></p>
       </div>
-
-    <?php unset($_SESSION['mensaje']); }?>
+      <div class="div-bttn-ok"">
+        <a class="a-link2  fondo-blue " style="margin-left: 1%; margin-top: 0%;" id="cerrar" href=""> Ok</a>
+      </div>
+  </div>
+<?php } ?>
       
 
 	<article class="article_exterior">
@@ -64,17 +67,21 @@
       </div>
       </article>
       <div style="margin-top: 1%">
-      	<a style="margin-left: 0.5%" class="a-link2 fondo-blue" href="detalle_viaje.php?id_viaje=<?php echo $vector['id'] ?>">Detalle</a>
+      	<a style="margin-left: 0.5%" class="a-link2 fondo-blue" href="detalle_viaje.php?id_viaje=<?php echo $vector['id'] ?>&detalle<?php echo "1" ?>">Detalle</a>
       </div>
-      <div style="margin-top: 1%">
+      <div style="margin-top: -2.4%">
       <?php 
             //la siguiente consulta es unsada para saber si la publicacion tiene postulantes.
            $consulta1 = "SELECT * FROM postulantes WHERE (viaje_id = $vector[id]) AND (estado = 1) AND    (rechazado = 0 OR rechazado = 2)";
            $resultado1 = mysqli_query($link,$consulta1);
            $fila = mysqli_num_rows($resultado1);
            if ($fila == 0) { ?>
-               <a style="margin-left: 0.5%" class="a-link2 fondo-blue"  href="      modificar_viaje.php?id_vehiculo=<?php  echo $vector['vehiculo_id'];?>&id_viaje=<?php   echo $vector['id']; ?>&id_pag=<?php echo "mis_viajes" ?> ">Modificar</a>
-      <?php } ?>
+               <a style="margin-left:  7.5%; margin-top: -5%;" class="a-link2 fondo-blue"  href="      modificar_viaje.php?id_vehiculo=<?php  echo $vector['vehiculo_id'];?>&id_viaje=<?php   echo $vector['id']; ?>&id_pag=<?php echo "mis_viajes" ?>&cantidad=<?php echo $fila ?>&modificar=<?php echo "1" ?> ">Modificar</a>
+      <?php }else{ ?>
+                   <a style="margin-left:  7.5%; margin-top: -5%;" class="a-link2  fondo-blue " href="modificar_viaje.php?id_vehiculo=<?php  echo $fila['vehiculo_id'];?>&id_viaje=<?php echo $fila['id']; ?>&cantidad=<?php echo $fila ?>&modificar =<?php echo "1" ?> ">Modificar
+                   </a>
+
+       <?php }?>
       </div>
       </article>
  <?php } }
@@ -82,8 +89,8 @@
  ?>
  </div>
 
- <div style=" margin-top: 2%;width: 100%; box-sizing: border-box;" >
-    <a class="a-link2 fondo-blue" href="<?=$_SERVER["HTTP_REFERER"]?>">Volver</a>
+ <div style=" margin-top: 0.9%;width: 100%; box-sizing: border-box;" >
+    <a style="margin-left:  45%;" class="a-link2 fondo-blue" href="<?=$_SERVER["HTTP_REFERER"]?>">Volver</a>
  </div>
 
  <?php include('footer.php');?>

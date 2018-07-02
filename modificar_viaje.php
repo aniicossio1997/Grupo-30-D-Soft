@@ -1,13 +1,24 @@
 <?php
 include('header.php');
 $id= $verificar->id();
-
+if ((isset($_GET['cantidad'])) && ($_GET['cantidad'] == 0 )) { 
 $sql="SELECT v.id,v.origen,v.destino, v.duracion,v.tipo, v.descripcion,v.minutos,v.costo, v.fecha,v.horario,ve.marca, ve.asientos,ve.modelo FROM viajes v INNER JOIN vehiculo ve ON(v.vehiculo_id=ve.id) WHERE v.id=$_GET[id_viaje]";
 $datos_vie=mysqli_query($link,$sql);
 
 $mostrar=mysqli_fetch_array($datos_vie);
 
-
+//si el viaje expiro
+if(($mostrar['fecha'] < date("Y-m-d")) || (($mostrar['fecha'] = date("Y-m-d")) && ($mostrar['horario'] <= date("H:i:s")))) {
+	$_SESSION['mensaje'] = "Lo siento, el viaje ya expiro";
+	if (isset($_GET['modificar'])) {
+	  header("Location: mostrar_viaje_piloto.php");
+	  die();
+	}else{
+		echo "no existe";
+	  header("Location: inicio.php");
+      die();
+	}
+}
 $consulta="SELECT id,marca,modelo,asientos,activo FROM vehiculo WHERE usuario_id=$id AND activo=1 ORDER by marca ASC";
 $resul=mysqli_query($link,$consulta);
 $hay_autos=mysqli_num_rows($resul);
@@ -159,12 +170,19 @@ $hay_autos=mysqli_num_rows($resul);
 			
 			</div>
 		</form>
-		
- <div style="margin-top: 2%;width: 100%;" >
-    <a class="a-link2 fondo-blue" <?php if (isset($_GET['id_pag']) && $_GET['id_pag']=='mis_viajes') { ?> href="mostrar_viaje_piloto.php" <?php }else{ ?>  href="inicio.php"<?php }?> >Volver</a>
+<?php if (isset($_GET['detalle'])) {
+    header("Location: mostrar_viaje_piloto.php");
+}else{ ?>		
+ <div style="margin-top: 1%;width: 100%;" >
+    <a style="margin-left: 45%;" class="a-link2 fondo-blue" href="<?=$_SERVER["HTTP_REFERER"]?>">Volver</a>
  </div>
-	
+<?php } ?>	
 </div>
+<?php }else{
+			$_SESSION['mensaje'] = "No es posible hacer modificaciones cuando la publicación tiene al menos un postulante.";
+			header("Location: inicio.php");
+} 
+?>
 <?php include('footer.php'); 
 //
 

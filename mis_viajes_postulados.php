@@ -22,14 +22,12 @@ if (isset($_GET['filtro'])) {
 			$fecha_act=date('Y-m-d');
 			$sql2.=" AND (p.rechazado = 0 AND v.fecha >= '$fecha_act' AND v.activo= 1)";
 			$parametro.= "tipos=".$_GET['tipos']."&";
-
 		}
 		if ($_GET['tipos']==3) {
 			//rechazado
 			$fecha_act=date('Y-m-d');
-			$sql2.=" AND (p.rechazado = 1 OR v.fecha < '$fecha_act' OR v.activo= 0 OR v.activo=2 ) AND p.rechazado <> 2";
+			$sql2.=" AND (p.rechazado = 1 OR v.fecha < '$fecha_act' OR v.activo= 0 OR v.activo=2 )";
 			$parametro.= "tipos=".$_GET['tipos']."&";
-
 		}
 		
 			
@@ -104,7 +102,7 @@ ver:
 		
 			<article class="mis_vehiculos mod_art_viajes">
 				
-					<?php  
+						<?php  
 					$consulta1 = "SELECT  rechazado FROM postulantes WHERE (viaje_id = $mostrar[id]) AND (postulante_id = $id)";
 					$resultado1 = mysqli_query($link,$consulta1);
 					$fila1 = mysqli_fetch_array($resultado1);
@@ -115,23 +113,9 @@ ver:
 
 					if ($fila1['rechazado'] == 2) { ?>
 						<a class="a-link2  fondo-blue a-rig corec" href="mi_perfil2.php?id_pos=<?php echo $fila2['usuario_id'] ?>">Informacion del piloto</a>
-					<?php }
-					 ?>
-		<p>
+					<?php } ?>
+				
 
-			Estado:<?php
-			$fecha_act=date('Y-m-d');
-
-			 if (($mostrar['rechazado']==1 || $mostrar['activo']==2 || $mostrar['fecha'] < $fecha_act) && $mostrar['rechazado']!=2 ) {
-				echo "Rechazado";
-			}if ($mostrar['rechazado']==0 && $mostrar['estado']==1 && $mostrar['fecha']> $fecha_act ) {
-				echo "En espera";
-			}else{
-
-				if ($mostrar['rechazado']==2 AND $mostrar['estado']==1) {
-					echo "Aceptado";
-				}
-			} ?></p>
 		<p>
 			Origen:<?php echo $mostrar['origen'];?>
 		</p>
