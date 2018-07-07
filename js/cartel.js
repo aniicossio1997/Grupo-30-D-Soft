@@ -5,5 +5,4 @@ cartel.classList.add('ocultar');
 
 window.onload = function(){
 	document.getElementById('cerrar').onclick = ocultar_cartel;
-
 }
