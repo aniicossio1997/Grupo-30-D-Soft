@@ -1,45 +1,58 @@
 <?php
 include('header.php');
-//solo hay que validar si la tarjeta es valida.. que complete DNI.. NOMBRE APELLIDO... CLAVE DE LA TARJETA, NUMERO DE LA TARJETA
+//solo hay que validar si la tarjeta es valida.. que complete DNI.. NOMBRE APELLIDO... CLAVE DE LA TARJETA, number DE LA TARJETA
 ?>
-<h1 class="h1-form">Datos de la tarjeta de credito</h1> 
-<form id="validar_tarjeta">
-	<article class="article">
+<form class="f1_pago" id="validar_tarjeta" method="POST" action="alta_postulacion.php">
+	<article class="caja_p linea_2" >
 		<div class="titulos">
-	         <b class="color-a title-fv" style="margin-top: 5%;">Datos de la tarjeta</b>
+	         <b class="color-a title-fv in_p" style="margin-top: 5%;">Datos de la tarjeta</b>
 	    </div>
 		<div class="centrar_div">
-			<label class="text">Nro de tarjeta</label>
+			<label class="text">Nro de tarjeta: </label>
 			<span id="error_nro_tarjeta" class="error"></span>
-			<input class="input s1 top focus_azul" id="nro_tarjeta" type="NUMERO"><span class="	msj-viaje" id="msj_fecha"></span>	
+			<input class="input s1 top focus_azul" id="nro_tarjeta" type="text" pattern="[0-9]{16}" title="complete con un numero de 16 digitos numericos" ><span class="	msj-viaje" id="msj_fecha"  ></span>	
 		</div>
 		<div class="centrar_div" style="margin-top: -4%">
-			<label class="text">Clave de seguridad</label>
+			<label class="text">Clave de seguridad: </label>
 			<span id="error_clave" class="error"></span>
-			<input class="input s1 top focus_azul" type="password" name="clave" id="clave">
+			<input class="input s1 top focus_azul" type="password" name="clave" id="clave" min="0">
+		</div>
+		<div>
+			<label class="text" for="">Fecha de vencimiento:</label>
+			<input class="input s1 top focus_azul" type="date">
 		</div>
 	</article> 
-	<article class="article" style="margin-top: 1%">
+	<article class="caja_p linea_2" style="margin-top: 1%">
 		<div class="titulos">
-	         <b class="color-a title-fv" style="margin-top: 5%;">Datos del titular</b>
+	         <b class="color-a title-fv in_p" style="margin-top: 5%;">Datos del titular</b>
 	    </div>
 		<div class="centrar_div">
-			<label class="text">Nombre</label><br>
+			<label class="text">Nombre: </label>
 			<span id="error_nombre" class="error"></span>
-			<input class="input s1 top focus_azul" id="nombre" type="NUMERO"><span class="	msj-viaje" id="msj_fecha"></span>	
+			<input class="input s1 top focus_azul" id="nombre" type="text" ><span class="	msj-viaje" id="msj_fecha"></span>	
 		</div>
 		<div class="centrar_div">
-			<label class="text">Apellido</label><br>
+			<label class="text">Apellido: </label>
 			<span id="error_apellido" class="error"></span>
-			<input class="input s1 top focus_azul" id="apellido" type="NUMERO"><span class="	msj-viaje" id="msj_fecha"></span>	
+			<input class="input s1 top focus_azul" id="apellido" type="text"><span class="	msj-viaje" id="msj_fecha"></span>	
 		</div>
 		<div class="centrar_div" style="margin-top: -4%">
-			<label class="text">DNI</label>
+			<label class="text">DNI: </label>
 			<span id="error_dni" class="error"></span>
-			<input class="input s1 top focus_azul" type="NUMERO" name="clave" id="dni">
+			<input class="input s1 top focus_azul" type="text" pattern="[0-9]{8}" title="complete con un numero de 8 digitos numericos" name="clave" id="dni">
+			<input type="hidden" name="id_viaje" value=" <?php echo $_GET['id_viaje']; ?>">
+
+			<input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
 		</div>
+
+		  
 	</article> 
-    <button  class="bttn text-white fondo-blue btn-form"  type="submit">Enviar</button>
+	<br>
+	<div style="width: 85%; margin: 0 auto;">
+		<button  style="margin-bottom: 2%; display: block;" class=" text-white fondo-blue btn_fp "  type="submit">Enviar</button>
+	
+  <a class=" text-white fondo-blue btn_fp " style="background-color:#CB030E;"  href="inicio.php">Cancelar</a></div>
+
 </form>
 
 

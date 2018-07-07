@@ -16,7 +16,7 @@
 
 $parametro=" ";//Guarda los parametros recibidos para la siguiente pagina
 $sql2=" ";//para concatenar el de busqueda 
-$minimo=$maximo=$origen=$destino=$fecha_min=$fecha_max=$fecha_asc=$fecha_desc="";
+$minimo=$maximo=$origen=$destino=$fecha_min=$fecha_max="";
 
 if (isset($_GET['buscar'])) {
 	$sql2.=" AND 1=1  ";
@@ -78,26 +78,6 @@ if (isset($_GET['buscar'])) {
 	}
 
 
-	if(isset($_GET["ordenar"]) && $_GET["ordenar"]!='' && $_GET["ordenar"]!="0"){
-		$parametro.="ordenar=".$_GET["ordenar"]. "&";
-
-		switch ($_GET["ordenar"]) {
-			case "fecha_asc":
-					
-				$sql2.=" ORDER BY fecha ASC ";
-				$fecha_asc="selected";
-					
-				break;
-				
-			case "fecha_desc" :
-				$sql2.=" ORDER BY fecha DESC ";
-				$fecha_desc="selected";
-
-				break;	
-	
-			}	
-		}
-
 
 
 
@@ -112,7 +92,8 @@ if (isset($_GET['buscar'])) {
 
  
 //Paginado---------------------------
-
+$sql2.=" ORDER BY fecha ASC ";
+				
 
 if(isset($_GET["pag"])){
 			$pag=$_GET["pag"];
@@ -130,6 +111,7 @@ if(isset($_GET["pag"])){
 
 $resultado2 = mysqli_query($link, $consulta2.$sql2);
 //echo $consulta2.$sql2;
+
 //Paginado-----------------------------------------------------------------------------------------
 
 			//form de busqueda
@@ -156,17 +138,6 @@ $resultado2 = mysqli_query($link, $consulta2.$sql2);
 
 	<label for="fecha2">a:</label>
 	<input name="fecha_max" value="<?php echo $fecha_max; ?>" class="input-busqueda" type="date" name="fecha2" id="fecha2">
-	<br>
-	<br>
-
-	<label>Ordenar por fecha:</label>
-	<select name="ordenar" style="padding: 5px">
-		<?php $selected=""; ?>
-		<option value="0">sin orden</option>
-		<option <?php echo $fecha_asc; ?> value="fecha_asc">ascendente</option>
-		<option <?php echo $fecha_desc; ?> value="fecha_desc">descentente</option>
-
-	</select>
 
 
 	<button type="submit" name="buscar" class="btn_filtro ">Aplicar</button>
@@ -393,7 +364,11 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 					 if (($pertenece == false) && ($fila5['estado'] == 0)) {
 				     ?>
   				    	<td class="Td-a" > 
-		    				<a name="postularse" class="a-link2 a-rig fondo-blue"  href="alta_postulacion.php?id=<?php echo $id ?>&id_viaje=<?php echo $fila['id'] ?> ">Postularse 
+		    			<?php /*
+
+		    			<a name="postularse" class="a-link2 a-rig fondo-blue"  href="alta_postulacion.php?id=<?php echo $id ?>&id_viaje=<?php echo $fila['id'] ?> ">
+		    			 */ ?>	
+		    				<a class="a-link2 a-rig fondo-blue"  href="pago_tarjeta.php?id=<?php echo $id ?>&id_viaje=<?php echo $fila['id'] ?> " >	Postularse 
 		    				</a>
 		    			</td>	
 				 <?php }elseif (($pertenece == false) && ($fila5['estado'] == 1) ) {
