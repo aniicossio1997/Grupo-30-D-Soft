@@ -32,7 +32,6 @@ include('header.php');
 <?php //-----------------------------------------------------------------------------------------------------------
  ?>
 
-<a href="validar_calificar_copiloto.php">ver</a>
 </div>
 <?php include('footer.php'); ?>
 <script type="text/javascript" src="js/validar_calificar_piloto.js"></script>

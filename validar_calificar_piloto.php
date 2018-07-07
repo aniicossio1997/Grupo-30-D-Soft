@@ -23,12 +23,12 @@ if (isset($_POST['puntaje']) && !empty($_POST['puntaje'])) {
 	} else{
 			echo "no existe comentario";
 			$_SESSION['mensaje']="Falta completar el campo comentario, ingrese uno";
-    		//header("Location:calificaciones_pendientes.php");
-    		//die();
+    		header("Location:calificaciones_pendientes.php");
+    		die();
 	}
 
 }else{
    $_SESSION['mensaje']="Falta seleccionar un puntaje, seleccione uno";
-   //header("Location:calificaciones_pendientes.php");
-  // die();
+   header("Location:calificaciones_pendientes.php");
+   die();
 }
