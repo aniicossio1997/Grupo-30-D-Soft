@@ -3,7 +3,7 @@ include('header.php');
 
 ?>
 
-<form id = "calificar" action="validar_calificar_copiloto.php" method="POST" style="margin: 0% auto;width:80%"> <h1 class ="h1_form color-a"> Calificar Copiloto</h1> 
+<form id = "calificar" action="validar_calificar_piloto.php" method="POST" style="margin: 0% auto;width:80%"> <h1 class ="h1_form color-a"> Calificar Piloto</h1> 
 <div >
   <label for="puntaje">Puntaje:</label>
   <span id="error_puntaje" class="error"> </span>

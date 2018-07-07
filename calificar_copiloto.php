@@ -37,6 +37,7 @@ $fecha=date('Y-m-d');
 
 </div>
 <a href="validar_calificar_copiloto.php">ver</a>
+<a href="validar_calificar_copiloto.php">ver_2</a>
 <?php include('footer.php'); ?>
 <script type="text/javascript" src="js/validar_calificar_copiloto.js"></script>
 </body>

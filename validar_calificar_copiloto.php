@@ -1,7 +1,5 @@
 <?php 
-include('conexion.php');
-include('clases.php');
-$link = conectar();
+include ('header.php');
 $verificar= new validar($link);
 $id= $verificar->id();
 $fecha = date("Y-m-d");
@@ -18,23 +16,19 @@ if (isset($_POST['puntaje']) && !empty($_POST['puntaje'])) {
 	 
 	if (isset($_POST['comentario']) && !empty($_POST['comentario']) )
 	{
-		echo($_POST['comentario']);
-		$sql="INSERT INTO calificacion (id,usuario_id,calificador_id,puntaje, comentario, fecha) VALUES (null,'9','$id',$num,'$_POST[comentario]','$fecha')";
-	
-		$resultado=mysqli_query($link,$sql);
-	
+		$consulta="INSERT INTO calificacion (id,usuario_id,calificador_id,puntaje, comentario, fecha,modo_calificacion) VALUES (null,'3','$id','$num','$_POST[comentario]','$fecha','0')";
+		$resultado=mysqli_query($link,$consulta);	
 	} else{
+		echo "else";
 		if (!isset($_POST['comentario']) && empty($_POST['comentario']) ){
 			$_SESSION['mensaje']="Falta completar el campo comentario, ingrese uno";
-    		header("Location:calificaciones_pendientes.php");
-    		
+    		//header("Location:calificaciones_pendientes.php");
+    		//die();    		
 		}
-       
-		die();
 	}
 
 }else{
    $_SESSION['mensaje']="Falta seleccionar un puntaje, seleccione uno";
-   header("Location:calificaciones_pendientes.php");
-   die();
+   //header("Location:calificaciones_pendientes.php");
+   //die();
 }
