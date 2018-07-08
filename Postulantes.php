@@ -95,8 +95,10 @@ if (isset($_SESSION['confirmacion3'])) {$a = 1?>
   <?php }else { ?>
 
   <?php while ($fila1 = mysqli_fetch_array($resultado1)) { 
-
-  	if ($fila1['rechazado'] == 0 OR $fila1['rechazado'] == 2  ) {
+  	$consulta6 = "SELECT * FROM usuarios WHERE id  = $fila1[postulante_id]";
+  	$resultado6 = mysqli_query($link,$consulta6);
+  	$existe = mysqli_num_rows($resultado6);
+  	if (($fila1['rechazado'] == 0 && $existe > 0) OR ($fila1['rechazado'] == 2  && ($existe >= 0))  ) {
   ?>  
    <article class="article_exterior">
 	<article class="article_interior">
@@ -106,12 +108,20 @@ if (isset($_SESSION['confirmacion3'])) {$a = 1?>
 					<?php
 					  $consulta2 = "SELECT nombre FROM usuarios WHERE id = $fila1[postulante_id]";
 					  $resultado2 = mysqli_query($link,$consulta2);
+					  $existe = mysqli_num_rows($resultado2);
 					  $fila2 = mysqli_fetch_array($resultado2);
+					  if ($existe > 0) {
+					  	$nombre = $fila2['nombre'];
+					  	$calificcion = 0;
+					  }else{
+					  	$nombre = "N/N";
+					  	$calificcion = "N/N";
+					  }
 					?>
-					<p>Postulante: <?php echo $fila2['nombre'] ?> </p>
+					<p>Postulante: <?php echo $nombre ?> </p>
 				</td>
 				<td>
-					<p>Calificcion: 0</p>
+					<p>Calificcion: <?php echo $calificcion ?></p>
 				</td>
 			</tr>
 			<tr>

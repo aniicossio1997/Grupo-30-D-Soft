@@ -19,7 +19,7 @@
   $resul=mysqli_query($link,$consulta1);
   $mostrar=mysqli_fetch_array($resul);
 
-  //la siguiente consulta se usa para recuperar los atos del vehiculo
+  //la siguiente consulta se usa para recuperar los datos del vehiculo
   $vehiculo_id = $mostrar['vehiculo_id'];
   $consulta2 = "SELECT * FROM vehiculo WHERE id = $vehiculo_id";
   $resultado2 = mysqli_query($link,$consulta2);
@@ -134,6 +134,8 @@
     <?php 
       $consulta4 = "SELECT * FROM preguntas WHERE viaje_id = $id_viaje";
       $resultado4 = mysqli_query($link,$consulta4);
+      $cantidad = mysqli_num_rows($resultado4);
+      if ($cantidad > 0) {
       while ($fila4 = mysqli_fetch_array($resultado4)) {
             //la siguiente consulta es para obtener las repuestas que tiene la pregunta
             $consulta5 = "SELECT * FROM preguntas where id = $fila4[id] ";
@@ -166,8 +168,8 @@
             </div>
        </article> 
        <?php if ($pertenece == true) { ?>
-                <div>
-                  <a href="validar_pregunta.php?id_pregunta=<?php echo $fila4['id'] ?>&eliminar_pregunta=<?php echo '1' ?>&id_viaje=<?php echo($id_viaje) ?> "> Eliminar pregunta</a> 
+                <div style="margin-top: 1%; margin-left: -2%">
+                  <a class="btton_volver a-link2  fondo-blue" href="validar_pregunta.php?id_pregunta=<?php echo $fila4['id'] ?>&eliminar_pregunta=<?php echo '1' ?>&id_viaje=<?php echo($id_viaje) ?> "> Eliminar pregunta</a> 
                 </div>
        <?php }  ?>
           <?php
@@ -208,7 +210,11 @@
                            <a class="btton_volver a-link2  fondo-blue" href="detalle_viaje.php?id_viaje=<?php echo($id_viaje) ?>&responder=<?php echo("1") ?>&id_pregunta=<?php echo($fila4['id'])?>&nombre_preg=<?php echo ($fila7['nombre']) ?>&pregunta=<?php echo $fila4['pregunta']?>">Responder</a>
                         </div>
             <?php } ?>
-       <?php } ?>
+       <?php } }elseif ($fila2['usuario_id'] == $id) {?>
+                    <div style="margin-left: 38%;">
+                      <b>Sin preguntas por el momento.</b>
+                    </div>
+      <?php  }?>
   </article> 
   <?php if (isset($_GET['detalle'])) {
     header("Location: mostrar_viaje_piloto.php");

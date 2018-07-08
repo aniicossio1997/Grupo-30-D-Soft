@@ -9,10 +9,9 @@ include('img.php');
 
 $sql="SELECT id, tipoimagen, contenidoimagen, email, password, nombre, apellido, fecha_nac FROM usuarios where id =$_GET[id_pos] ";
 $resul= mysqli_query($link,$sql);
+$existe = mysqli_num_rows($resul);
 $fila = mysqli_fetch_array($resul);
-?>
-
-
+if ($existe > 0) { ?>
 <section>
 	<article class="mi-perfil center f-blanco" >
 		<?php
@@ -59,13 +58,29 @@ $fila = mysqli_fetch_array($resul);
 	<a class="a-link2 fondo-blue" href="<?=$_SERVER["HTTP_REFERER"]?>">Volver</a>
 
 </section>
+<?php }else{ ?>
+	<article class="article_interior">
+		<div style="margin-left: 42%">
+			<div>
+				<img src="fondos/carita-triste.png">
+			</div>
+			<div>
+				<div style="margin-left: -8%">
+					<b style="font-style: italic;">Lo sentimos, el usuario elimino su cuenta.</b>
+				</div>
+			</div>
+		</div>
+	</article>
+	<div style="margin-left: 47%; margin-top: 1%">
+		<a class="a-link2 fondo-blue" href="<?=$_SERVER["HTTP_REFERER"]?>">Volver</a>
+	</div>
+<?php } ?>
 
 <?php
 include('footer.php');
 mysqli_close($link);
 //
  ?>
- <script type="text/javascript" src="js/validar_imagen.js"></script>
 
 </body>
 

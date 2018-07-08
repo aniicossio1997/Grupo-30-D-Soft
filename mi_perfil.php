@@ -15,6 +15,23 @@ $fila = mysqli_fetch_array($resul);
 
 
 ?>
+<?php
+//cartel-----------------------------------------------------------------
+//se utiliza ara confirmar la eliminacion del usuario.
+if (isset($_SESSION['confirmacion'])) {$a = 1?>
+	<div class="cartel div-externo" style="margin-left: 27%" id="cartel">
+		<div class="div-interno " style="margin-top: 10%;">
+	  		<p style="text-align: center; color: white; font-style: italic;"> <?php echo $_SESSION['confirmacion']; unset($_SESSION['confirmacion']); ?></p>
+	    </div>
+	    <div class="div-bttn-ok" style=" margin-top: 10%;">
+	    	<a class=" a-link2  fondo-blue" style="margin-top: 100%;" href="baja_usuario.php?id_usuario=<?php echo $id ?>&respuesta=<?php echo $a ?>"> Ok</a>
+	    	<a class=" a-link2  fondo-blue" onclick="return ocultar_cartel();" href="">Cancelar</a>
+	    </div>
+	</div>
+
+<?php } 
+//--fin cartel------------------------------------------------------------
+?>
 
 
 
@@ -23,6 +40,7 @@ $fila = mysqli_fetch_array($resul);
 	<a class="btn-link  fondo-blue" href="mis_viajes_postulados.php">Mis Postulaciones</a>
 	<a class="btn-link fondo-blue" href="agregar_vehiculo.php"> Agregar vehículo</a>
 	<a class="btn-link fondo-blue" href="mostrar_viaje_piloto.php"> Mis viajes como Piloto</a>
+	<a class="btn-link fondo-blue" href="baja_usuario.php"> Eliminar mi cuenta</a>
 	
 </div>
 
@@ -87,7 +105,13 @@ mysqli_close($link);
 //
  ?>
  <script type="text/javascript" src="js/validar_imagen.js"></script>
-
+<script>	
+	function ocultar_cartel()
+	{
+		var cartel=document.getElementById('cartel');
+		cartel.classList.add('ocultar');
+    }
+</script>
 </body>
 
 </html>
