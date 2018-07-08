@@ -1,0 +1,14 @@
+.form-busqueda{
+	margin:0 auto;
+	width: 97%;
+}
+.input-busqueda{
+	width: 14%;
+	box-sizing: border-box;
+	padding: 7px;
+}
+.input-bn{
+	width: 8%;
+	box-sizing: border-box;
+	padding: 8px;
+}
