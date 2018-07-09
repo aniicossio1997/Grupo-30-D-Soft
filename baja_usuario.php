@@ -16,13 +16,7 @@ $user_actual=$verificar -> id();
   	$consulta3 = "DELETE FROM preguntas WHERE preguntador_id = $_GET[id_usuario]";
   	$resultado3 = mysqli_query($link,$consulta3);
 
-    $consulta4="DELETE FROM calificacion WHERE usuario_id=$user_actual";
 
-    $resultado4=mysqli_query($link,$consulta4);
-
-    $consulta5="DELETE FROM calificacion WHERE calificador_id=$user_actual";
-
-    $resultado5=mysqli_query($link,$consulta5);
 
 
   	unset($_GET['respuesta']);
