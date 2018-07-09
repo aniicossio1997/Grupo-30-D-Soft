@@ -21,7 +21,7 @@ section{
 }
 .d-perfil{
 	display: inline-block;
-	width: 50%;
+	width: 45%;
 }
 .btn-link{
 	padding: 1%;
@@ -87,7 +87,7 @@ color: #000;
 }
 .caja_perfil{
 	
-	width: 35%;
+	width: 30%;
 	display: inline-block;
 	
 }
@@ -96,15 +96,15 @@ color: #000;
 }
 .caja_datos{
 	display: inline-block;
-	width: 60%;
+	width: 70%;
 	padding: 1%;
 	
 	
 }
 .pf_txt{
-	font-size: 1.1em;
+	font-size: 1em;
 
 }
 .caja_perfil_II{
-	width: 60%;
+	width: 80%;
 }

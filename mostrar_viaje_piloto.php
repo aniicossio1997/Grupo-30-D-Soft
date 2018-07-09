@@ -11,7 +11,10 @@
 
 ?>
 
-  <p class="title_fv color-a ">Mis viajes creados</p class="title_fv">
+<div class=" fondo_gris">
+    <p class="title_fv color-a ">Mis Postulaciones
+</p">
+</div>
 <div class=" div_incio" style="margin-top: 4%; width: 80%">
   <?php if (mysqli_num_rows($datos) < 1) {
     echo "~~No hay resultados o usted no posee viajes creados~~";

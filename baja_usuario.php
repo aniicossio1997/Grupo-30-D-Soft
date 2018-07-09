@@ -1,5 +1,6 @@
 <?php
 include('header.php');
+$user_actual=$verificar -> id();
   if (!isset($_GET['respuesta'])) {
   	$_SESSION['confirmacion'] = "Esta usted esta seguro de darse de baja";
   	header("Location: mi_perfil.php");
@@ -15,11 +16,11 @@ include('header.php');
   	$consulta3 = "DELETE FROM preguntas WHERE preguntador_id = $_GET[id_usuario]";
   	$resultado3 = mysqli_query($link,$consulta3);
 
-    $consulta4="DELETE FROM calificacion WHERE usuario_id=$_GET[id_usuario]";
+    $consulta4="DELETE FROM calificacion WHERE usuario_id=$user_actual";
 
     $resultado4=mysqli_query($link,$consulta4);
 
-    $consulta5="DELETE FROM calificacion WHERE calificador_id=$_GET[id_usuario]";
+    $consulta5="DELETE FROM calificacion WHERE calificador_id=$user_actual";
 
     $resultado5=mysqli_query($link,$consulta5);
 

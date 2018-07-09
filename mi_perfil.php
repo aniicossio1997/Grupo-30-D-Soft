@@ -4,7 +4,7 @@ include('header.php');
 
 $id= $verificar->id();
 
-include ('mi_puntuacion.php');
+include ('funcion_puntuacion.php');
 include('img.php');
 
 $sql="SELECT id, tipoimagen, contenidoimagen, email, password, nombre, apellido, fecha_nac FROM usuarios where id =$id ";
@@ -93,9 +93,19 @@ if (isset($_SESSION['confirmacion'])) {$a = 1?>
 				<p class="pf_txt">Apellido:<?php echo($fila['apellido']);?></p>
 				<p class="pf_txt">E-mail:  <?php echo($fila['email']);?></p>
 				<p class="pf_txt">Fecha de nacimiento: 
-					<?php echo fecha_string($fila['fecha_nac']);;
+					<?php setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
+				$fecha = strftime("%d de %B de %Y", strtotime("$fila[fecha_nac]"));
+				echo $fecha;
 				?></p>
 				<p class="pf_txt">Edad: <?php echo edad($fila['fecha_nac']);?> años</p>
+
+				<p>Total calificacion como piloto: <?php 
+				echo puntuacion_piloto($link,$id);
+				 ?></p>
+
+				<p>Total calificacion como Copiloto: <?php 
+				echo puntuacion_copiloto($link,$id);
+				 ?></p>
 			</div>
 		</div>
 

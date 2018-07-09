@@ -82,6 +82,9 @@ if (!$verificar->esta_logueado()){
 	</form>
 </div>
 </div>
+<br>
+<br>
+
 <?php }else{
 	header("Location:inicio.php");
 } ?>

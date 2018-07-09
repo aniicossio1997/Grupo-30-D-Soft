@@ -14,11 +14,13 @@ $id=$verificar->id();
 <?php unset($_SESSION['add_vehiculo']); }?>
 
 <div class="conteiner-form " >
-	<h1 class="h1-form">Agregar vehículo</h1>
+	<h1 class="h1-form" style="position: relative;">Agregar vehículo</h1>
 
 <div class="conteiner-f1">
-	<form action="validar_vehiculo_2.php" method="GET" class="container" id="form1">
+	<form action="validar_vehiculo_2.php" method="GET" id="form1">
 	 
+
+<div class="caja_auto"> 
 
 	  <div>
 	  	<label> Marca:</label> <span class="error" id="error_marca"></span>
@@ -44,16 +46,15 @@ $id=$verificar->id();
 	  </div>
 
 	  <button class="input-f1 text-white fondo-blue btn-form" type="submit"> Guardar </button>
+	</div>
 
 	</form>
 </div>
 </div>
-<?php include('footer.php'); ?>
-<script type="text/javascript" src="js/validar_modificacion_vehiculo.js"></script>
 
-<?php
-mysqli_close($link);
- }
+
+<script type="text/javascript" src="js/validar_modificacion_vehiculo.js"></script>
+<?php }
 else{
 header("Location:Login.php");}
 ?>
