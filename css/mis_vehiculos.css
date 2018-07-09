@@ -1,0 +1,50 @@
+.mis_vehiculos{
+	margin: 0 auto;
+	width: 84%;
+	border: 1px solid #ccc;
+	padding: 1%;
+	margin-top: 2%;
+	border-radius: 5px;
+	background-color: #fff;
+}
+.tabla{
+margin:0 auto;
+width: 98%;
+box-sizing: border-box;
+border-collapse: collapse;
+}
+.a-link2{
+	
+	padding: 7px;
+	color: #fff;
+	border-radius: 5px;
+	box-sizing: border-box;
+	
+}
+
+.a-rig{
+	float: right;
+}
+.text_center{
+	text-align: center;
+}
+.txt_mis_v{
+	margin:0 auto;
+	width: 90%;
+
+}
+.fondo_gris{
+	background-color:rgba(255, 255, 255, 0.5);
+}
+.caja_mis_v{
+	width: 100%;
+	padding: 1.2%;
+	box-sizing: border-box;
+}
+.caja_auto{
+width: 90%;
+box-sizing: border-box;
+
+}
+
+

@@ -1,0 +1,39 @@
+.mod_art_viajes{
+	
+	padding: 7px;
+	height: 220px;
+	background-color: rgba(255, 255, 255, 0.8);
+
+}
+.corec{
+	box-sizing: border-box;
+}
+.btn_filtro{
+	padding: 1%;
+	box-sizing: border-box;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	background-color: #EC4A67;
+	color: #fff;
+
+}
+.form_copi{
+	width: 100%;
+	background-color:rgba(255, 255, 255, 0.5);
+}
+.container_form{
+	margin: 0 auto;
+	width: 85%;
+}
+.fv_tipos{
+	font-size: 1em;
+	padding: 1px;
+}
+.title_fv{
+	font-size: 1.6em;
+	display: block;
+	margin-bottom: 1%;
+}
+.cursor{
+	cursor: pointer;
+}

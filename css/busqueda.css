@@ -1,0 +1,52 @@
+.caja_bus{
+	background-color:rgba(255, 255, 255, 0.5);
+	padding: 1%;
+	box-sizing: border-box;
+	width: 100%;
+}
+.form-busqueda{
+	margin:0 auto;
+	width: 99%;
+	box-sizing: border-box;
+	
+}
+.input-busqueda{
+	width: 14%;
+	box-sizing: border-box;
+	padding: 6px;
+}
+.input-bn{
+	width: 8%;
+	box-sizing: border-box;
+	padding: 6px;
+}
+
+.input_bus{
+	font-size: 0.9em;
+}
+
+
+
+.p_bus{
+	text-align: left;
+	width:100%;
+	padding: 0.5%;
+	box-sizing: border-box;
+}
+a:link,a:visited{
+	text-decoration:none;
+}
+a:hover,a:active{
+	text-decoration: underline;
+	text-decoration:none;
+}
+.dropdown-menu>li>a:hover{
+background-color: #EC4A67;
+color: #fff;
+}
+.navbar-default .navbar-nav>li>a{
+	font-size: 1.2em;
+}
+.navbar{
+	margin-bottom: 0px;
+}

@@ -1,0 +1,110 @@
+section{
+	width: 100%;
+
+}
+.mi-perfil{
+	width: 82%;
+	margin-top: 5%;
+	border-radius: 5px;
+	border:1px solid #ccc;
+	padding: 3%;
+	border-color: #fff;
+
+}
+
+
+.p-perfil{
+	line-height: 2em;
+}
+.h1-perfil{
+	font-size: 2.5em;
+}
+.d-perfil{
+	display: inline-block;
+	width: 50%;
+}
+.btn-link{
+	padding: 1%;
+	width: 22%;
+	border-radius: 7px;
+
+}
+
+.linea{
+	display: inline-block;
+	margin-bottom: 0.5%;
+	margin-left:  30%;
+}
+.mov{
+	
+	width: 70%;
+	margin-left:  40%;
+	
+}
+
+.linea{
+background-color: #ccc;
+font-size: 0.9em;
+color: #000;
+}
+
+.img_previo{
+	width: 70%;
+	height: 190px;
+	border-radius: 10px;
+	display: block;
+	cursor: pointer;
+}
+.separador{
+	width: 97%;
+	height: 250px;
+	border: 1px dotted #ccc;
+	padding: 1%;
+	border-radius: 5px;
+	margin-top: 2%;
+}
+.btn-img{
+	margin-top: 1.5%;
+	width: 30%;
+	font-size: 0.8em;
+}
+.btn-a{
+	padding: 7px;
+	color: #fff;
+	border-radius: 5px;
+}
+.edit{
+	float: right;
+
+}
+
+
+
+.art_perfil{
+	border: 1px solid #ccc;
+	padding: 1%;
+	width: 80%;
+}
+.caja_perfil{
+	
+	width: 35%;
+	display: inline-block;
+	
+}
+.caja_img{
+	width: 100%;
+}
+.caja_datos{
+	display: inline-block;
+	width: 60%;
+	padding: 1%;
+	
+	
+}
+.pf_txt{
+	font-size: 1.1em;
+
+}
+.caja_perfil_II{
+	width: 60%;
+}
