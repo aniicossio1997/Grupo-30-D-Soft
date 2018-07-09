@@ -3,6 +3,7 @@
 function ver_puntuacion($id,$link){
 
 
+
 	$consulta ="SELECT * FROM calificacion WHERE usuario_id=$id";
 
 	$total=0;
