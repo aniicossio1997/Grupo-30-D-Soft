@@ -14,11 +14,11 @@
 	$cant=0;
 	while ($fila=mysqli_fetch_array($resul)) {
 		//las calificaciones que un piloto hace
-			//echo "el piloto que debo de calificar";
+			//Me califican como piloto";
 			$consulta_2="INSERT INTO calificacion(id, viaje_id, usuario_id, soy_piloto, calificador_id,cumple) VALUES (NULL,$_GET[id_viaje],$fila[postulante_id],1,$id,0)";
 			/*echo "<br>".$consulta_2;
 			echo "<br><br>";
-			echo "quien me califica";
+			echo "Me califican como copiloto";
 			*/
 			$resul_2=mysqli_query($link,$consulta_2);
 			$consulta_3="INSERT INTO calificacion(id, viaje_id, usuario_id, soy_piloto, calificador_id) VALUES (NULL,$_GET[id_viaje],$id,0,$fila[postulante_id])";

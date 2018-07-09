@@ -92,12 +92,13 @@ color: #000;
 	
 }
 .caja_img{
-	width: 100%;
+	width: 90%;
 }
 .caja_datos{
 	display: inline-block;
-	width: 70%;
+	width: 60%;
 	padding: 1%;
+	margin-right: 10%;
 	
 	
 }
@@ -106,5 +107,5 @@ color: #000;
 
 }
 .caja_perfil_II{
-	width: 80%;
+	width: 95%;
 }

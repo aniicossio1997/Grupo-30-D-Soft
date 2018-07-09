@@ -4,6 +4,9 @@ include('conexion.php');
 $link=conectar();
 session_start();
 include('clases.php');
+
+
+
 include('funcion_fecha.php');
 include('funcion_edad.php');
 
@@ -70,7 +73,9 @@ $verificar = new validar($link);
 								<li><a href="mostrar_viaje_piloto.php">Ver mis viajes creados</a></li>
 								<li><a href="mis_viajes_postulados.php">Ver mis viajes postulados</a></li>
 								
+								
 								<li><a href="calificaciones_pendintes.php">Ver mis calificaciones pendientes</a></li>
+
 
 							</ul>
 						</li>

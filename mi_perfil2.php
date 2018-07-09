@@ -37,12 +37,12 @@ $fila = mysqli_fetch_array($resul);
 				?></p>
 						<p>Edad: <?php echo edad($fila['fecha_nac']); ?> años</p>
 						<a href=""></a>
-				<p>Total calificacion como piloto: <?php 
-				echo puntuacion_piloto($link,$id);
+				<p>Puntaje total como piloto: <?php 
+				echo puntuacion_piloto($link,$_GET['id_pos']);
 				 ?></p>
 
-				<p>Total calificacion como Copiloto: <?php 
-				echo puntuacion_copiloto($link,$id);
+				<p>Puntaje total como copiloto: <?php 
+				echo puntuacion_copiloto($link,$_GET['id_pos']);
 				 ?></p>
 					</div>
 					
@@ -60,8 +60,8 @@ $fila = mysqli_fetch_array($resul);
 
 
 <?php 
-$consulta="SELECT u.nombre,u.apellido,c.comentario,c.puntaje,c.hora,c.fecha FROM calificacion c INNER JOIN usuarios u ON (c.calificador_id=u.id) WHERE c.usuario_id=$id";
-//echo $consulta;
+
+$consulta="SELECT u.nombre,u.apellido,c.comentario,c.puntaje,c.hora,c.fecha FROM calificacion c INNER JOIN usuarios u ON (c.calificador_id=u.id) WHERE c.usuario_id=$_GET[id_pos]  AND cumple=1";
 
 $resul=mysqli_query($link,$consulta);
 //$fila=mysqli_fetch_array($link,$consulta);

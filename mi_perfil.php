@@ -35,15 +35,6 @@ if (isset($_SESSION['confirmacion'])) {$a = 1?>
 //--fin cartel------------------------------------------------------------
 ?>
 
-
-<br>
-
-<div style="width: 82%;margin: 0 auto;">
-	<a class="btn btn-danger " href="baja_usuario.php"> Eliminar mi cuenta</a>
-</div>
-<section>
-
-	<article class=" mis_vehiculos f-blanco">
 		<?php
 	
 			if (isset($_SESSION['mensaje'])) {
@@ -51,6 +42,15 @@ if (isset($_SESSION['confirmacion'])) {$a = 1?>
 				unset($_SESSION['mensaje']);//mensaje flash
 			}
 	?>
+<br>
+
+<div style="width: 84%;margin: 0 auto;">
+	<a class="btn btn-danger " href="baja_usuario.php"> Eliminar mi cuenta</a>
+</div>
+<section>
+
+	<article class=" mis_vehiculos f-blanco">
+
 <!-- BOTON ELIMINAR -->
 
 	
@@ -66,7 +66,7 @@ if (isset($_SESSION['confirmacion'])) {$a = 1?>
 			<label class="curso_poi"  id="img" for="imagen">
 				
 
-			<img class=" img-circle" id="img_previa" style="cursor: pointer; width: 190px;height: 190px; float: left;"  src="<?php if (hay_imagen($fila['id'],$link)){?>mostrar_imagen.php?id=<?php echo $fila['id'];?><?php }else{
+			<img class=" img-circle" id="img_previa" style="cursor: pointer; width: 200px;height: 200px; float: left;"  src="<?php if (hay_imagen($fila['id'],$link)){?>mostrar_imagen.php?id=<?php echo $fila['id'];?><?php }else{
 					echo "fondos/user2.png";
 				}
 				?>" >
@@ -99,11 +99,11 @@ if (isset($_SESSION['confirmacion'])) {$a = 1?>
 				?></p>
 				<p class="pf_txt">Edad: <?php echo edad($fila['fecha_nac']);?> años</p>
 
-				<p>Total calificacion como piloto: <?php 
+				<p>Puntaje total como piloto: <?php 
 				echo puntuacion_piloto($link,$id);
 				 ?></p>
 
-				<p>Total calificacion como Copiloto: <?php 
+				<p>Puntaje total como  Copiloto: <?php 
 				echo puntuacion_copiloto($link,$id);
 				 ?></p>
 			</div>
@@ -116,8 +116,8 @@ if (isset($_SESSION['confirmacion'])) {$a = 1?>
 </section>
 
 <?php 
-$consulta="SELECT u.nombre,u.apellido,c.comentario,c.puntaje,c.hora,c.fecha FROM calificacion c INNER JOIN usuarios u ON (c.calificador_id=u.id) WHERE c.usuario_id=$id";
-//echo $consulta;
+$consulta="SELECT u.nombre,u.apellido,c.comentario,c.puntaje,c.hora,c.fecha FROM calificacion c INNER JOIN usuarios u ON (c.calificador_id=u.id) WHERE c.usuario_id=$id  AND cumple=1  ORDER BY fecha, hora DESC ";
+
 
 $resul=mysqli_query($link,$consulta);
 //$fila=mysqli_fetch_array($link,$consulta);

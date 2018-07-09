@@ -46,7 +46,7 @@ if (isset($_GET['filtro'])) {
 }
 
 
-
+$sql2.=" ORDER BY fecha ASC ";
 
 if(isset($_GET["pag"])){
 			$pag=$_GET["pag"];
@@ -67,7 +67,7 @@ if(isset($_GET["pag"])){
 		<p class="title_fv color-a ">Mis Postulaciones</p class="title_fv">
 		
 ver:
-<select name="tipos" class="fv_tipos">
+<select name="tipos" class="fv_tipos" style="cursor: pointer;">
 	<option value="0" selected="selected">Todos</option>
 	<?php
 	$aceptado="";
@@ -96,6 +96,32 @@ ver:
 <button name="filtro" class="btn_filtro" type="submit" >Aplicar</button>
 </div>
 </form>
+
+
+<?php 
+
+
+//un postulante se da de baja
+if (isset($_SESSION['confirmacion2'])) {$a = 1?>
+
+	<div class="cartel div-externo"  id="cartel" style="border: 1px solid #ccc; position: fixed; background-color: #D10A0D; width: 70%; margin-top: -5%;" >
+		<div class=" " style="margin-top: 5%;">
+	  		<p style="text-align: center; color: white; font-style: italic;font-size: 1.2em"> <?php echo $_SESSION['confirmacion2'];  unset($_SESSION['confirmacion2']); 
+	  		?></p>
+	    </div>
+	    <div class="div-bttn-ok container" style=" margin-top: 10%; width: 40%;">
+	    	<a class="btn btn-primary" style="" href="baja_postulacion.php?id_viaje=<?php echo $_GET['viaje_id'] ?>&respuesta=<?php echo $a ?>&vip_pos=<?php echo $_GET['vip_pos'] ?>"> Ok</a>
+
+	    	<a class="btn btn-warning" id="cerrar" href="">Cancelar</a>
+	    </div>
+	</div>
+<?php
+
+ }?>
+
+
+
+
 
 
 	<?php 
@@ -145,7 +171,7 @@ ver:
 		</p>
 
 <?php if ($mostrar['activo']!=3) { ?>
-	<a class="a-link2 a-rig fondo-blue a-rig" href="baja_postulacion.php?id_viaje=<?php echo $mostrar['id'] ?>"> Eliminar Postulacion</a>
+	<a class="a-link2 a-rig fondo-blue a-rig" href="baja_postulacion.php?id_viaje=<?php echo $mostrar['id'] ?>&vip_pos=<?php echo "vip_pos" ?>"> Eliminar Postulacion</a>
 <?php  } ?>
 
 		

@@ -9,7 +9,7 @@ $consulta="SELECT u.nombre,u.apellido, u.tipoimagen, u.contenidoimagen,u.fecha_n
 $resul=mysqli_query($link,$consulta);
 //echo $consulta;
 ?>
-<div class="fondo_gris" style="background-color:rgba(255, 255, 255, 0.5);">
+<div class="fondo_gris">
 		<p class="title_fv color-a  ">Mis calificaciones pendientes</p class="title_fv">
 </div>
 
@@ -53,7 +53,8 @@ $resul=mysqli_query($link,$consulta);
 						</p>
 						<p>Apellido: <?php echo $fila['apellido']; ?></p>
 						<p>Edad: <?php echo edad($fila['fecha_nac']); ?> años</p>
-						<a href=""> Mas información..</a>
+						<a href="mi_perfil2.php?id_pos=<?php echo $fila['id'] ?>"> Mas información..</a>
+				
 					</div>
 					
 					
