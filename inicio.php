@@ -237,18 +237,19 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
  <?php 
 
  //(while) voy obteniendo los datos de cada fila correspondiente a los viajes
- while ($fila = mysqli_fetch_array($resultado2)) { 		?>
+ while ($fila = mysqli_fetch_array($resultado2)) { 		
+	  $consulta3 = ("SELECT usuario_id FROM vehiculo where id = $fila[vehiculo_id]");
+	  $resultado3 = mysqli_query($link,$consulta3);
+	  $id_user= mysqli_fetch_array($resultado3);
+	  $existe = mysqli_num_rows($resultado3);
+	  if ($existe > 0) {
+	  		$consulta4 = ("SELECT nombre from usuarios where id = $id_user[usuario_id]");
+	  		$resultado4 = mysqli_query($link,$consulta4);
+	  		$nombre = mysqli_fetch_array($resultado4);
+ 	?>
  	 	
  	<article class="article_exterior">
  		<p class="text_center">
-		<?php
-	  		$consulta3 = ("SELECT usuario_id FROM vehiculo where id = $fila[vehiculo_id]");
-	  		$resultado3 = mysqli_query($link,$consulta3);
-	  		$id_user= mysqli_fetch_array($resultado3);
-	  		$consulta4 = ("SELECT nombre from usuarios where id = $id_user[usuario_id]");
-	  		$resultado4 = mysqli_query($link, $consulta4);
-	  		$nombre = mysqli_fetch_array($resultado4);
-		?>
 		<?php
 	 		if ($id_user['usuario_id'] == $id) {
 	 	?>
@@ -387,7 +388,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
       </p>
 	</article>
 
-<?php } ?> 
+<?php }  }?> 
 
 	<?php 
 	//------------------------------------------------
