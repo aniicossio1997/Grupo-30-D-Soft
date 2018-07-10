@@ -61,7 +61,7 @@ $fila = mysqli_fetch_array($resul);
 
 <?php 
 
-$consulta="SELECT u.nombre,u.apellido,c.comentario,c.puntaje,c.hora,c.fecha FROM calificacion c INNER JOIN usuarios u ON (c.calificador_id=u.id) WHERE c.usuario_id=$_GET[id_pos]  AND cumple=1";
+$consulta="SELECT comentario,puntaje,hora,fecha FROM calificacion  WHERE usuario_id=$id  AND cumple=1 AND es_sancion=0 ORDER BY fecha, hora DESC ";
 
 $resul=mysqli_query($link,$consulta);
 //$fila=mysqli_fetch_array($link,$consulta);

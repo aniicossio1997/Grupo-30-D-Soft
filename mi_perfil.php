@@ -116,7 +116,7 @@ if (isset($_SESSION['confirmacion'])) {$a = 1?>
 </section>
 
 <?php 
-$consulta="SELECT u.nombre,u.apellido,c.comentario,c.puntaje,c.hora,c.fecha FROM calificacion c INNER JOIN usuarios u ON (c.calificador_id=u.id) WHERE c.usuario_id=$id  AND cumple=1  ORDER BY fecha, hora DESC ";
+$consulta="SELECT comentario,puntaje,hora,fecha FROM calificacion  WHERE usuario_id=$id  AND cumple=1 AND es_sancion=0 ORDER BY fecha, hora DESC ";
 
 
 $resul=mysqli_query($link,$consulta);
@@ -153,7 +153,7 @@ while ($fila=mysqli_fetch_array($resul)) {
 		}else echo "Malo"; ?></p>
 		<p>Comentario: <?php echo $fila['comentario']; ?></p>
 
-		<p style="font-size: 0.9em; color: #777;float: right;">Usuario: <?php echo $fila['nombre'].",".$fila['apellido']."  "."; fecha: ".fecha_string($fila['fecha'])."-- Hora: ".(substr("$fila[hora]", 0, -3)); ?></p>
+		<p style="font-size: 0.9em; color: #777;float: right;"><?php echo "fecha: ".fecha_string($fila['fecha'])."-- Hora: ".(substr("$fila[hora]", 0, -3)); ?></p>
 		
 	</div>
 		
