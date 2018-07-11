@@ -8,12 +8,12 @@ include ('funcion_puntuacion.php');
 include('img.php');
 
 
-$sql="SELECT id, tipoimagen, contenidoimagen, email, password, nombre, apellido, fecha_nac FROM usuarios where id =$_GET[id_pos] ";
-
-if ( $_GET['id_pos']!='') {
+$sql="SELECT id, tipoimagen, contenidoimagen, email, password, nombre, apellido, fecha_nac, activo FROM usuarios where id =$_GET[id_pos] ";
 $resul= mysqli_query($link,$sql);
-$existe = mysqli_num_rows($resul);
 $fila = mysqli_fetch_array($resul);
+
+if ( $fila['activo'] != 0) {
+
  ?>
 <section>
 

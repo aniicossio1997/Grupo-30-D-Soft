@@ -242,10 +242,10 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 	  $resultado3 = mysqli_query($link,$consulta3);
 	  $id_user= mysqli_fetch_array($resultado3);
 	  $existe = mysqli_num_rows($resultado3);
-	  if ($existe > 0) {
-	  		$consulta4 = ("SELECT nombre from usuarios where id = $id_user[usuario_id]");
-	  		$resultado4 = mysqli_query($link,$consulta4);
-	  		$nombre = mysqli_fetch_array($resultado4);
+	  $consulta4 = ("SELECT nombre,activo from usuarios where id = $id_user[usuario_id]");
+	  $resultado4 = mysqli_query($link,$consulta4);
+	  $fila4 = mysqli_fetch_array($resultado4);
+	  if ($fila4['activo'] != 0 ) { 
  	?>
  	 	
  	<article class="article_exterior">
@@ -257,7 +257,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 			<a class="btn btn-warning" href="expirar.php?id_viaje=<?php echo $fila['id'] ?>"> Terminar viaje</a> 
 		<?php }else{ 
 		?>
-		<p style="font-style: italic; color: #FDFEFE">Publicador: <?php echo $nombre['nombre']; ?>
+		<p style="font-style: italic; color: #FDFEFE">Publicador: <?php echo $fila4['nombre']; ?>
 			
 		</p>
 				<?php } ?>

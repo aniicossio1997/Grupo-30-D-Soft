@@ -66,7 +66,7 @@
 		$ok=existe($email,$link);
 		if ($ok==0) {
 
-		$sql="INSERT INTO usuarios(id,contenidoimagen, tipoimagen, email, password, nombre, apellido, fecha_nac) VALUES (NULL,NULL, NULL,'$_POST[email]','$_POST[pass1]','$_POST[nombre]','$_POST[apellido]','$_POST[fecha_nac]')";
+		$sql="INSERT INTO usuarios(id,contenidoimagen, tipoimagen, email, password, nombre, apellido, fecha_nac, activo) VALUES (NULL,NULL, NULL,'$_POST[email]','$_POST[pass1]','$_POST[nombre]','$_POST[apellido]','$_POST[fecha_nac]', '1')";
 
 			$resul=mysqli_query($link,$sql);//INSERTO LA CONSULTA A LA BASE DE DATOS
 
