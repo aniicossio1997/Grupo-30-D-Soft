@@ -2,9 +2,9 @@
 
 function puntuacion_piloto($link,$id){
 
-	$consulta1 ="SELECT * FROM calificacion WHERE usuario_id=$id AND soy_piloto=0 AND cumple=1";
+	$consulta1 ="SELECT * FROM calificacion WHERE usuario_id=$id AND es_piloto=1 AND cumple=1";
 	$resultado1= mysqli_query($link,$consulta1);
-	
+	#echo $consulta1;
 
 	$total=0;
 	$cantidad=0;
@@ -21,7 +21,7 @@ function puntuacion_piloto($link,$id){
 
 	}else{
 
-	$consulta2="SELECT COUNT(usuario_id) AS numero FROM calificacion WHERE usuario_id=$id AND soy_piloto=0 AND cumple=1";
+	$consulta2="SELECT COUNT(usuario_id) AS numero FROM calificacion WHERE usuario_id=$id AND es_piloto=1 AND cumple=1";
 	//echo $consulta2;
 	$resultado2=mysqli_query($link,$consulta2);
 
@@ -47,7 +47,7 @@ function puntuacion_piloto($link,$id){
 
 function puntuacion_copiloto($link,$id){
 
-	$consulta1 ="SELECT * FROM calificacion WHERE usuario_id=$id AND soy_piloto=1 AND cumple=1";
+	$consulta1 ="SELECT * FROM calificacion WHERE usuario_id=$id AND es_piloto=0 AND cumple=1";
 	$resultado1= mysqli_query($link,$consulta1);
 
 	//
@@ -66,7 +66,7 @@ function puntuacion_copiloto($link,$id){
 		return "es 0 -- La cantidad de calificaciones es 0";
 
 	}else{
-	$consulta2="SELECT COUNT(usuario_id) AS numero FROM calificacion WHERE usuario_id=$id AND soy_piloto=1 AND cumple=1 AND es_sancion=0";
+	$consulta2="SELECT COUNT(usuario_id) AS numero FROM calificacion WHERE usuario_id=$id AND es_piloto=1 AND cumple=1 AND es_sancion=0";
 
 	$resultado2=mysqli_query($link,$consulta2);
 	

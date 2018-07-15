@@ -12,7 +12,7 @@
 ?>
 
 <div class=" fondo_gris">
-    <p class="title_fv color-a ">Mis Postulaciones
+    <p class="title_fv color-a ">Mis creados/viajes como Piloto
 </p">
 </div>
 <div class=" div_incio" style="margin-top: 4%; width: 80%">

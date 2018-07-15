@@ -12,7 +12,7 @@ $sql2="";//para concatenar el de busqueda
 $cal="";
 
 if (isset($_GET['filtro'])) {
-	if (isset($_GET['tipos']) && $_GET['tipos']|='' && $_GET['tipos']!="0") {
+	if (isset($_GET['tipos']) && $_GET['tipos']!='' && $_GET['tipos']!="0") {
 		if ($_GET['tipos']==1) {
 			//aceptado
 			$sql2.=" AND p.rechazado = 2 ";
