@@ -2,6 +2,7 @@
 <?php
 include("header.php");
 $link=conectar();
+include("funcion_puntuacion.php");
 
 
 //consulta para obtener la fecha y horario del viaje al que se quiere postular
@@ -124,14 +125,16 @@ while ($fila4 =  mysqli_fetch_array($resultado4)) {
 			<tr>
 				<td>
 					<?php
-					  $consulta2 = "SELECT nombre FROM usuarios WHERE id = $fila1[postulante_id]";
+					  $consulta2 = "SELECT nombre, id FROM usuarios WHERE id = $fila1[postulante_id]";
 					  $resultado2 = mysqli_query($link,$consulta2);
 					  $fila2 = mysqli_fetch_array($resultado2);
 					?>
 					<p>Postulante: <?php echo $fila2['nombre'] ?> </p>
 				</td>
 				<td>
-					<p>Calificcion: 0</p>
+				<p>Calificción como copiloto:
+				 <?php echo  puntuacion_copiloto($link,$fila2['id']);
+				  ?></p>
 				</td>
 			</tr>
 			<tr>
@@ -150,11 +153,26 @@ while ($fila4 =  mysqli_fetch_array($resultado4)) {
 					<?php if ($fila1['rechazado'] == 0) { ?>
 					<a class="a-link2 a-rig fondo-blue" onmouseover="this.style.color='green'" onmouseout ="this.style.color='white'" href="aceptar_postulante.php?id_pos=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $id_viaje;  ?>">Aceptar</a>
 				<?php }else { ?>
-					<a class="a-link2 a-rig fondo-blue" href="mi_perfil2.php?id_pos=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $_GET['id_viaje']?>&origen=<?php echo $_GET['origen']?>&destino=<?php echo $_GET['destino']?>">Informacion del copiloto</a>
+					<?php /*<a class="a-link2 a-rig fondo-blue" href="mi_perfil2.php?id_pos=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $_GET['id_viaje']?>&origen=<?php echo $_GET['origen']?>&destino=<?php echo $_GET['destino']?>">Informacion del copiloto</a> */ ?>
+					
+
+					<form action="mi_perfil2.php" method="GET" style="margin-top: -2%;">
+				 	<input type="hidden" name="id_pos" value="<?php echo $fila1['postulante_id']; ?>">
+				 	<input type="hidden" name="id_viaje" value="<?php echo $_GET['id_viaje']; ?>">
+				 	<input type="hidden" name="origen" value=" echo $_GET['origen'];">
+				 	<input type="hidden" name="destino" value="<?php echo $_GET['destino']; 
+				 	?>">
+				 	<input type="hidden" name="pagina" value="<?php echo "postulante"; ?>">
+
+
+				 	<button type="submit" class="btn btn-primary" name="mostrar_cal">Información del copiloto</button>
+				 </form>
+
+
 				<?php  }?>
 				</td>				
 				<td class="Td-a">
-					<a class="a-link2 a-rig fondo-blue" onmouseover="this.style.color='red'" onmouseout ="this.style.color='white'" href="rechazar_postulante.php?id=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $id_viaje ?>&origen=<?php echo $_GET['origen'] ?>&destino=<?php echo $_GET['destino']?>">Rechazar</a>
+					<a class="btn btn-warning" onmouseover="this.style.color='red'" onmouseout ="this.style.color='white'" href="rechazar_postulante.php?id=<?php echo $fila1['postulante_id']?>&id_viaje=<?php echo $id_viaje ?>&origen=<?php echo $_GET['origen'] ?>&destino=<?php echo $_GET['destino']?>">Rechazar</a>
 				</td>
 			</tr>
 		</table>

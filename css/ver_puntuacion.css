@@ -1,0 +1,30 @@
+.table> tbody> tr> th,
+    .table> tbody> tr> td {
+        border: none;
+    }
+.ver_puntos{
+	position: absolute;
+	width: 90%;
+	overflow: auto;
+	height: 390px;
+	border: 1px solid #ccc;
+	background-color: #ECE8E8;
+	margin-top: 2%;
+	margin-left: 2.5%;
+}
+
+.btn-link{
+	border: none;
+	padding: 0;
+	outline:none;
+    outline-offset: 0px; 
+}
+.btn-link.active.focus, .btn-link.active:focus, .btn-link.focus, .btn-link:active.focus, .btn-link:active:focus, .btn-link:focus{
+	outline:none;
+    outline-offset: 0px; 
+    text-decoration: none; 
+}
+.opacidad{
+	opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}

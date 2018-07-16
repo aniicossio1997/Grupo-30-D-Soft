@@ -13,7 +13,7 @@
 	$resul=mysqli_query($link,$consulta);
 	$cant=0;
 	while ($fila=mysqli_fetch_array($resul)) {
-		//las calificaciones que un piloto hace
+		
 			//Crea las calificaciones para los copilotos ";
 			$consulta_2="INSERT INTO calificacion(id, viaje_id, usuario_id, es_piloto, calificador_id,cumple) VALUES (NULL,$_GET[id_viaje],$fila[postulante_id],0,$id,0)";
 			/*echo "<br>".$consulta_2;

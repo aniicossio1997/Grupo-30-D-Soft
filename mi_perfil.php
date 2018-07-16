@@ -15,7 +15,7 @@ $fila = mysqli_fetch_array($resul);
 
 
 ?>
-
+<section id="section" style="width: 100%;"></section>
 
 <?php
 //cartel-----------------------------------------------------------------
@@ -34,8 +34,9 @@ if (isset($_SESSION['confirmacion'])) {$a = 1?>
 <?php } 
 //--fin cartel------------------------------------------------------------
 ?>
+	<?php	
 
-		<?php
+		//--------------------------------------
 	
 			if (isset($_SESSION['mensaje'])) {
 				echo $_SESSION['mensaje'];
@@ -101,16 +102,28 @@ if (isset($_SESSION['confirmacion'])) {$a = 1?>
 
 				<p>Puntaje total como piloto: <?php 
 				echo puntuacion_piloto($link,$id);
-				 ?><a style="display: block;" href="mis_calificaciones_como_piloto.php">
-				 Ver más detalles..</a>
+				 ?>
+				 <form action="calificaciones.php" method="POST" style="margin-top: -2%">
+				 	<input type="hidden" name="tipo" value="1">
+				 	<input type="hidden" name="user_id" value="<?php echo $id; ?>">
+				 	<button type="submit" class="btn btn-link" name="mostrar_cal">Más detalles..</button>
+				 </form>
 				 	</p>
+				 <?php /* 	<a style="display: block;" href="mis_calificaciones_como_piloto.php">
+				 Ver más detalles..</a>*/ ?>
+				 
 
 
 				<p>Puntaje total como  Copiloto: <?php 
 				echo puntuacion_copiloto($link,$id);
 				 ?>
-				 	<a style="display: block;" href="mis_calificaciones_como_copiloto.php">
-				 Ver más detalles..</a>
+				 	<form action="calificaciones.php" method="POST" style="margin-top: -2%;">
+				 		<input type="hidden" name="user_id" value="<?php echo $id ?>">
+				 	<input type="hidden" name="tipo" value="0">
+				 	<button type="submit" class="btn btn-link" name="mostrar_cal">Más detalles..</button>
+				 </form>
+				<?php /* <a style="display: block;" href="mis_calificaciones_como_copiloto.php">
+				 Ver más detalles..</a>  */ ?> 	  
 				 </p>
 			</div>
 		</div>

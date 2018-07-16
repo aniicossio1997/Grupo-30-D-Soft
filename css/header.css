@@ -106,13 +106,13 @@ border-radius: 5px;
     transition: all .3s;
     font-size: 1.2em;
 }
-.btn-link:hover{
+
+/*.btn-link:hover{
 -webkit-box-shadow: 0px 0px 4px 1px rgba(167,207,217,0.9);
 -moz-box-shadow: 0px 0px 4px 1px rgba(167,207,217,0.9);
 box-shadow: 0px 0px 4px 1px rgba(167,207,217,0.9);
-	
 
-}
+}*/
 .fondo-blue{
 	background-color: #19A7C7;
 

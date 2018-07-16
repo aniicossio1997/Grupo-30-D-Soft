@@ -34,7 +34,7 @@ class validar{
 	}
 
 	function autenticar($usuario,$clave){
-		 $sql="SELECT * FROM usuarios  WHERE email='$usuario' AND password='$clave'";
+		 $sql="SELECT * FROM usuarios  WHERE email='$usuario' AND password='$clave' AND activo =1";
 		 $result= mysqli_query($this->link, $sql);
 		 $rows=mysqli_num_rows($result);
 

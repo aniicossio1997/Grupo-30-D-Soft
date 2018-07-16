@@ -47,6 +47,7 @@ $verificar = new validar($link);
 	<link rel="stylesheet" href="css/pago_tarjeta.css">
 	
 	<link rel="stylesheet" type="text/css" href="css/calificaciones_pendientes.css">
+	<link rel="stylesheet" href="css/ver_puntuacion.css">
 </head>
 <body>
 	
@@ -74,7 +75,7 @@ $verificar = new validar($link);
 								<li><a href="mis_viajes_postulados.php">Ver mis viajes postulados</a></li>
 								
 								
-								<li><a href="calificaciones_pendintes.php">Ver mis calificaciones pendientes</a></li>
+								<li><a href="calificaciones_pendientes.php">Ver mis calificaciones pendientes</a></li>
 
 
 							</ul>

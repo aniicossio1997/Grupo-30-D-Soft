@@ -4,7 +4,7 @@ include('header.php');
 include('img.php');
 $user_actual=$verificar->id();
 
-$consulta="SELECT u.nombre,u.apellido, u.tipoimagen, u.contenidoimagen,u.fecha_nac,u.id , c.id as id_cal, c.es_piloto, v.fecha, v.horario FROM calificacion c INNER JOIN usuarios u ON (c.usuario_id=u.id) INNER JOIN viajes v on(v.id=c.viaje_id)  WHERE c.calificador_id=$user_actual AND c.cumple=0  ";
+$consulta="SELECT u.nombre,u.apellido, u.tipoimagen, u.contenidoimagen,u.fecha_nac,u.id , c.id as id_cal, c.es_piloto, v.fecha, v.horario,v.origen,v.destino FROM calificacion c INNER JOIN usuarios u ON (c.usuario_id=u.id) INNER JOIN viajes v on(v.id=c.viaje_id)  WHERE c.calificador_id=$user_actual AND c.cumple=0  ";
 
 
 $parametro="";//Guarda los parametros recibidos para la siguiente pagina
@@ -68,40 +68,51 @@ $resul=mysqli_query($link,$consulta.$sql2);
 
 <section>
 	<?php while ($fila=mysqli_fetch_array($resul)) { ?>
-		<article class="mis_vehiculos">
+<article class="mis_vehiculos">
 
-		
-		<div class="container caja_mayor ">
+<table class="table" >
 
-			<div class="alinear_cal caja_mov">
-				<?php  /* ?>
-			<?php if ($fila['es_piloto']==1) { ?>
-
-			<a class="btn btn-primary" href="calificar_copiloto.php?user_a_cal=<?php echo $fila['id'];?>&id_cal=<?php echo $fila['id_cal']; ?> "> Calificar</a>
-
-			<?php }else{ ?>
-				<a class="btn btn-primary" href="calificar_piloto.php?user_a_cal=<?php echo $fila['id'];?>&id_cal=<?php echo $fila['id_cal']; ?>">Calificar</a>
-			<?php } ?>
-			<?php */ ?>
-					</div>
-
-						<img  class="img-circle alinear_cal img_cal " width="120px" height="120px" src="<?php if (hay_imagen($fila['id'],$link)){?>mostrar_imagen.php?id=<?php echo $fila['id'];?><?php }else{
+    <tbody>
+      <tr>
+        <td><img  class="img-circle alinear_cal img_cal " width="120px" height="120px" src="<?php if (hay_imagen($fila['id'],$link)){?>mostrar_imagen.php?id=<?php echo $fila['id'];?><?php }else{
 								echo "fondos/user2.png";
 							}
 							?>" >
-					
-					<div class=" alinear_cal  caja_calificar">
-						<p>Nombre: <?php echo $fila['nombre'];	?>
-							
-						</p>
-						<p>Apellido: <?php echo $fila['apellido']; ?></p>
-						<p>Edad: <?php echo edad($fila['fecha_nac']); ?> años</p>
-						<a href="mi_perfil2.php?id_pos=<?php echo $fila['id'] ?>"> Mas información..</a>
-				
-					</div>
-					
-					
-		</div>
+		</td>
+        <td>
+        	<p>Datos de la persona:</p>
+			<p>Nombre: <?php echo $fila['nombre'];	?></p>
+			<p>Apellido: <?php echo $fila['apellido']; ?></p>
+			<p>Edad: <?php echo edad($fila['fecha_nac']); ?> años</p>
+
+			<?php /*<a href="mi_perfil2.php?id_pos=<?php echo $fila['id'] ?>"> Mas información..</a></td>
+ */ ?>
+			
+			<p><form action="mi_perfil2.php" method="GET">
+			<input type="hidden" name="id_pos" value="<?php echo $fila['id']; ?>">
+			<input type="hidden" name="pagina" value="<?php echo "calificaciones"; ?>">
+			<button type="submit" class="btn btn-link">Más información..</button>
+				 </form></p>
+
+		<td>
+			<p>Datos del viaje:</p>
+			<p>Origen:<?php echo $fila['origen']; ?>
+			</p>
+			<p>Destino: <?php echo $fila['destino']; ?></p>
+			<p>Fecha: <?php echo fecha_string($fila['fecha']); ?></p>
+			<a href="">Más información..</a>
+
+		</td>
+        <td><?php if ($fila['es_piloto']==1) { ?>
+		<a class="btn btn-primary" href="calificar_copiloto.php?user_a_cal=<?php echo $fila['id'];?>&id_cal=<?php echo $fila['id_cal']; ?> "> Calificar</a>
+	<?php }else{ ?>
+		<a class="btn btn-primary" href="calificar_piloto.php?user_a_cal=<?php echo $fila['id'];?>&id_cal=<?php echo $fila['id_cal']; ?>">Calificar</a>
+			<?php } ?></td>
+		</tr>
+         
+    </tbody>
+  </table>
+
 
 	</article>
 <?php	} ?>

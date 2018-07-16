@@ -93,6 +93,7 @@ function tipo_diario($link,$sql,$horario,$duracion,$minutos,$id)
 	$fecha=$date->format('Y-m-d');
 
 	$fechaInicio=strtotime($fecha);
+	$cant=0;
 
 	for ($i=0; $i < 5; $i++) { 
 
@@ -112,14 +113,10 @@ function tipo_diario($link,$sql,$horario,$duracion,$minutos,$id)
 	    if($dia==1){
 	    	
 	    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==1) {
-	    		$cant=$cant +1;
-	    		$_SESSION['mensaje_error']="ERROR un vehiculo no puede estar asociado aun viaje con la mism  fecha y hora";
-	    		header("Location:agregar_viaje.php");
-	    		die("Error 1:vehiculo repetido");
-	    		
+	    		$cant=$cant +1;	    		
 
 	    	}
-	    	
+	    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==0) {
 	    	$sql_1.=" ,'$fecha')";
 	        $resul=mysqli_query($link,$sql_1);
 			if ($resul!=true){
@@ -128,17 +125,15 @@ function tipo_diario($link,$sql,$horario,$duracion,$minutos,$id)
 				die("ERROR al guarar el viaje");
 				
 			}
+		}
 
 	    }
 	    if($dia==2){
 
 	    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==1) {
-	    		$cant=$cant +1;
-	    		$_SESSION['mensaje_error']="ERROR: un vehiculo no puede estar asociado aun viaje con la mism  fecha y hora";
-	    		header("Location:agregar_viaje.php");
-	    		die("Error 1:vehiculo repetido");
-	    		
+	    		$cant=$cant +1;	    		
 	    	}
+	    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==0) {
 	    	$sql_2.=" ,'$fecha')";
 	    	$resul=mysqli_query($link,$sql_2);
 
@@ -147,19 +142,17 @@ function tipo_diario($link,$sql,$horario,$duracion,$minutos,$id)
 				header("Location:agregar_viaje.php");
 				die("Error al guardar viaje de tipo diario");
 				}
+			}
 
 		}
 	    if($dia==3){
 
 	    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==1) {
 	    		$cant=$cant +1;
-	    		$_SESSION['mensaje_error']="ERROR: un vehiculo no puede estar asociado aun viaje con la mism  fecha y hora dia 3";
-	    		header("Location:agregar_viaje.php");
-	    		die("Error 1:vehiculo repetido");
 	    		
 	    	}
+	    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==0) {
 	    	$sql_3.=" ,'$fecha')";
-	    	
 	        $resul=mysqli_query($link,$sql_3);
 			if ($resul!=true){
 
@@ -167,18 +160,17 @@ function tipo_diario($link,$sql,$horario,$duracion,$minutos,$id)
 				header("Location:agregar_viaje.php");
 				die("ERROR");
 				}
+			}
 	       
 
 	    }
 	    if($dia==4){
 
 	    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==1) {
-	    		$cant=$cant +1;
-	    		$_SESSION['mensaje_error']="ERROR: un vehiculo no puede estar asociado aun viaje con la mism  fecha y hora";
-	    		header("Location:agregar_viaje.php");
-	    		die("Error 1:vehiculo repetido");
-	    		
+	    		$cant=$cant +1;	    		
 	    	}
+
+	    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==0) {
 	   	 	$sql_4.=" ,'$fecha')";
 	    	
 	        $resul=mysqli_query($link,$sql_4);
@@ -188,17 +180,16 @@ function tipo_diario($link,$sql,$horario,$duracion,$minutos,$id)
 				die("error");
 				
 			}
+		}
 	    }
 
 	    if($dia==5){
 
 	    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==1) {
 	    		$cant=$cant +1;
-	    		$_SESSION['mensaje_error']="ERROR: un vehiculo no puede estar asociado aun viaje con la mism  fecha y hora";
-	    		header("Location:agregar_viaje.php");
-	    		die("Error 1:vehiculo repetido");
 	    		
 	    	}
+	    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==0) {
 	    	$sql_5.=" ,'$fecha')";
 	    	
 	        $resul=mysqli_query($link,$sql_5);
@@ -208,8 +199,14 @@ function tipo_diario($link,$sql,$horario,$duracion,$minutos,$id)
 				die("error");
 				
 				}
-	    }
+				 }
 	    
+	}
+}
+	if ($cant>0) {
+	$_SESSION['mensaje_error']="ERROR un vehiculo no puede estar asociado aun viaje con la mism  fecha y hora, no se pudieron crear: ".$cant." viajes";
+	    header("Location:agregar_viaje.php");
+	    die("Error 1:vehiculo repetido");
 	}
 
 	$_SESSION['mensaje']="Los viajes de tipo diario se crearon exitosamente";
@@ -221,7 +218,7 @@ function tipo_diario($link,$sql,$horario,$duracion,$minutos,$id)
 function tipo_semanal($link,$sql,$elejido,$horario,$duracion,$minutos,$id)
 {	
 	$sql_1=$sql_2=$sql_3=$sql_4=$sql;
-
+	$cant=0;
 	$fecha_actual=date('Y-m-d');
 	$date = new DateTime($fecha_actual);
 
@@ -253,10 +250,11 @@ function tipo_semanal($link,$sql,$elejido,$horario,$duracion,$minutos,$id)
 	    	$fecha=date('Y-m-d', $i);
 	    	if ($indice==1) {
 	    		if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==1) {
-		    		$_SESSION['mensaje_error']= "ERROR: el vehiculo seleccionado ya se encuentra asociado a otro viaje en ese viaje";
-		    		die("Error 1:vehiculo repetido");
+		    		$cant=$cant+1;
 		    		
 		    	}
+
+		    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==0) {
 	    		$sql_1.=" ,'$fecha')";
 	    		$resul=mysqli_query($link,$sql_1);
 	    		if ($resul!=true){
@@ -265,14 +263,16 @@ function tipo_semanal($link,$sql,$elejido,$horario,$duracion,$minutos,$id)
 				die("error");
 				
 				}
+			}
 	
 	    	}
 	    	if ($indice==2) {
 	    		if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==1) {
-		    		$_SESSION['mensaje_error']= "ERROR: el vehiculo seleccionado ya se encuentra asociado a otro viaje en ese viaje";
-		    		die("Error 1:vehiculo repetido");
+		    		$cant=$cant+1;
 		    		
 		    	}
+
+		    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==0) {
 	    		$sql_2.=" ,'$fecha')";
 	    		$resul=mysqli_query($link,$sql_2);
 	    		if ($resul!=true){
@@ -281,14 +281,15 @@ function tipo_semanal($link,$sql,$elejido,$horario,$duracion,$minutos,$id)
 				die("error");
 				
 				}
+			}
 	    		
 	    	}
 	    	if ($indice==3) {
 	    		if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==1) {
-		    		$_SESSION['mensaje_error']= "ERROR: el vehiculo seleccionado ya se encuentra asociado a otro viaje en ese viaje";
-		    		die("Error 1:vehiculo repetido");
+		    		$cant=$cant+1;
 		    		
 		    	}
+		    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==0) {
 	    		$sql_3.=" ,'$fecha')";
 	    		$resul=mysqli_query($link,$sql_3);
 	    		if ($resul!=true){
@@ -296,15 +297,15 @@ function tipo_semanal($link,$sql,$elejido,$horario,$duracion,$minutos,$id)
 				header("Location:agregar_viaje.php");
 				die("error");
 				
-				}
+				}}
 	    		
 	    	}
 	    	if ($indice==4) {
 	    		if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==1) {
-		    		$_SESSION['mensaje_error']= "ERROR un vehiculo no puede estar asociado aun viaje con la mism  fecha y hora";
-		    		die("Error 1:vehiculo repetido");
+	    			$cant=$cant+1;
 		    		
 		    	}
+		    	if (elementos($fecha,$horario,$duracion,$minutos,$link,$id)==0) {
 	    		$sql_4.=" ,'$fecha')";
 	    		$resul=mysqli_query($link,$sql_4);
 	    		if ($resul!=true){
@@ -313,12 +314,18 @@ function tipo_semanal($link,$sql,$elejido,$horario,$duracion,$minutos,$id)
 				die("error");
 				
 				}
+			}
 	    		
 	    	}
 	    	$indice=$indice+1;
 	    	
 
 	    }
+	}
+	if ($cant>0) {
+		$_SESSION['mensaje_error']= "ERROR: el vehiculo seleccionado ya se encuentra asociado a otro viaje en ese periodo de tiempo, no se pudo crear: ".$cant." viajes";
+		header("Location:agregar_viaje.php"); 
+		 die("Error 1:vehiculo repetido");
 	}
 
 	$_SESSION['mensaje']="Sean creado exitosamente los viajes de tipo semanal";
