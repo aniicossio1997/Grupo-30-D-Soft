@@ -5,7 +5,7 @@ function sancionar_copiloto($link,$id)
 	$resultado= mysqli_query($link,$consulta2);
 
   if (mysqli_num_rows($resultado) >0) {
-  		$consulta1="INSERT INTO calificacion(id, usuario_id, soy_piloto,cumple,puntaje,es_sancion) VALUES (NULL,$id,1,1,-1,1)";
+  		$consulta1="INSERT INTO calificacion(id, usuario_id, soy_piloto,cumple,puntaje,es_sancion) VALUES (NULL,$id,0,1,-1,1)";
 
 	$resultado1= mysqli_query($link,$consulta1);
   }
