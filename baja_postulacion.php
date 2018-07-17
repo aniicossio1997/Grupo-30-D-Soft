@@ -11,6 +11,8 @@ include('funcion_sancionar.php');
 
 
 
+
+//-------------
   //consulta para obtener la fecha del viaje al que se quiere postular
 $consulta0 = "SELECT fecha,horario,activo FROM viajes WHERE id = $_GET[id_viaje]";
 $resultado0 = mysqli_query($link,$consulta0);

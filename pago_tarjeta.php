@@ -1,6 +1,25 @@
 <?php
-include('header.php');
+include('conexion.php');
+$link=conectar();
+session_start();
+include('clases.php');
+$verificar = new validar($link);//se crea  una clase
+
+$id= $verificar->id();
 //solo hay que validar si la tarjeta es valida.. que complete DNI.. NOMBRE APELLIDO... CLAVE DE LA TARJETA, number DE LA TARJETA
+
+
+//-----------------------------------------------
+//consulta para que un coplito nose vuelva a postular a un viaje donde fue aceptado pero se dio de baja 
+$consulta="SELECT * FROM calificacion WHERE usuario_id=$id AND es_sancion=1 and viaje_id=$_GET[id_viaje] and cumple=1";
+$resul=mysqli_query($link,$consulta);
+
+if (mysqli_num_rows($resul)>0) {
+  $_SESSION['mensaje'] = "ERROR: Lo siento, no se puede volver a postular...Usted ya se postulo anteriormente, fue aceptado y se dio de baja";
+    header("Location: inicio.php");
+    die();
+}
+
 
 $fecha_actual=date('Y-m-d');
 	$date = new DateTime($fecha_actual);

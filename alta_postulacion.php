@@ -8,6 +8,12 @@ $verificar = new validar($link);//se crea  una clase
 
 $id= $verificar->id();
 
+
+
+
+
+//----------------------------------
+
 //consulta para obtener la fecha y horario del viaje al que se quiere postular
 $consulta_f= "SELECT fecha, horario FROM viajes where id = $_POST[id_viaje]";
 $resultado_f = mysqli_query($link,$consulta_f);
