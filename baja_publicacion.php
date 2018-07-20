@@ -1,5 +1,5 @@
 <?php
-include ('header.php');
+include ('funcion_sancionar.php');
 $link=conectar();
 $verificar = new validar($link);
 $id = $verificar-> id();
@@ -29,6 +29,7 @@ if($fila0['fecha'] < date("Y-m-d") OR ($fila0['fecha'] == date("Y-m-d") && $fila
 				}else{
 						$consulta3 = "UPDATE viajes SET activo = 2 WHERE id = $_GET[id_viaje]";
 						$resultado3 = mysqli_query($link,$consulta3);
+						sancionar_piloto($link,$id,$_GET[id_viaje]);
 						$_SESSION['mensaje'] = "Viaje elimando exitosamente";
 						header("Location:inicio.php");
 					  }

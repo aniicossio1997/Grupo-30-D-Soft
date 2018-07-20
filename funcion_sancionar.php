@@ -1,4 +1,5 @@
 <?php 
+include('header.php');
 function sancionar_copiloto($link,$id,$viaje_id)
 {
 	$consulta2="SELECT * FROM postulantes  WHERE postulante_id=$id AND  rechazado = 2";
@@ -17,6 +18,8 @@ function sancionar_piloto($link,$id,$viaje_id)
 {
 	
   		$consulta1="INSERT INTO calificacion(id, usuario_id, viaje_id,es_piloto,cumple,puntaje,es_sancion) VALUES (NULL,$id,$viaje_id,1,1,-1,1)";
+  		echo "entre";
+  		$resultado1= mysqli_query($link,$consulta1);
 
 
 }

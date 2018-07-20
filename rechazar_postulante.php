@@ -1,6 +1,9 @@
 <?php
-include('header.php');
-$link = conectar();
+include ('funcion_sancionar.php');
+$link=conectar();
+$verificar = new validar($link);
+$id = $verificar-> id();
+
 $consulta1 = "SELECT rechazado FROM postulantes where (viaje_id = $_GET[id_viaje]) AND (postulante_id = $_GET[id])";
 
 $resultado1 = mysqli_query($link,$consulta1);
@@ -15,6 +18,7 @@ if (($fila1['rechazado'] == 2) && (!isset($_GET['respuesta']))) {
 {
 		$consulta = "UPDATE postulantes SET rechazado = 1 WHERE (postulante_id = $_GET[id]) AND (viaje_id = $_GET[id_viaje])";
 		$resultado=mysqli_query($link,$consulta);
+		sancionar_piloto($link,$id,$_GET[id_viaje]);
         $_SESSION['mensaje']= "El postulante fue rechazado exitosamente.";
 		$_SESSION['id_viaje'] = $_GET['id_viaje'];
 		unset($_GET['respuesta']);
