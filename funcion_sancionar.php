@@ -13,5 +13,12 @@ function sancionar_copiloto($link,$id,$viaje_id)
 
 
 }
+function sancionar_piloto($link,$id,$viaje_id)
+{
+	
+  		$consulta1="INSERT INTO calificacion(id, usuario_id, viaje_id,es_piloto,cumple,puntaje,es_sancion) VALUES (NULL,$id,$viaje_id,1,1,-1,1)";
+
+
+}
 
  ?>

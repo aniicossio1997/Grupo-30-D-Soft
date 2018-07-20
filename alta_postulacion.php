@@ -9,9 +9,6 @@ $verificar = new validar($link);//se crea  una clase
 $id= $verificar->id();
 
 
-
-
-
 //----------------------------------
 
 //consulta para obtener la fecha y horario del viaje al que se quiere postular

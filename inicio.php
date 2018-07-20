@@ -48,7 +48,7 @@ if (isset($_GET['buscar'])) {
 	}
 	if (isset($_GET['maximo']) && $_GET['maximo']!="" && empty($_GET['minimo'])) {
 		$maximo=$_GET["maximo"];
-			$sql2.= " AND (costo div (copilotos +1)) >= $maximo  ";
+			$sql2.= " AND (costo div (copilotos +1)) <= $maximo  ";
 
 			$parametro.= "maximo=".$_GET["maximo"]."&";
 	}
@@ -64,13 +64,13 @@ if (isset($_GET['buscar'])) {
 
 	if (isset($_GET['fecha_min']) && $_GET['fecha_min']!="" && empty($_GET['fecha_max'])) {
 		$fecha_min=$_GET["fecha_min"];
-			$sql2.= " AND fecha <= '$fecha_min'  ";
+			$sql2.= " AND fecha >= '$fecha_min'  ";
 
 			$parametro.= "fecha_min=".$_GET["fecha_min"]."&";
 	}
 	if (isset($_GET['fecha_max']) && $_GET['fecha_max']!="" && empty($_GET['fecha_min'])) {
 		$fecha_max=$_GET["fecha_max"];
-			$sql2.= " AND fecha >= '$fecha_max'  ";
+			$sql2.= " AND fecha <= '$fecha_max'  ";
 
 			$parametro.= "fecha_max=".$_GET["fecha_max"]."&";
 	}
