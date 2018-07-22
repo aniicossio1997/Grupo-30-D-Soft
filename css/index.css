@@ -3,12 +3,13 @@ margin: 0 auto;
 width: 75%;
 margin-top: 5%;
 
+
 }
 .conteiner-f1{
 	margin: 0 auto;
 	width: 90%;
 	box-sizing: border-box;
-	padding: 5%;
+	padding: 3%;
 	background-color: #fff;	
 	border: 1px solid #9D9E9F;
 	border-radius: 5px;
@@ -24,10 +25,11 @@ margin-top: 5%;
 	background-color: #19A7C7;
 	color: #fff;
 	border-radius: 5px;
-	margin-bottom:-4%;
+	margin-bottom:-3.5%;
 	position: relative;
 
 }
+
 
 .input-f1{
 	

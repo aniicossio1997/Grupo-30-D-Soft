@@ -32,6 +32,16 @@ class validar{
 		}
 		else "";
 	}
+	function existe_user($usuario){
+		$consulta="SELECT password FROM usuarios WHERE email='$usuario'";
+		$resul=mysqli_query($this->link,$consulta);
+		if (mysqli_num_rows($resul)!=0) {
+			$mostrar=mysqli_fetch_array($resul);
+			return $mostrar['password'];
+		}
+		return false;
+		
+	}
 
 	function autenticar($usuario,$clave){
 		 $sql="SELECT * FROM usuarios  WHERE email='$usuario' AND password='$clave' AND activo =1";
