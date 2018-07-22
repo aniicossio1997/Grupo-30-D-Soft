@@ -51,7 +51,7 @@ $mail->Port='587';
 $mail->Username='aventonsoporte@gmail.com';
 $mail->Password='AvEnToN123';
 
-$mail->setFrom('aventonsoporte@gmail.com','Equipo de Soporte Aventon');
+$mail->setFrom('aventonsoporte@gmail.com','Equipo de Soporte De-Soft');
 $mail->addAddress("$email");
 
 $mail->Subject='Recuperar Password';
