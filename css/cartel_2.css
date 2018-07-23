@@ -25,3 +25,16 @@
 .cambiar_color{
 	background-color: #199D05;
 }
+
+
+.cartel_error_2{
+	position: absolute;
+	background-color: #D50404;
+	width: 70%;
+	height: 210px;
+	position: fixed;
+	margin: -7.7%;
+	margin-top: -5%;
+	border-radius: 5px;
+}
+

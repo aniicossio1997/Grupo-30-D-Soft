@@ -48,6 +48,22 @@ $verificar = new validar($link);
 	
 	<link rel="stylesheet" type="text/css" href="css/calificaciones_pendientes.css">
 	<link rel="stylesheet" href="css/ver_puntuacion.css">
+
+
+
+<script type="text/javascript" src="boot/js/js_min.js"></script>
+	<script type="text/javascript" src="boot/js/bootstrap.min.js"></script>
+		<script >
+ 	function activar_modal() {
+ 		
+ 		
+ 		$(document).ready(function()
+      {
+         $("#myModal").modal("show");
+      });
+ 	}
+ </script>
+
 </head>
 <body>
 	

@@ -9,7 +9,7 @@ session_start();
 <?php 
 //-- si la varible email pasado como parmetro no exite o esta vacia --
 if (!isset($_POST['email']) || empty($_POST['email'])) {
-	$_SESSION['mensaje']="El email esta vacio";
+	$_SESSION['error']="El email esta vacio";
 	header("location:recuperar_clave.php");
 	//echo $_POST['email'];
 	die();
@@ -21,7 +21,7 @@ $consulta="SELECT password FROM usuarios WHERE email='$email'";
 $resul=mysqli_query($link,$consulta);
 
 if (mysqli_num_rows($resul)==0) {
-	$_SESSION['mensaje']="El email no existe, intentelo de nuevo";
+	$_SESSION['error']="El email no existe, intentelo de nuevo";
 	header("location:recuperar_clave.php");
 	die();
 }
@@ -63,11 +63,11 @@ $mail->IsHTML(true);
 
 if ($mail->send()) {
 	echo "enviado";
-	$_SESSION['mensaje']="Se ha enviado un mensaje de recuperación de contraseña a su correo electrónico con exito";
+	$_SESSION['bien']="Se ha enviado un mensaje de recuperación de contraseña a su correo electrónico";
 	header("location:recuperar_clave.php");
 	die();
 }else{
-	$_SESSION['mensaje']="ERROR: no sea podido realizar la operación, intentelo más tarde";
+	$_SESSION['error']="ERROR: no sea podido realizar la operación, intentelo más tarde";
 	header("location:recuperar_clave.php");
 	die();
 }

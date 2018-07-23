@@ -115,6 +115,7 @@ function validar_fecha() {
 
 function validar(){
 	limpiar_errores();
+	
 	if (validar_nro_tarjeta() && validar_clave() && validar_fecha() && validar_nombre() && validar_apellido() && validar_dni()){
 		return true;
 	}
@@ -122,5 +123,6 @@ function validar(){
 
 }
 window.onload = function(){
+
 	document.getElementById('validar_tarjeta').onsubmit = validar;
 }

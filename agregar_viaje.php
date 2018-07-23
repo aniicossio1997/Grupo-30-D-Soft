@@ -40,40 +40,79 @@ $hay_autos=mysqli_num_rows($resul);
 
 
 ?>
+
+
+<!--  - - - - - - - - - - - - - - - - - -  -->
+
+<?php  if (isset($_SESSION['mensaje_error']) ){ ?>
+	<script type="text/javascript">
+		activar_modal();
+	</script>
+
+	<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="background-color: #D50404;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title" style="color: #fff; text-align: center;">Se ha producido un mensaje_error</h3>
+      </div>
+      <div class="modal-body" style="color: #fff; border: none;">
+        <p style="text-align: center;"><?php echo $_SESSION['mensaje_error']; ?></p>
+      </div>
+      <div class="modal-footer" style="border:none;">
+        <button type="button" class="btn btn-defaul" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<?php  unset($_SESSION['mensaje_error']); }  ?>
+<!-- - - - - - - - -  - - - - - - - - - ---->
+<!-- - - - - - - - -  - - - - - - - - - ---->
+<?php  if (isset($_SESSION['mensaje']) ){ ?>
+	<script type="text/javascript">
+		activar_modal();
+	</script>
+
+	<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="background-color: #199D05;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title" style="color: #fff; text-align: center;">Operación exitosa</h3>
+      </div>
+      <div class="modal-body" style="color: #fff; border: none;">
+        <p style="text-align: center;"><?php echo $_SESSION['mensaje']; ?></p>
+      </div>
+      <div class="modal-footer" style="border:none;">
+        <button type="button" class="btn btn-defaul" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<?php  unset($_SESSION['mensaje']); }  ?>
+
+
+
+
+
+
 <div class="conteiner-form">
 	<h1 class="h1-form">Crear Viaje </h1>
 		
 		<form id="form_viaje" method="POST" action="validar_viaje.php">
 	<div class="conteiner-f1">
-
-
-
-		<?php if (isset($_SESSION['mensaje_error'])) { ?>
-		<div class="cartel_error " id="car_error">
-			
-
-			<span id="ok" class="icon-cancel-circle"></span>
-			
-			<p class="cartel_p">
-				<span class="icon-warning "></span>
-				<?php echo $_SESSION['mensaje_error']; ?>
-			</p>
-
-		</div>
-		<?php unset($_SESSION['mensaje_error']); } ?>
-
-		<?php if (isset($_SESSION['mensaje']) ){ ?>
-			<div class="cartel_error cambiar_color   " id="car_error">
-			
-			<span id="ok" class="icon-cancel-circle "></span>
-				<p class="cartel_p"><span class="icon-checkmark "></span> <?php echo $_SESSION['mensaje']; ?></p>
-			</div>
-
-		<?php unset($_SESSION['mensaje']); }?>
-
-		<div>
-			
-		</div>
 
 	<div class="caja-viaje">
 		<?php if ($hay_autos >0 ) { ?>

@@ -1,49 +1,9 @@
 <?php
 include('header.php');
-
-$id= $verificar->id();
-//solo hay que validar si la tarjeta es valida.. que complete DNI.. NOMBRE APELLIDO... CLAVE DE LA TARJETA, number DE LA TARJETA
-
-
-//-----------------------------------------------
-//consulta para que un coplito nose vuelva a postular a un viaje donde fue aceptado pero se dio de baja 
-
-/*$consulta="SELECT * FROM calificacion WHERE usuario_id=$id AND es_sancion=1 and viaje_id=$_GET[id_viaje] and cumple=1";
-$resul=mysqli_query($link,$consulta);
-
-if (mysqli_num_rows($resul)>0) {
-  $_SESSION['mensaje'] = "ERROR: Lo siento, no se puede volver a postular...Usted ya se postulo anteriormente, fue aceptado y se dio de baja";
-    header("Location: inicio.php");
-    die();
-}*/
-
-	$fecha_actual = date('Y-m-d');
-	
-	//resto 30 días de la fecha actual
-	$fecha_actual=date("Y-m-d",strtotime($fecha_actual."- 30 days"));
-	$chequeo_viajes="SELECT v.fecha FROM calificacion c INNER JOIN viajes v on(c.viaje_id=v.id) WHERE (c.calificador_id=$id and v.fecha <= '$fecha_actual' and cumple=0) OR (c.calificador_id=$id and v.fecha <= '$fecha_actual' and c.cumple=0 and v.activo=3) ";	
-
-
-	//realizo la consulta
-	$resul=mysqli_query($link,$chequeo_viajes);
-	//echo mysqli_num_rows($resul);
-	if (mysqli_num_rows($resul)>0) {
-		$_SESSION['mensaje']="Usted adeuda calificaciones, de hace mas de de 30 dias";
-		header("Location: inicio.php");
-		die();
-	}
-
-
-$fecha_actual=date('Y-m-d');
-	$date = new DateTime($fecha_actual);
-
-	$date->modify("next Monday");//avanzo al siguiente dia
-
-	$fecha=$date->format('Y-m-d');
 ?>
-<p style="font-size: 1.3em;background-color:rgba(255, 255, 255, 0.5);" class="color-a" >Realizar Pago: </p>
+
 <div class="container">
-<form class="f1_pago" id="validar_tarjeta" method="POST" action="alta_postulacion.php">
+<form class="f1_pago">
 
 <div class="form-group">
   <div class="row">
@@ -129,12 +89,3 @@ $fecha_actual=date('Y-m-d');
 
   </form>
 </div>
-
-<?php
-include('footer.php');
-
-mysqli_close($link);
-?>
-<script type="text/javascript" src="js/validar_tarjeta.js"></script>
-</body>
-</html>

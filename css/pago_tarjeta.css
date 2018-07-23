@@ -41,13 +41,13 @@
 
 }
 .f1_pago{
-	margin:  0 auto;
-	margin-top: 2%;
-	width: 90%;
+	margin: 0 auto;
 	box-sizing: border-box;
 	border: 1px solid #ccc;
-	padding-bottom: 2%;
+	padding:2%;
 	background-color: rgba(255, 255, 255, 0.5);
+	width: 85%;
+	border-radius: 5px;
 }
 .btn_fp {
 	padding: 3px;

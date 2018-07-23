@@ -34,16 +34,64 @@ if (isset($_SESSION['confirmacion'])) {$a = 1?>
 <?php } 
 //--fin cartel------------------------------------------------------------
 ?>
-	<?php	
 
-		//--------------------------------------
+<?php	
+
+		
 	
-			if (isset($_SESSION['mensaje'])) {
-				echo $_SESSION['mensaje'];
-				unset($_SESSION['mensaje']);//mensaje flash
-			}
-	?>
-<br>
+if (isset($_SESSION['mensaje'])) { ?>
+
+	<div class="alert alert-info alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <p style="text-align: center;"><strong>IMPORTANTE: </strong><?php echo $_SESSION['mensaje']; ?></p>
+    
+  </div>		
+	<?php unset($_SESSION['mensaje']);//mensaje flash 
+}?>
+
+
+
+
+<?php  if (isset($_SESSION['error']) ){ ?>
+	<script type="text/javascript">
+		activar_modal();
+	</script>
+
+	<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="background-color: #D50404;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title" style="color: #fff; text-align: center;">Lo sentimos</h3>
+      </div>
+      <div class="modal-body" style="color: #fff; border: none;">
+        <p style="text-align: center;"><?php echo $_SESSION['error']; ?></p>
+      </div>
+      <div class="modal-footer" style="border:none;">
+        <button type="button" class="btn btn-defaul" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<?php  unset($_SESSION['error']); }  ?>
+<!-- - - - - - - - -  - - - - - - - - - ---->
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div style="width: 84%;margin: 0 auto;">
 	<a class="btn btn-danger " href="baja_usuario.php"> Eliminar mi cuenta</a>
@@ -54,9 +102,6 @@ if (isset($_SESSION['confirmacion'])) {$a = 1?>
 
 <!-- BOTON ELIMINAR -->
 
-	
-	
-</div>
 
 <div class="caja_perfil">
 	

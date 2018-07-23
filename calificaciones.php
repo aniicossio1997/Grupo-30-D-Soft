@@ -16,7 +16,12 @@ include('img.php');
 
 $resul2=mysqli_query($link,$consulta);
 if (mysqli_num_rows($resul2)<1) { 
-	$_SESSION['mensaje']="No posee calificaciones";
+	if ($_POST['tipo']==0) {
+		$_SESSION['error']="No posee calificaciones como Copiloto";
+	}else{
+		$_SESSION['error']="No posee calificaciones como Piloto";
+	}
+	
 	header("Location:".$_SERVER["HTTP_REFERER"]);
 }
 

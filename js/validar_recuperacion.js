@@ -19,4 +19,5 @@ function validar_email() {
 
 window.onload = function(){
 	document.getElementById('form_rec').onsubmit = validar_email;
+	
 }
