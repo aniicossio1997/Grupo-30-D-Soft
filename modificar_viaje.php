@@ -8,7 +8,7 @@ $datos_vie=mysqli_query($link,$sql);
 $mostrar=mysqli_fetch_array($datos_vie);
 
 //si el viaje expiro
-if(($mostrar['fecha'] < date("Y-m-d")) || (($mostrar['fecha'] = date("Y-m-d")) && ($mostrar['horario'] <= date("H:i:s")))) {
+if($mostrar['fecha'] < date("Y-m-d") OR ($mostrar['fecha'] == date("Y-m-d") && $mostrar['horario'] <= date("H:i:s"))) {
 	$_SESSION['mensaje'] = "Lo siento, el viaje ya expiro";
 	if (isset($_GET['modificar'])) {
 	  header("Location: mostrar_viaje_piloto.php");

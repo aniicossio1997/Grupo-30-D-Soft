@@ -13,10 +13,10 @@ $consulta_f= "SELECT fecha, horario FROM viajes where id = $_GET[id_viaje]";
 $resultado_f = mysqli_query($link,$consulta_f);
 $fila_f = mysqli_fetch_array($resultado_f);
 //si el viaje expiro
-if(($fila_f['fecha'] < date("Y-m-d")) || (($fila_f['fecha'] = date("Y-m-d")) && ($fila_f['horario'] <= date("H:i:s")))) {
+if($fila_f['fecha'] < date("Y-m-d") OR ($fila_f['fecha'] == date("Y-m-d") && $fila_f['horario'] <= date("H:i:s"))){
 	$_SESSION['mensaje'] = "Lo siento, el viaje ya expiro";
     header("Location: inicio.php");
-      die();
+    die();
 }
 
 // se verifica si el usuario adeuda calificacines. 

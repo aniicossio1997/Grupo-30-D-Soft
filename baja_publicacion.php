@@ -8,7 +8,7 @@ $id = $verificar-> id();
 $consulta0 = "SELECT fecha,horario FROM viajes WHERE id = $_GET[id_viaje]";
 $resultado0 = mysqli_query($link,$consulta0);
 $fila0 = mysqli_fetch_array($resultado0);
-if(($fila0['fecha'] < date("Y-m-d")) || (($fila0['fecha'] = date("Y-m-d")) && ($fila0['horario'] <= date("H:i:s")))) {
+if($fila0['fecha'] < date("Y-m-d") OR ($fila0['fecha'] == date("Y-m-d") && $fila0['horario'] <= date("H:i:s"))){
 	$_SESSION['mensaje'] = "Lo siento, el viaje ya expiro";
     header("Location: inicio.php");
     die();
