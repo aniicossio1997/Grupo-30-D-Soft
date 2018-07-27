@@ -5,7 +5,7 @@
 	include('clases.php');
 	//verifica si no hay usuarios o correos electronicos repetidos
 	function existe ($email,$link){
-		$existeEmail="SELECT * FROM usuarios  WHERE email='$email'";
+		$existeEmail="SELECT * FROM usuarios  WHERE email='$email' AND activo =1";
 		$resultado1= mysqli_query($link,$existeEmail);
 		
 		$rows1=mysqli_num_rows($resultado1);

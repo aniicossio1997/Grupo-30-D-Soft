@@ -17,7 +17,7 @@ if (!isset($_POST['email']) || empty($_POST['email'])) {
 
 $email=$_POST['email'];
 //-------------------------------
-$consulta="SELECT password FROM usuarios WHERE email='$email'";
+$consulta="SELECT password FROM usuarios WHERE email='$email' AND activo=1";
 $resul=mysqli_query($link,$consulta);
 
 if (mysqli_num_rows($resul)==0) {
