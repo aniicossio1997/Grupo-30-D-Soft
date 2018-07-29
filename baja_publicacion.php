@@ -1,4 +1,5 @@
 <?php
+include('conexion.php');
 include ('funcion_sancionar.php');
 $link=conectar();
 $verificar = new validar($link);

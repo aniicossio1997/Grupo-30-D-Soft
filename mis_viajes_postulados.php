@@ -64,7 +64,7 @@ if(isset($_GET["pag"])){
 ?>
 <form action="mis_viajes_postulados.php" class="form_copi" method="GET">
 	<div class="container_form">
-		<p class="title_fv color-a ">Mis Postulaciones</p class="title_fv">
+		<p class="title_fv color-a ">Mis Postulaciones</p>
 		
 ver:
 <select name="tipos" class="fv_tipos" style="cursor: pointer;">

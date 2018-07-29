@@ -31,6 +31,11 @@ ul.pagination li a.active {
     cursor: auto;
 }
 
-ul.pagination li a:hover:not(.active) {background-color: #EDEFEC; }
+ul.pagination li a:hover:not(.active) {background-color: #A93226; }
 
 div.center {text-align: center; }
+
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover{
+    background-color: #A93226;
+    color: #fff;
+}

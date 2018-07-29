@@ -18,6 +18,7 @@ $verificar = new validar($link);
 <head>
 	<meta charset="UTF-8">
 	
+	
 	<title>Aventon</title>
 	<link rel="stylesheet" href="boot/css/bootstrap.min.css">
 	

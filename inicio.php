@@ -138,12 +138,12 @@ $resultado2 = mysqli_query($link, $consulta2.$sql2);
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content" style="background-color: #F47607;">
-      <div class="modal-header">
+    <div class="modal-content" style="background-color: #fff;">
+      <div class="modal-header" style="border-bottom: 1.2px solid #DB2E09">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3 class="modal-title" style="color: #fff; text-align: center;">¡IMPORTANTE!</h3>
+        <h3 class="modal-title" style="color: #000; text-align: center;">¡IMPORTANTE!</h3>
       </div>
-      <div class="modal-body" style="color: #fff; border: none;">
+      <div class="modal-body" style="color: #000; border: none;">
         <p style="text-align: center;"><?php echo $_SESSION['mensaje']; ?></p>
       </div>
       <div class="modal-footer" style="border:none;">
@@ -413,7 +413,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 					<?php }?>
 					<!--la sigueinte consulta es para saber si esta postulado y en tal caso no mostrar el boton postularse --> 
 					<?php
-				     $consulta5 = "SELECT estado FROM postulantes WHERE (postulante_id = $id) AND (viaje_id = $fila[id])";
+				     $consulta5 = "SELECT estado, rechazado FROM postulantes WHERE (postulante_id = $id) AND (viaje_id = $fila[id])";
 				     $resultado5 = mysqli_query($link,$consulta5);
 				     $fila5=mysqli_fetch_array($resultado5);
 					 if (($pertenece == false) && ($fila5['estado'] == 0)) {
@@ -426,7 +426,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 		    				<a class="a-link2 a-rig fondo-blue"  href="pago_tarjeta.php?id=<?php echo $id ?>&id_viaje=<?php echo $fila['id'] ?> " >	Postularse 
 		    				</a>
 		    			</td>	
-				 <?php }elseif (($pertenece == false) && ($fila5['estado'] == 1) ) {
+				 <?php }elseif (($pertenece == false) && ($fila5['estado'] == 1)) {
 				 	?>
 				 	<td class="Td-a" >
 				 			<a class="a-link2 a-rig fondo-blue" href="baja_postulacion.php?id_viaje=<?php echo $fila['id'] ?>"> Eliminar Postulacion</a>

@@ -44,11 +44,24 @@ if (mysqli_num_rows($resul)>0) {
   $diferencia = $fecha1->diff($fecha2);
   if ( $diferencia->days > 30){
     $_SESSION['mensaje'] = "Usted adeuda calificaciones, de hace mas de de 30 dias";
-      header("Location: inicio.php");
+      header("Location: calificaciones_pendientes.php");
       die();
   }
     
   }
+
+  $consulta = "SELECT id FROM postulantes WHERE (postulante_id = $id) AND (viaje_id = $_GET[id_viaje]) and (rechazado=1)";
+  $resul=mysqli_query($link,$consulta);
+  if (mysqli_num_rows($resul)>0) {
+    $_SESSION['mensaje'] = "no se puede volver a postular a un viaje  donde ya se lo rechazo";
+      header("Location: inicio.php");
+      die();
+  }
+
+
+
+
+  //-----------------------------------------------------
 
 
 $fecha_actual=date('Y-m-d');

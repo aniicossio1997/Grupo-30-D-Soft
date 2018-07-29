@@ -31,7 +31,7 @@
 	if ($resul_3) {
 		//si la consulta se realizo con exito
 
-		$_SESSION['mensaje']= "Postulante aceptado. Se ha enviado informacion de contacto al correro del postulante.";
+		$_SESSION['mensaje']= "Postulante aceptado exitosamente";
 
 		header("Location:Postulantes.php?id_viaje=$viaje[id]&origen=$viaje[origen]&destino=$viaje[destino]");
 

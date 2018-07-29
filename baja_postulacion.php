@@ -43,14 +43,16 @@ if($fila0['fecha'] < date("Y-m-d") OR ($fila0['fecha'] == date("Y-m-d") && $fila
       header("Location: inicio.php?viaje_id=$_GET[id_viaje]");
       die();
     }else{
+          sancionar_copiloto($link,$id,$_GET['id_viaje']);
+          
+          //llama a una funcion para restar los puntos si ya lo habian aceptados
           $consulta1 = " UPDATE postulantes SET estado = 0 where viaje_id = $_GET[id_viaje]";
           $resultado1 = mysqli_query($link,$consulta1);
-          //llama a una funcion para restar los puntos si ya lo habian aceptados
-          sancionar_copiloto($link,$id,$_GET['id_viaje']);
         if ($_GET['vip_pos']=='vip_pos') {
         header("Location: mis_viajes_postulados.php?viaje_id=$_GET[id_viaje]&vip_pos=$_GET[vip_pos]");
         die();
       }
+
 
 
           $_SESSION['mensaje']= " baja exitosa.";

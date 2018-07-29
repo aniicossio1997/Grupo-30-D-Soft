@@ -1,5 +1,4 @@
 <?php
-date_default_timezone_set('America/Argentina/Buenos_Aires');
 include('conexion.php');
 $link=conectar();
 session_start();
@@ -26,6 +25,7 @@ if($fila_f['fecha'] < date("Y-m-d") OR ($fila_f['fecha'] == date("Y-m-d") && $fi
 	
 
 // se verifica si el usuario adeuda calificacines. 
+/*
 $consulta_fecha = "SELECT viaje_id FROM postulantes where (postulante_id = $id) AND (rechazado = 2)";
 $resultado_fecha = mysqli_query($link,$consulta_fecha);
 while ($fila_fecha = mysqli_fetch_array($resultado_fecha)) {
@@ -40,7 +40,7 @@ while ($fila_fecha = mysqli_fetch_array($resultado_fecha)) {
 			header("Location: inicio.php");
 			die();
 	}
-}
+}*/
 $consulta1 = "SELECT * FROM postulantes WHERE postulante_id=$id";
 $resultado1 = mysqli_query($link,$consulta1);
 $existe = false;

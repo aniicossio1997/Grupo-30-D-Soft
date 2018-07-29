@@ -1,6 +1,12 @@
 <?php
-include ('funcion_sancionar.php');
+
+include('conexion.php');
 $link=conectar();
+session_start();
+include('clases.php');
+include('funcion_sancionar.php');
+
+
 $verificar = new validar($link);
 $id = $verificar-> id();
 
@@ -16,9 +22,19 @@ if (($fila1['rechazado'] == 2) && (!isset($_GET['respuesta']))) {
       die();
 }elseif ( $fila1['rechazado'] == 2) 
 {
+		
+/*
+		$consulta="SELECT * FROM postulante p INNER JOIN viajes v on(p.viaje_id=v.id) INNER JOIN vehiculo ve on (ve.id=v.vehiculo_id) where ve.usuario_id=$id AND rechazado=2 "
+		if () {
+			# code...
+		}
+
+*/
+		sancionar_piloto($link,$id,$_GET[id_viaje]);
+
 		$consulta = "UPDATE postulantes SET rechazado = 1 WHERE (postulante_id = $_GET[id]) AND (viaje_id = $_GET[id_viaje])";
 		$resultado=mysqli_query($link,$consulta);
-		sancionar_piloto($link,$id,$_GET[id_viaje]);
+
         $_SESSION['mensaje']= "El postulante fue rechazado exitosamente.";
 		$_SESSION['id_viaje'] = $_GET['id_viaje'];
 		unset($_GET['respuesta']);
