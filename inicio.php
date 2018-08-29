@@ -8,6 +8,7 @@ if (!$verificar->esta_logueado()) {
 	header("Location:index.php");
 	die();
 }
+include('terminar_viajes.php');
 
  
  //hago consulta (1) para obtener los vehiculos pertenecientes al usuario en secion
@@ -17,6 +18,13 @@ if (!$verificar->esta_logueado()) {
  $fecha_act=date('Y-m-d');
  $hora_act=date('H:i:s');
  $consulta2= ("SELECT * FROM viajes WHERE ((fecha > CURDATE() AND activo = 1 ) or (fecha = CURDATE() AND horario >= CURTIME() AND activo = 1 )) ");
+ //------------------------------------
+//echo $fecha_act;
+ //funcion para terminar los viajes
+termiar_viajes($link);
+
+
+
  //ejecuto la consulta (2) y lo guardo en la variable resultado
  //------------Busqueda----------
 
@@ -120,6 +128,38 @@ $resultado2 = mysqli_query($link, $consulta2.$sql2);
 
 //Paginado-----------------------------------------------------------------------------------------
 
+ if (isset($_SESSION['mensaje']) ){ ?>
+	<script type="text/javascript">
+		activar_modal();
+	</script>
+
+	<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="background-color: #F47607;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title" style="color: #fff; text-align: center;">¡IMPORTANTE!</h3>
+      </div>
+      <div class="modal-body" style="color: #fff; border: none;">
+        <p style="text-align: center;"><?php echo $_SESSION['mensaje']; ?></p>
+      </div>
+      <div class="modal-footer" style="border:none;">
+        <button type="button" class="btn btn-defaul" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<?php  unset($_SESSION['mensaje']); }  ?>
+<!-- - - - - - - - -  - - - - - - - - - ---->
+
+
+<?php
+
 			//form de busqueda
 ?>
 <div class="caja_bus container
@@ -160,9 +200,10 @@ $resultado2 = mysqli_query($link, $consulta2.$sql2);
  <?php
 //carteles ----------------------------------------------------------------------------
  //(1)si ya esta postulado o se postula muestra un mje informando exito o error 
+/*
 if (isset($_SESSION['mensaje'])) { ?>
 	<div class="cartel div-externo"  id="cartel">
-		<div class="div-interno " style="margin-top: 10%;">
+		<div class="div-interno ">
 	  		<p style="text-align: center; color: white; font-style: italic;"><?php echo $_SESSION['mensaje']; unset($_SESSION['mensaje']); ?></p>
 	    </div>
 	    <div class="div-bttn-ok"">
@@ -170,11 +211,12 @@ if (isset($_SESSION['mensaje'])) { ?>
 	    </div>
 	</div>
 <?php } ?>
+
 <!--fin cartel (1)-->
 
 <?php
 //cartel (2)-----------------------------------------------------------------
-//si se quiere borrar una publicacion que tiene postulantes.
+//si se quiere borrar una publicacion que tiene postulantes.*/
 if (isset($_SESSION['confirmacion'])) {$a = 1?>
 
 	<div class="cartel div-externo"  id="cartel">
@@ -262,7 +304,8 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 	 		if ($id_user['usuario_id'] == $id) {
 	 	?>
 			<p style="font-style: italic; color: #FDFEFE;">Publicador: Tú </p>
-			<a class="btn btn-warning" href="expirar.php?id_viaje=<?php echo $fila['id'] ?>"> Terminar viaje</a> 
+			 
+			<?php /*<a class="btn btn-warning" href="expirar.php?id_viaje=<?php echo $fila['id'] ?>"> Terminar viaje</a> */ ?>
 		<?php }else{ 
 		?>
 		<p style="font-style: italic; color: #FDFEFE">Publicador: <?php echo $fila4['nombre']; ?>
@@ -363,7 +406,7 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 							$fila7 = mysqli_num_rows($resultado7);
 							if ($fila7 > 0) { ?>
 								<div style="float: right; margin-top: -16.5%;">
-								<p class="parrafo" style="font-style: italic; margin-top: -40%;"> (Nuevo postulante) </p>
+								<p class="parrafo" style="font-style: italic; margin-top: -30%;"> (Nuevo postulante) </p>
 								</div>
 		
 							<?php }?>

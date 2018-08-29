@@ -120,12 +120,14 @@ function validar_fecha() {
 	var fecha =document.getElementById('fecha');
 	var actual = new Date().toISOString().slice(0,10);		
 	if (!fecha.value) {
-		document.getElementById('msj_fecha').innerHTML="seleccione una fecha";
+		document.getElementById('msj_fecha').innerHTML=" seleccione una fecha";
 		fecha.focus();
 		alert("Error: campo Marca incompleto, por favor complete el campo.");
 		
 		return false;
 	}
+	//alert(fecha.value <=actual.toString());
+	//alert(actual.toString())
 	if (fecha.value <=actual.toString()) {
 		document.getElementById('msj_fecha').innerHTML="Recuerde que para crear un viaje la fecha debe ser posterior a la actual ";
 		alert("Error: En la fecha");

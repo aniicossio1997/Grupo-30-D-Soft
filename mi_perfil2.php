@@ -25,6 +25,42 @@ if ( $fila['activo'] != 0) {
 				unset($_SESSION['mensaje']);//mensaje flash
 			}
 	?>
+
+<!--  - - - - - - - - - - - - - - - - - -  -->
+
+<?php  if (isset($_SESSION['error']) ){ ?>
+	<script type="text/javascript">
+		activar_modal();
+	</script>
+
+	<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="background-color: #D50404;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title" style="color: #fff; text-align: center;">IMPORTANTE..!!!</h3>
+      </div>
+      <div class="modal-body" style="color: #fff; border: none;">
+        <p style="text-align: center;"><?php echo $_SESSION['error']; ?></p>
+      </div>
+      <div class="modal-footer" style="border:none;">
+        <button type="button" class="btn btn-defaul" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<?php  unset($_SESSION['error']); }  ?>
+<!-- - - - - - - - -  - - - - - - - - - ---->
+
+
+
+
+
 <section>
 
 	<article class="mis_vehiculos"> 
@@ -51,8 +87,8 @@ if ( $fila['activo'] != 0) {
 				echo puntuacion_piloto($link,$_GET['id_pos']);
 				 ?></p>
 				 <form action="calificaciones.php" method="POST" style="margin-top: -2%;">
-				 		<input type="hidden" name="user_id" value="<?php echo $_GET['id_pos'] ?>">
-				 	<input type="hidden" name="tipo" value="0">
+				 	<input type="hidden" name="user_id" value="<?php echo $_GET['id_pos'] ?>">
+				 	<input type="hidden" name="tipo" value="1">
 				 	<button type="submit" class="btn btn-link" name="mostrar_cal">Más detalles..</button>
 				 </form>
 
@@ -65,6 +101,8 @@ if ( $fila['activo'] != 0) {
 				 	<button type="submit" class="btn btn-link" name="mostrar_cal">Más detalles..</button>
 				 </form>
 					</div>
+
+
 					
 					
 		</div>

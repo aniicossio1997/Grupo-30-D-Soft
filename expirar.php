@@ -19,7 +19,7 @@
 			/*echo "<br>".$consulta_2;
 			echo "<br><br>";
 			
-			//Crean las calificaciones para el pilotos;
+			//Crean las calificaciones para los pilotos;
 			*/
 			$resul_2=mysqli_query($link,$consulta_2);
 			$consulta_3="INSERT INTO calificacion(id, viaje_id, usuario_id, es_piloto, calificador_id) VALUES (NULL,$_GET[id_viaje],$id,1,$fila[postulante_id])";

@@ -55,7 +55,7 @@ $mail->setFrom('aventonsoporte@gmail.com','Equipo de Soporte Aventon');
 $mail->addAddress("$email");
 
 $mail->Subject='Recuperar Password';
-$mail->Body='<br><br><b>Su contraseña es: </b>'.$password;
+$mail->Body='<br><br><b>Su contrase&ntilde;a es: </b>'.$password;
 
 $mail->IsHTML(true);
 

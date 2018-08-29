@@ -155,6 +155,14 @@ include ('funcion_puntuacion.php');
     <!-- - - - -- -  PREGUNTAS Y RESPUESTAS - - - - -- - - - - -->
 
       <article class="article_interior" style="margin-top: 1%;">
+
+        <?php
+        $fecha_act=date('Y-m-d');
+
+
+         if ($mostrar['fecha']> $fecha_act) { ?>
+        
+        
         <?php if ($fila2['usuario_id'] != $id) { ?>
           <b class=" color-a" style="margin-left: 0%;"> >Realizar una pregunta: </b>
           <form method="POST" action="validar_pregunta.php?id_viaje=<?php echo $id_viaje ?>&id_usuario=<?php echo $id ?>">
@@ -167,7 +175,9 @@ include ('funcion_puntuacion.php');
         </div>
         <br>
         <br>
-      <?php } ?>
+      <?php } } ?>
+
+
     <div style="margin-top: -1%;">
     <b class=" color-a" style="margin-left: 4%; margin-left: 0%;">Preguntas y Respuestas</b>
     </div>
@@ -253,9 +263,13 @@ include ('funcion_puntuacion.php');
             <?php } ?>
        <?php } }elseif ($fila2['usuario_id'] == $id) {?>
                     <div style="margin-left: 38%;">
-                      <b>Sin preguntas por el momento.</b>
+                      <b>Sin preguntas por el momento...</b>
                     </div>
-      <?php  }?>
+      <?php   } if (mysqli_num_rows($resultado4)==0) { ?>
+       <div style="margin-left: 38%;">
+                      <b>No posee preguntas...</b>
+                    </div>
+      <?php } ?>
   </article> 
 
  

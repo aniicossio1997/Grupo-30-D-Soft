@@ -13,6 +13,7 @@ if (!$verificar->esta_logueado()){
 
 <div class="conteiner-f1">
 	<form class="conteiner" id="form_sesion" action="validar_sesion.php" method="POST"style="margin-bottom: -3%" >
+		<br>
 
 		<?php if (isset($_SESSION['mensaje']) ){ ?>
 				<div class="error_sql">
@@ -34,7 +35,6 @@ if (!$verificar->esta_logueado()){
 			<input type="password" id="password" class="input-f1 focus_azul " name="password">
 			<span>¿Has olvidado tu contraseña?click</span>
 			<a href="recuperar_clave.php"> AQUÍ</a>
-
 		</div>
 		
 		<button  class="input-f1 text-white fondo-blue btn-form" type="submit">Iniciar sesion</button>

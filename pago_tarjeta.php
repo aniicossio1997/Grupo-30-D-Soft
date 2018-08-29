@@ -17,11 +17,11 @@ if (mysqli_num_rows($resul)>0) {
     die();
 }*/
 
-	$fecha_actual = date('Y-m-d');
+	/*$fecha_actual = date('Y-m-d');
 	
 	//resto 30 días de la fecha actual
 	$fecha_actual=date("Y-m-d",strtotime($fecha_actual."- 30 days"));
-	$chequeo_viajes="SELECT v.fecha FROM calificacion c INNER JOIN viajes v on(c.viaje_id=v.id) WHERE (c.calificador_id=$id and v.fecha <= '$fecha_actual' and cumple=0) OR (c.calificador_id=$id and v.fecha <= '$fecha_actual' and c.cumple=0 and v.activo=3) ";	
+	$chequeo_viajes="SELECT v.fecha FROM calificacion c INNER JOIN viajes v on(c.viaje_id=v.id) WHERE (c.calificador_id=$id and v.fecha < '$fecha_actual' and c.cumple=0) OR (c.calificador_id=$id and v.fecha <= '$fecha_actual' and c.cumple=0 and v.activo=3) ";	
 
 
 	//realizo la consulta
@@ -31,7 +31,24 @@ if (mysqli_num_rows($resul)>0) {
 		$_SESSION['mensaje']="Usted adeuda calificaciones, de hace mas de de 30 dias";
 		header("Location: inicio.php");
 		die();
-	}
+	}*/
+
+  $chequeo_viajes="SELECT c.viaje_id, v.fecha FROM calificacion c INNER JOIN viajes v on(c.viaje_id=v.id) where  c.calificador_id=$id AND c.cumple=0 AND c.es_sancion=0 ";  
+  #echo $chequeo_viajes;
+  //realizo la consulta
+  $resul=mysqli_query($link,$chequeo_viajes);
+  //echo mysqli_num_rows($resul);
+  while ($fechas=mysqli_fetch_array($resul)) {
+  $fecha1 = new dateTime($fechas['fecha']);
+  $fecha2 = new dateTime(date("Y-m-d"));
+  $diferencia = $fecha1->diff($fecha2);
+  if ( $diferencia->days > 30){
+    $_SESSION['mensaje'] = "Usted adeuda calificaciones, de hace mas de de 30 dias";
+      header("Location: inicio.php");
+      die();
+  }
+    
+  }
 
 
 $fecha_actual=date('Y-m-d');

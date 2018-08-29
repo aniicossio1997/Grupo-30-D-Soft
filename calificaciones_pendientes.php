@@ -5,7 +5,7 @@ include ('funcion_puntuacion.php');
 $id=$verificar->id();
 
 
-$consulta="SELECT c.viaje_id, COUNT(c.viaje_id) as numero, v.origen, v.destino,v.fecha, v.horario, c.es_sancion,c.es_piloto FROM calificacion c INNER JOIN viajes v ON (c.viaje_id=v.id) WHERE c.cumple=0 and c.calificador_id=$id and c.es_sancion=0 GROUP BY c.viaje_id ";
+$consulta="SELECT c.viaje_id, COUNT(c.viaje_id) as numero, v.origen, v.destino,v.fecha, v.horario, c.es_sancion,c.es_piloto FROM calificacion c INNER JOIN viajes v ON (c.viaje_id=v.id) WHERE c.cumple=0 and c.calificador_id=$id and c.es_sancion=0 GROUP BY c.viaje_id ORDER BY v.fecha, v.horario desc ";
 #echo $consulta;
 
 $resul=mysqli_query($link,$consulta);
@@ -35,14 +35,14 @@ while ($mostrar=mysqli_fetch_array($resul)) { ?>
 	<?php if ($mostrar['es_piloto']==1) { ?>
 	<p style="font-size: 1.2em"><b>Usted adeuda la calificación al piloto:</b></p>
 <?php }else { ?>
-<p style="font-size: 1.2em"><b >Usted adeuda la/s calificaciones a : <?php echo " ".$mostrar['numero']; ?> copiloto/s
+<p style="font-size: 1.2em"><b >Usted adeuda calificaciones a : <?php echo " ".$mostrar['numero']; ?> copiloto/s
     	</b></p>
 <?php } ?>
 </div>
 
-	<div style="overflow: auto;<?php if ($mostrar['es_piloto']==1 || $mostrar['numero'] <2){echo "height: 83px";}else{  echo "height:130px";} ?>  ">
+	<div style="overflow: auto; <?php if ($mostrar['es_piloto']==1 || $mostrar['numero'] <2){echo "height: 83px";}else{  echo "height:130px";} ?>  ">
 		<table class="table">
-			<tbody style="padding-top: 2px; padding-bottom: 1px">
+			<tbody>
 		<?php if ($mostrar['es_piloto']==1) { ?>
     	<?php $consulta2="SELECT u.nombre,u.apellido,u.id,c.id as id_cal  FROM usuarios u INNER JOIN calificacion c on(c.usuario_id=u.id) WHERE c.viaje_id=$mostrar[viaje_id] and c.calificador_id=$id and es_piloto=1 and cumple=0";
 		#echo $consulta2;
@@ -54,7 +54,7 @@ while ($mostrar=mysqli_fetch_array($resul)) { ?>
     		<form action="mi_perfil2.php" method="GET" style="padding-top: 3px">
 			<input type="hidden" name="id_pos" value="<?php echo $mostrar2['id']; ?>">
 			<input type="hidden" name="pagina" value="<?php echo "calificaciones"; ?>">
-			<button type="submit" class="btn btn-link">Más información..</button>
+			<button type="submit" class="btn btn-link">Ver perfil...</button>
 				 </form>
     		</td>
     		<td><?php echo puntuacion_piloto($link,$mostrar2['id']) ; ?></td> 
@@ -76,7 +76,7 @@ while ($mostrar=mysqli_fetch_array($resul)) { ?>
 				<form action="mi_perfil2.php" method="GET" style="padding-top: 3px">
 			<input type="hidden" name="id_pos" value="<?php echo $mostrar3['id']; ?>">
 			<input type="hidden" name="pagina" value="<?php echo "calificaciones"; ?>">
-			<button type="submit" class="btn btn-link">Más información..</button>
+			<button type="submit" class="btn btn-link">Ver perfil...</button>
 				 </form>
 					
 				</td>
@@ -104,8 +104,15 @@ while ($mostrar=mysqli_fetch_array($resul)) { ?>
 <td>Hora:<?php echo substr("$mostrar[horario]", 0, -3)."hs";?></td>
 	</tr>
     <tr>
-    	<td>Origen:<?php echo $mostrar['origen']; ?></td>
+    	<td>Origen:<?php echo $mostrar['origen']; ?>
+    		<form action="detalle_viaje.php" style="margin-top: 1%">
+    			<input type="hidden" value="<?php echo $mostrar['viaje_id']; ?>" name="id_viaje">
+    			<input type="hidden" name="cal_pen" value="<?php echo "cal_pen" ?>"> 
+    			<button type="submit" class="btn btn-link">Ver más información... </button>
+    		</form>
+    	</td>
     	<td>Destino:<?php echo $mostrar['destino']; ?></td>
+
     </tr>
 			</tbody>
 	</table>
