@@ -176,6 +176,9 @@ $hay_autos=mysqli_num_rows($resul);
  <div style="margin-top: 1%;width: 100%;" >
     <a style="margin-left: 45%;" class="a-link2 fondo-blue" href="<?=$_SERVER["HTTP_REFERER"]?>">Volver</a>
  </div>
+		
+
+ 
 <?php } ?>	
 </div>
 <?php }else{

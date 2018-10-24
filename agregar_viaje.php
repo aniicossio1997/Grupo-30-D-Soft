@@ -1,6 +1,22 @@
 <?php
 include('header.php');
 $id= $verificar->id();
+
+	$fecha_actual = date('Y-m-d');
+	
+	//resto 30 días de la fecha actual
+	$fecha_actual=date("Y-m-d",strtotime($fecha_actual."- 30 days"));
+	$chequeo_viajes="SELECT p.postulante_id, p.viaje_id, vi.id, vi.fecha, p.estado, p.rechazado FROM postulantes p INNER JOIN viajes vi ON (p.viaje_id=vi.id) INNER JOIN vehiculo ve ON (vi.vehiculo_id=ve.id) WHERE ve.usuario_id=$id AND  vi.fecha <= '$fecha_actual' AND p.estado=1 AND p.rechazado=2";	
+
+
+	//realizo la consulta
+	$resul=mysqli_query($link,$chequeo_viajes);
+	//echo mysqli_num_rows($resul);
+	if (mysqli_num_rows($resul)>0) {
+		$_SESSION['mensaje']="Usted adeuda calificaciones, de hace mas de de 30 dias";
+		header("Location: inicio.php");
+		die();
+	}
 // se verifica si el usuario adeuda calificacines. 
 $consulta_fecha = "SELECT viaje_id FROM postulantes where (postulante_id = $id) AND (rechazado = 2)";
 $resultado_fecha = mysqli_query($link,$consulta_fecha);

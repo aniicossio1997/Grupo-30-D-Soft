@@ -151,7 +151,9 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 		   	 	<td >
 		    	 	<p  class="p-perfil p-left " style="font-style: italic;">Duracion: <?php echo $fila['duracion']."Hs - ".$fila['minutos']." minutos"; ?>	
 		    	 	</p>
-		    	</td>		    	
+		    	</td>
+
+	    	
 		    </tr>
 		    <tr>		    
 		    	<td class="td-p"> 
@@ -162,12 +164,21 @@ if ((mysqli_num_rows($resultado2) == 0 )) { ?>
 		    		 ?>
 		    		<p class="p-perfil p-left " style="font-style: italic;">Precio: $<?php echo round($fila['costo'] / ($asientos['asientos'] + 1));  ?>
 		    		</p>
+
 		    	</td>	
 		    	<td class="p-perfil p-left " style="font-style: italic;">Fecha de viaje: <?php
 		    	setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
 			$fecha = strftime("%d de %B de %Y", strtotime("$fila[fecha]"));
 			echo $fecha;
 		    	 ?>
+		    	</td>
+		    	<td>
+		    		<p  class="p-perfil p-left" style="border:5 solid pink;" style="font-style: italic;">     Hora: 
+             		 <?php 
+                 		$elimina_segundos=substr("$fila[horario]", 0, -3);
+                 		echo $elimina_segundos;
+                 	 ?> Hs
+		    	  </p>
 		    	</td>	    	
 		    </tr>
 		</table>

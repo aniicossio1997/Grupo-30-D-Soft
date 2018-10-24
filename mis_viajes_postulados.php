@@ -225,6 +225,9 @@ ver:
 			 </div>
 
 			 <?php  }?>
+			  <div style=" margin-top: 0.9%;width: 100%; box-sizing: border-box;" >
+    <a style="margin-left:  45%;" class="a-link2 fondo-blue" href="<?=$_SERVER["HTTP_REFERER"]?>">Volver</a>
+ </div>
 <?php include('footer.php'); ?>
 </body>
 </html>

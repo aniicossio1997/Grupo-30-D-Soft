@@ -66,8 +66,8 @@ if (isset($_SESSION['mensaje'])) { ?>
         </div>
       </div>
       </article>
-      <div style="margin-top: 1%">
-      	<a style="margin-left: 0.5%" class="a-link2 fondo-blue" href="detalle_viaje.php?id_viaje=<?php echo $vector['id'] ?>&detalle<?php echo "1" ?>">Detalle</a>
+      <div style="margin-top: 1%" class="cursor">
+      	<a style="margin-left: 0.5% cursor: pointer;" class="a-link2 fondo-blue " href="detalle_viaje.php?id_viaje=<?php echo $vector['id'] ?>&detalle<?php echo "1" ?>">Detalle</a>
       </div>
       <div style="margin-top: -2.4%">
       <?php 
